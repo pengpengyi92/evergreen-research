@@ -180,8 +180,19 @@ def write_survey_outline(db: PaperDatabase, survey_root: Path) -> Path:
         "",
         "> Working title: *The Compute-Allocation Frontier: A Living, Reproducible "
         "Survey of LLM Reasoning and Test-Time Compute*",
-        f"> Status: evidence-accumulating (v0.3). {total} papers in corpus, "
+        f"> Status: evidence-accumulating (v0.4). {total} papers in corpus, "
         f"{stats['verified_papers']} full-text verified.",
+        "",
+        "## Section progress",
+        "",
+        "- [x] §1 Introduction — drafted (`sections/01-introduction.md`)",
+        "- [x] §2 Method — drafted (`sections/02-method.md`)",
+        "- [x] §3 Foundations: CoT -> RLVR — drafted (`sections/03-foundations.md`)",
+        "- [ ] §4 Test-Time Compute",
+        "- [ ] §5 Cross-Pillar Convergence under a Compute-Allocation Lens",
+        "- [ ] §6 Empirical Trends from the Living Corpus",
+        "- [ ] §7 Open Problems, Risks, and Outlook",
+        "- [ ] Hostile review + citation audit",
         "",
         "## Inclusion criteria (corpus v0.2)",
         "- Published on arXiv 2023-01-01 or later, primary category in the six pillar scopes.",

@@ -1,7 +1,18 @@
 # Frontier AI — Living Survey Outline
 
 > Working title: *The Compute-Allocation Frontier: A Living, Reproducible Survey of LLM Reasoning and Test-Time Compute*
-> Status: evidence-accumulating (v0.3). 503 papers in corpus, 45 full-text verified.
+> Status: evidence-accumulating (v0.4). 503 papers in corpus, 45 full-text verified.
+
+## Section progress
+
+- [x] §1 Introduction — drafted (`sections/01-introduction.md`)
+- [x] §2 Method — drafted (`sections/02-method.md`)
+- [x] §3 Foundations: CoT -> RLVR — drafted (`sections/03-foundations.md`)
+- [ ] §4 Test-Time Compute
+- [ ] §5 Cross-Pillar Convergence under a Compute-Allocation Lens
+- [ ] §6 Empirical Trends from the Living Corpus
+- [ ] §7 Open Problems, Risks, and Outlook
+- [ ] Hostile review + citation audit
 
 ## Inclusion criteria (corpus v0.2)
 - Published on arXiv 2023-01-01 or later, primary category in the six pillar scopes.
