@@ -142,6 +142,90 @@ class FulltextTest(unittest.TestCase):
         self.assertFalse(db.update_record("nope", {"verified": True}))
 
 
+class CitationsTest(unittest.TestCase):
+    def test_store_round_trip_and_stats(self) -> None:
+        from evergreen.citations import CitationStore
+
+        with tempfile.TemporaryDirectory() as tmp:
+            store = CitationStore(Path(tmp))
+            added = store.upsert(
+                [
+                    {
+                        "arxiv_id": "arXiv:2501.12948",
+                        "citationCount": 4200,
+                        "influentialCitationCount": 310,
+                    },
+                    {
+                        "arxiv_id": "arXiv:2501.02497",
+                        "citationCount": 40,
+                        "influentialCitationCount": 4,
+                    },
+                ]
+            )
+            self.assertEqual(added, 2)
+            self.assertEqual(store.upsert([{"arxiv_id": "arXiv:2501.12948", "citationCount": 1}]), 0)
+            stats = store.stats()
+            self.assertEqual(stats["tracked"], 2)
+            self.assertEqual(stats["median_citations"], 2120)
+            self.assertEqual(stats["max_citations"], 4200)
+
+    def test_paper_by_arxiv_id_mock(self) -> None:
+        from evergreen.citations import paper_by_arxiv_id
+
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.dict("os.environ", {"EVERGREEN_S2_CACHE": tmp}):
+                with mock.patch("evergreen.citations._rate_limit"):
+                    record = paper_by_arxiv_id(
+                        "2501.12948",
+                        fetch_func=lambda url: {
+                            "citationCount": 42,
+                            "influentialCitationCount": 3,
+                        },
+                    )
+                    self.assertEqual(record["citationCount"], 42)
+                    # cached: fetcher not called again
+                    calls = []
+                    again = paper_by_arxiv_id("2501.12948", fetch_func=lambda url: calls.append(url) or {})
+                    self.assertEqual(again["citationCount"], 42)
+                    self.assertEqual(calls, [])
+
+    def test_run_citations_persists_only_successes(self) -> None:
+        from evergreen.citations import CitationStore
+        from evergreen.pipeline import run_citations
+
+        papers = []
+        for i in range(3):
+            papers.append(
+                {
+                    "id": f"evg-c{i}",
+                    "title": f"Paper {i}",
+                    "published": f"2026-08-0{i + 1}T00:00:00Z",
+                    "arxiv_id": f"http://arxiv.org/abs/2608.1000{i}",
+                    "pillar": "LLM Reasoning / Test-time Compute",
+                    "verified": True,
+                }
+            )
+        with tempfile.TemporaryDirectory() as tmp:
+            db = PaperDatabase(Path(tmp))
+            db.upsert_many(papers)
+            calls = {"n": 0}
+
+            def fake_fetch(url):
+                calls["n"] += 1
+                if calls["n"] == 2:
+                    return {"arxiv_id": "x", "citationCount": None, "error": "rate_limited"}
+                return {"citationCount": 10 + calls["n"], "influentialCitationCount": 1}
+
+            with mock.patch(
+                "evergreen.citations.paper_by_arxiv_id", side_effect=lambda aid: fake_fetch(aid)
+            ):
+                summary = run_citations(Path(tmp), "LLM Reasoning / Test-time Compute", top_n=10, quiet=True)
+            self.assertEqual(summary["ok"], 2)
+            self.assertEqual(summary["rate_limited"], 1)
+            self.assertEqual(summary["stored"], 2)
+            self.assertEqual(CitationStore(Path(tmp)).stats()["tracked"], 2)
+
+
 class PipelineTest(unittest.TestCase):
     def test_cluster_signals(self) -> None:
         from evergreen.pipeline import _cluster_signals

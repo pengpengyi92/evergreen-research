@@ -193,6 +193,55 @@ def run_verification(
     }
 
 
+def run_citations(
+    data_root: Path,
+    pillar: str,
+    top_n: int = 25,
+    verified_only: bool = True,
+    quiet: bool = False,
+) -> dict[str, Any]:
+    """M3 gate: batch citation tracking for core-corpus papers.
+
+    Only successful fetches are persisted; rate-limited attempts are
+    reported but left for a later run (with S2_API_KEY set).
+    """
+    from evergreen import citations as s2
+
+    db = PaperDatabase(data_root)
+    candidates = [record for record in db.load() if record.get("pillar") == pillar]
+    if verified_only:
+        candidates = [record for record in candidates if record.get("verified")]
+    candidates.sort(key=lambda record: record.get("published", ""), reverse=True)
+    candidates = candidates[:top_n]
+
+    store = s2.CitationStore(data_root)
+    known = store.load()
+    results: dict[str, Any] = {"ok": 0, "rate_limited": 0, "failed": 0, "skipped_existing": 0}
+    to_store: list[dict[str, Any]] = []
+    for record in candidates:
+        arxiv_id = record.get("arxiv_id", "")
+        if s2.normalize_arxiv_id(arxiv_id) in known:
+            results["skipped_existing"] += 1
+            continue
+        try:
+            data = s2.paper_by_arxiv_id(arxiv_id)
+        except Exception as exc:
+            results["failed"] += 1
+            if not quiet:
+                print(f"[citations] {arxiv_id}: {exc}")
+            continue
+        if data.get("error") == "rate_limited":
+            results["rate_limited"] += 1
+            if not quiet:
+                print(f"[citations] {arxiv_id}: rate limited (set S2_API_KEY for batch runs)")
+            continue
+        results["ok"] += 1
+        to_store.append(data)
+    results["stored"] = store.upsert(to_store)
+    results["stats"] = store.stats()
+    return results
+
+
 def run_weekly(
     data_root: Path,
     max_per_pillar: int | None = None,
