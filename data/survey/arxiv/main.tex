@@ -325,14 +325,14 @@ Verifier/process-reward-model methods grow in the verified corpus from 1
 
 
 \begin{itemize}
-\item \texttt{evg-e04110c6e72b} (arXiv:2408.15565, 2024): self-improving code-assisted
+\item \texttt{evg-e04110c6e72bd0da} (arXiv:2408.15565, 2024): self-improving code-assisted
 \end{itemize}
 mathematical reasoning --- an early bridge between code execution and
 
 verifiable rewards.
 
 \begin{itemize}
-\item \texttt{evg-a1327781cf59} (arXiv:2508.16921, 2025): reward/verifier machinery
+\item \texttt{evg-a1327781cf590ac8} (arXiv:2508.16921, 2025): reward/verifier machinery
 \end{itemize}
 applied beyond math, to affective-alignment diagnosis --- a sign of the
 
@@ -355,9 +355,9 @@ growth of any method family in the verified subset. Policy optimization now
 
 appears far outside its origin: in embodied robot manipulation
 
-(\texttt{evg-4e48d42ef4f7}, BATON), in inverse RL for control (\texttt{evg-3f12f30b5bc7}),
+(\texttt{evg-4e48d42ef4f7ad7e}, BATON), in inverse RL for control (\texttt{evg-3f12f30b5bc710da}),
 
-and in dialogue model-based RL (\texttt{evg-964669cd2625}).
+and in dialogue model-based RL (\texttt{evg-964669cd2625570d}).
 
 
 \section{3.4 Search and self-correction}
@@ -366,7 +366,7 @@ Test-time search (MCTS-style tree search, beam variants, best-of-N) turns
 
 inference into an optimization loop over candidate traces. Verified
 
-examples: \texttt{evg-4e48d42ef4f7} (subtask-level exploration composed into
+examples: \texttt{evg-4e48d42ef4f7ad7e} (subtask-level exploration composed into
 
 long-horizon plans), \texttt{evg-37a3465e623bd6ff} (AutoSR: symbolic regression by
 
@@ -385,7 +385,7 @@ grow 1 (2024) $\rightarrow$ 6 (2025) $\rightarrow$ 3 (partial 2026).
 
 As verifiable rewards scale, so does gaming them. The safety pillar already
 
-feeds back into reasoning: verified record \texttt{evg-204795ac0a18} (What Do
+feeds back into reasoning: verified record \texttt{evg-204795ac0a186819} (What Do
 
 Compliance Detectors Read?) audits activation probes and guard models ---
 
@@ -464,7 +464,7 @@ Verified corpus examples show search moving from "sample many answers" to
 
 
 \begin{itemize}
-\item \texttt{evg-4e48d42ef4f7} (BATON) --- subtask-level exploration: each subtask is
+\item \texttt{evg-4e48d42ef4f7ad7e} (BATON) --- subtask-level exploration: each subtask is
 \end{itemize}
 explored in a cheap short-horizon regime, and long-horizon trajectories
 
@@ -473,24 +473,24 @@ are *composed* from stored solutions, turning multiplicative exploration
 cost (T to the power K) into additive (T times K).
 
 \begin{itemize}
-\item \texttt{evg-37a3465e623b} (AutoSR) --- symbolic regression framed as searching
+\item \texttt{evg-37a3465e623bd6ff} (AutoSR) --- symbolic regression framed as searching
 \end{itemize}
 "research states", with a verifier-governed transition model.
 
 \begin{itemize}
-\item \texttt{evg-6742b060cb56} (Le Critique) --- privileged value functions steer LLM
+\item \texttt{evg-6742b060cb568d54} (Le Critique) --- privileged value functions steer LLM
 \end{itemize}
 policy search, reintroducing critic-shaped guidance into the RLVR loop.
 
 \begin{itemize}
-\item \texttt{evg-f469e87d0194} (Learning from Diverse Reasoning Paths) --- routing and
+\item \texttt{evg-f469e87d0194dc45} (Learning from Diverse Reasoning Paths) --- routing and
 \end{itemize}
 collaboration across diverse reasoning paths rather than single-trace
 
 decoding.
 
 \begin{itemize}
-\item \texttt{evg-f945ded0c59d} (PuzzleJAX) --- a benchmark built for reasoning *and
+\item \texttt{evg-f945ded0c59d6837} (PuzzleJAX) --- a benchmark built for reasoning *and
 \end{itemize}
 learning* under search, i.e. search as a first-class evaluation axis.
 
@@ -508,19 +508,19 @@ The judge is the new bottleneck (\S3.5). Verified examples:
 
 
 \begin{itemize}
-\item \texttt{evg-58ed686e9dc3} (GRIP) --- grounded reasoning via
+\item \texttt{evg-58ed686e9dc31903} (GRIP) --- grounded reasoning via
 \end{itemize}
 information-restricted premises: restricting what a trace may assume is
 
 itself a verifier mechanism.
 
 \begin{itemize}
-\item \texttt{evg-e804bfb18640} (ClawGym II) --- black-box RL on an agent harness: the
+\item \texttt{evg-e804bfb18640fc6e} (ClawGym II) --- black-box RL on an agent harness: the
 \end{itemize}
 environment as the ultimate verifier for agentic policies.
 
 \begin{itemize}
-\item \texttt{evg-204795ac0a18} (Compliance Detectors) --- audits of activation probes
+\item \texttt{evg-204795ac0a186819} (Compliance Detectors) --- audits of activation probes
 \end{itemize}
 and guard models; detector *representation* quality becomes part of the
 
@@ -544,9 +544,11 @@ outside math reasoning.
 
 The quantitative literature (compute-optimal inference, budget
 
-allocation, self-refinement limits) is summarized by
+allocation, self-refinement limits) is summarized by the test-time-compute
 
-\texttt{arXiv:2505.09772} \textsuperscript{[re-verify]} and \texttt{arXiv:2505.07178} \textsuperscript{[re-verify]} (re-verify before citing).
+survey \texttt{arXiv:2501.02497}; several more recent scaling-law surveys exist,
+
+and we cite only ids verified against the live arXiv API.
 
 Our corpus's contribution is *systemic* rather than formal: verified
 
@@ -816,9 +818,9 @@ RLVR scales only as far as the reward signal is trustworthy. The corpus
 
 already shows the failure mode migrating: verifier/guard-model audits
 
-(\texttt{evg-204795ac0a18}), affective-hallucination diagnosis
+(\texttt{evg-204795ac0a186819}), affective-hallucination diagnosis
 
-(\texttt{evg-a1327781cf59}), and black-box agent-harness RL (\texttt{evg-e804bfb18640})
+(\texttt{evg-a1327781cf590ac8}), and black-box agent-harness RL (\texttt{evg-e804bfb18640fc6e})
 
 all circle the same question --- \textbf{how do you verify the verifier?}
 
@@ -837,11 +839,9 @@ more when it helps) or a budget (fixed envelope). The corpus cannot answer
 
 it yet --- scaling-law papers are under-represented in our queries, and the
 
-formal literature lives in the surveys we cite (\texttt{arXiv:2501.02497},
+formal literature lives in the surveys we cite (\texttt{arXiv:2501.02497}). A
 
-\texttt{arXiv:2505.07178} \textsuperscript{[re-verify]}). A corpus upgrade (dedicated scaling-law query
-
-family) is planned.
+corpus upgrade (dedicated scaling-law query family) is planned.
 
 
 \section{7.3 The closed frontier is invisible to us}

@@ -80,6 +80,9 @@ def main(argv: list[str] | None = None) -> int:
     latex_p = subparsers.add_parser("latex")
     latex_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
 
+    audit_p = subparsers.add_parser("audit")
+    audit_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+
     version = subparsers.add_parser("version")
 
     args = parser.parse_args(argv)
@@ -190,6 +193,13 @@ def main(argv: list[str] | None = None) -> int:
 
         path = build_tex(Path(args.data_root) / "survey")
         return _emit({"main_tex": str(path)})
+    if args.command == "audit":
+        from evergreen.audit import run_audit
+
+        summary = run_audit(
+            Path(args.data_root) / "survey", Path(args.data_root)
+        )
+        return _emit(summary)
     if args.command == "version":
         print(__version__)
         return 0

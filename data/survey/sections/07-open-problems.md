@@ -7,8 +7,8 @@
 
 RLVR scales only as far as the reward signal is trustworthy. The corpus
 already shows the failure mode migrating: verifier/guard-model audits
-(`evg-204795ac0a18`), affective-hallucination diagnosis
-(`evg-a1327781cf59`), and black-box agent-harness RL (`evg-e804bfb18640`)
+(`evg-204795ac0a186819`), affective-hallucination diagnosis
+(`evg-a1327781cf590ac8`), and black-box agent-harness RL (`evg-e804bfb18640fc6e`)
 all circle the same question — **how do you verify the verifier?**
 Candidate research directions: adversarial verifier evaluation, reward
 calibration under distribution shift, and process-reward attribution over
@@ -19,9 +19,8 @@ long traces.
 §4.4 asked whether the frontier treats test-time compute as a lever (spend
 more when it helps) or a budget (fixed envelope). The corpus cannot answer
 it yet — scaling-law papers are under-represented in our queries, and the
-formal literature lives in the surveys we cite (`arXiv:2501.02497`,
-`arXiv:2505.07178` ⚠). A corpus upgrade (dedicated scaling-law query
-family) is planned.
+formal literature lives in the surveys we cite (`arXiv:2501.02497`). A
+corpus upgrade (dedicated scaling-law query family) is planned.
 
 ## 7.3 The closed frontier is invisible to us
 

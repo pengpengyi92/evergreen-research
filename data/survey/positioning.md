@@ -20,10 +20,12 @@ the six pillars be read as points on a single tradeoff curve.
 |---|---|---|
 | `arXiv:2501.09686` — Towards Large Reasoning Models: A Survey of Reinforced Reasoning with LLMs (verified) | RLVR training stack: GRPO/PPO, verifiable rewards, RL recipes | They survey the *training stack*; we track the *evolving frontier weekly* and place RLVR inside the compute-allocation lens. |
 | `arXiv:2501.02497` — A Survey of Test-Time Compute (verified) | Test-time paradigms: search, self-refinement, verifiers, System-1→2 | Static snapshot; no living corpus, no cross-pillar convergence evidence. |
-| `arXiv:2505.09772` ⚠ | Benchmarks, inference-time scaling, policy/safety implications | Re-verify; position vs. our empirical trends section. |
-| `arXiv:2505.07178` ⚠ | Taxonomy of test-time scaling dimensions | Re-verify; our §4 covers budget allocation with corpus evidence. |
-| `arXiv:2506.05509` ⚠ | "Slow thinking" reasoning LLMs + inference-time scaling laws | Re-verify; our §6 adds multi-month empirical trends. |
-| Scaling-reasoning survey ⚠ (verify ID) | Broad data/model/inference scaling | Broader but static; ours is narrower and living. |
+| Recent test-time-scaling surveys (titles omitted) | Taxonomy and benchmarks of test-time scaling | Several exist; we cite only ids verified against the live arXiv API. Our §4 covers budget allocation with corpus evidence; our §6 adds multi-month empirical trends. |
+
+> **Citation-integrity note (2026-08-18)**: three arXiv ids recorded during
+> early planning research were found by the automated audit to resolve to
+> unrelated papers and were removed from this document. Only API-verified
+> ids are cited.
 
 ## Publication risks (kept honest)
 

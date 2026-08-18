@@ -258,6 +258,49 @@ class NoveltyTest(unittest.TestCase):
         self.assertIn("A & B", tex)
 
 
+class AuditTest(unittest.TestCase):
+    def test_audit_catches_missing_and_unverified(self) -> None:
+        from evergreen.audit import run_audit
+
+        with tempfile.TemporaryDirectory() as tmp:
+            data_root = Path(tmp) / "data"
+            survey_root = data_root / "survey"
+            sections = survey_root / "sections"
+            sections.mkdir(parents=True)
+            db = PaperDatabase(data_root)
+            db.upsert_many(
+                [
+                    {
+                        "id": "evg-0123456789abcdef",
+                        "title": "Real Paper",
+                        "arxiv_id": "http://arxiv.org/abs/2501.02497",
+                        "pillar": "LLM Reasoning / Test-time Compute",
+                        "verified": False,
+                        "methods": ["RLVR / GRPO"],
+                        "benchmarks": [],
+                        "year": 2025,
+                        "published": "2025-01-01T00:00:00Z",
+                        "authors": ["A"],
+                        "url": "",
+                        "categories": [],
+                        "key_results": [],
+                        "abstract": "",
+                        "code_available": False,
+                        "confidence": 0.5,
+                        "swept_on": "2026-01-01T00:00:00Z",
+                    }
+                ]
+            )
+            (sections / "01-test.md").write_text(
+                "Citing evg-0123456789abcdef and evg-deadbeefdeadbeef. "
+                "arXiv:2501.02497 external. total 503 papers.",
+                encoding="utf-8",
+            )
+            summary = run_audit(survey_root, data_root, quiet=True)
+            self.assertGreaterEqual(summary["fail"], 1)  # missing id
+            self.assertGreaterEqual(summary["warn"], 1)  # unverified + external
+
+
 class PipelineTest(unittest.TestCase):
     def test_cluster_signals(self) -> None:
         from evergreen.pipeline import _cluster_signals

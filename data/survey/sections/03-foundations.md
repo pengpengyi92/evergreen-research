@@ -20,10 +20,10 @@ verdict) — removes the need for a learned reward model on many tasks.
 Verifier/process-reward-model methods grow in the verified corpus from 1
 (2024) to 9 (2025) to 5 (partial 2026). Representative verified records:
 
-- `evg-e04110c6e72b` (arXiv:2408.15565, 2024): self-improving code-assisted
+- `evg-e04110c6e72bd0da` (arXiv:2408.15565, 2024): self-improving code-assisted
   mathematical reasoning — an early bridge between code execution and
   verifiable rewards.
-- `evg-a1327781cf59` (arXiv:2508.16921, 2025): reward/verifier machinery
+- `evg-a1327781cf590ac8` (arXiv:2508.16921, 2025): reward/verifier machinery
   applied beyond math, to affective-alignment diagnosis — a sign of the
   stack spreading across pillars.
 
@@ -36,14 +36,14 @@ representation). Our corpus shows preference-optimization language in 3
 verified 2024 papers, 20 verified 2025 papers, and 7 in 2026 — the fastest
 growth of any method family in the verified subset. Policy optimization now
 appears far outside its origin: in embodied robot manipulation
-(`evg-4e48d42ef4f7`, BATON), in inverse RL for control (`evg-3f12f30b5bc7`),
-and in dialogue model-based RL (`evg-964669cd2625`).
+(`evg-4e48d42ef4f7ad7e`, BATON), in inverse RL for control (`evg-3f12f30b5bc710da`),
+and in dialogue model-based RL (`evg-964669cd2625570d`).
 
 ## 3.4 Search and self-correction
 
 Test-time search (MCTS-style tree search, beam variants, best-of-N) turns
 inference into an optimization loop over candidate traces. Verified
-examples: `evg-4e48d42ef4f7` (subtask-level exploration composed into
+examples: `evg-4e48d42ef4f7ad7e` (subtask-level exploration composed into
 long-horizon plans), `evg-37a3465e623bd6ff` (AutoSR: symbolic regression by
 searching "research states"), `evg-6742b060cb568d54` (Le Critique:
 privileged value functions guiding LLM reinforcement learning), and
@@ -54,7 +54,7 @@ grow 1 (2024) → 6 (2025) → 3 (partial 2026).
 ## 3.5 Reward hacking and the verifier-quality wall
 
 As verifiable rewards scale, so does gaming them. The safety pillar already
-feeds back into reasoning: verified record `evg-204795ac0a18` (What Do
+feeds back into reasoning: verified record `evg-204795ac0a186819` (What Do
 Compliance Detectors Read?) audits activation probes and guard models —
 detector *representations* are now part of the reasoning stack's failure
 modes. We flag an open problem here: **verifier quality is the new
