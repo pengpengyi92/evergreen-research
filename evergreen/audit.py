@@ -109,6 +109,32 @@ def run_audit(survey_root: Path, data_root: Path, quiet: bool = False) -> dict[s
             issues += 1
             findings.append({"level": "FAIL", "check": "trend-RLVR", "detail": f"{method} trend now {years}"})
 
+    # 5. Hard claim checks (numbers quoted in sections)
+    claim_checks = []
+    verified_lead = [r for r in records if r.get("verified") and r.get("pillar") == "LLM Reasoning / Test-time Compute"]
+    verifier_count = sum(
+        1
+        for r in verified_lead
+        if "Verifier / PRM" in (r.get("verification", {}).get("fulltext_methods") or r.get("methods", []))
+    )
+    claim_checks.append(("verifier-15", verifier_count == 15, f"§4.3 verifier-in-verified count: {verifier_count}"))
+    from collections import Counter
+
+    bench = Counter()
+    for r in verified_lead:
+        for b in (r.get("verification", {}).get("fulltext_benchmarks") or r.get("benchmarks", [])):
+            bench[b] += 1
+    actual = (bench.get("MATH"), bench.get("DROP"), bench.get("GSM8K"))
+    claim_checks.append(("benchmarks-13-12-8", actual == (13, 12, 8), f"§6.2 benchmark counts MATH/DROP/GSM8K: {actual}"))
+    rlvr_all = sum(1 for r in records if "RLVR / GRPO" in r.get("methods", []))
+    claim_checks.append(("rlvr-70", rlvr_all == 70, f"§5.2 RLVR all-pillar count: {rlvr_all}"))
+    for name, ok, detail in claim_checks:
+        if ok:
+            findings.append({"level": "PASS", "check": f"claim-{name}", "detail": detail})
+        else:
+            issues += 1
+            findings.append({"level": "FAIL", "check": f"claim-{name}", "detail": detail})
+
     # Report
     lines = [
         "# Survey Draft — Automated Audit Report",

@@ -8,3 +8,4 @@ build/
 .env
 .cache/
 .venv/
+data/snapshots/

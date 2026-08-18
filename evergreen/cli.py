@@ -83,6 +83,9 @@ def main(argv: list[str] | None = None) -> int:
     audit_p = subparsers.add_parser("audit")
     audit_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
 
+    snapshot_p = subparsers.add_parser("snapshot")
+    snapshot_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+
     version = subparsers.add_parser("version")
 
     args = parser.parse_args(argv)
@@ -200,6 +203,10 @@ def main(argv: list[str] | None = None) -> int:
             Path(args.data_root) / "survey", Path(args.data_root)
         )
         return _emit(summary)
+    if args.command == "snapshot":
+        from evergreen.snapshot import snapshot
+
+        return _emit(snapshot(Path(args.data_root)))
     if args.command == "version":
         print(__version__)
         return 0

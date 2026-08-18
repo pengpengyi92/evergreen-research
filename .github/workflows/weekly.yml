@@ -17,8 +17,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Run weekly sweep
-        run: python -m evergreen.cli weekly
+      - name: Run weekly sweep + audit + snapshot
+        run: |
+          python -m evergreen.cli weekly
+          python -m evergreen.cli audit
+          python -m evergreen.cli snapshot
       - name: Commit and push research updates
         run: |
           git config user.name "evergreen-bot"
