@@ -90,6 +90,109 @@ def run_backfill(
     }
 
 
+def run_verification(
+    data_root: Path,
+    pillar: str,
+    top_n: int = 10,
+    quiet: bool = False,
+) -> dict[str, Any]:
+    """M2 gate: full-text verification for core-corpus candidates.
+
+    Pulls ar5iv HTML for the newest unverified papers in a pillar, re-runs
+    the deterministic taggers on full text, and records verification
+    metadata on the database record.
+    """
+    from datetime import UTC, datetime
+
+    from evergreen import fulltext
+    from evergreen.structurer import detect_benchmarks, detect_methods, detect_models
+
+    db = PaperDatabase(data_root)
+    candidates = [
+        record
+        for record in db.load()
+        if record.get("pillar") == pillar and not record.get("verified")
+    ]
+    candidates.sort(key=lambda record: record.get("published", ""), reverse=True)
+    candidates = candidates[:top_n]
+
+    verified = 0
+    unavailable = 0
+    failed = 0
+    for record in candidates:
+        record_id = record["id"]
+        try:
+            html_payload, source = fulltext.fetch_fulltext(record.get("arxiv_id", ""))
+        except Exception as exc:
+            failed += 1
+            db.update_record(
+                record_id,
+                {
+                    "verified": False,
+                    "verification": {
+                        "source": "none",
+                        "status": "fetch-error",
+                        "error": str(exc)[:200],
+                        "checked_on": datetime.now(UTC).isoformat(),
+                    },
+                },
+            )
+            if not quiet:
+                print(f"[verify] {record_id}: fetch error {exc}")
+            continue
+        if not html_payload:
+            unavailable += 1
+            db.update_record(
+                record_id,
+                {
+                    "verified": False,
+                    "verification": {
+                        "source": source,
+                        "status": "unavailable",
+                        "checked_on": datetime.now(UTC).isoformat(),
+                    },
+                },
+            )
+            continue
+        text = fulltext.html_to_text(html_payload)
+        methods = detect_methods(text)
+        benchmarks = detect_benchmarks(text)
+        models = detect_models(text)
+        stored_methods = set(record.get("methods", []))
+        matched = sorted(stored_methods & set(methods))
+        is_verified = len(text) > 5000
+        db.update_record(
+            record_id,
+            {
+                "verified": is_verified,
+                "verification": {
+                    "source": source,
+                    "status": "fulltext-verified" if is_verified else "insufficient-text",
+                    "fulltext_chars": len(text),
+                    "fulltext_methods": methods[:12],
+                    "fulltext_benchmarks": benchmarks[:12],
+                    "fulltext_models": models[:10],
+                    "matched_methods": matched,
+                    "checked_on": datetime.now(UTC).isoformat(),
+                },
+            },
+        )
+        if is_verified:
+            verified += 1
+        if not quiet:
+            print(
+                f"[verify] {record_id}: {'verified' if is_verified else 'short-text'} "
+                f"via {source} ({len(text)} chars, matched {len(matched)}/{len(stored_methods)} methods)"
+            )
+    return {
+        "pillar": pillar,
+        "attempted": len(candidates),
+        "verified": verified,
+        "unavailable": unavailable,
+        "failed": failed,
+    }
+
+
 def run_weekly(
     data_root: Path,
     max_per_pillar: int | None = None,

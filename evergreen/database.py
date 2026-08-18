@@ -42,6 +42,37 @@ class PaperDatabase:
                 added += 1
         return added
 
+    def update_record(self, record_id: str, patch: dict[str, Any]) -> bool:
+        """Merge a patch into one record (verification metadata etc.).
+
+        Ingestion stays append-only; verification rewrites the file
+        atomically (temp file + os.replace) so concurrent sweeps never read
+        a half-written database.
+        """
+        import os
+        import tempfile
+
+        records = self.load()
+        updated = False
+        for record in records:
+            if record.get("id") == record_id:
+                record.update(patch)
+                updated = True
+                break
+        if not updated:
+            return False
+        self.root.mkdir(parents=True, exist_ok=True)
+        handle, tmp_name = tempfile.mkstemp(dir=self.root, suffix=".tmp")
+        try:
+            with os.fdopen(handle, "w", encoding="utf-8") as tmp:
+                for record in records:
+                    tmp.write(json.dumps(record, ensure_ascii=False) + "\n")
+            os.replace(tmp_name, self.path)
+        finally:
+            if os.path.exists(tmp_name):
+                os.unlink(tmp_name)
+        return True
+
     def stats(self) -> dict[str, Any]:
         records = self.load()
         pillars = Counter(record.get("pillar", "?") for record in records)
@@ -50,6 +81,7 @@ class PaperDatabase:
         )
         return {
             "total_papers": len(records),
+            "verified_papers": sum(1 for record in records if record.get("verified")),
             "by_pillar": dict(pillars.most_common()),
             "top_methods": dict(methods.most_common(12)),
             "newest_swept_on": max(

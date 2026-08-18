@@ -90,7 +90,8 @@ def write_index(db: PaperDatabase, data_root: Path) -> Path:
     lines: list[str] = [
         "# Evergreen Research Index",
         "",
-        f"- Total papers: **{stats['total_papers']}**",
+        f"- Total papers: **{stats['total_papers']}** · "
+        f"full-text verified: **{stats['verified_papers']}**",
         f"- Last sweep: {stats['newest_swept_on'] or 'never'}",
         f"- Top methods: {', '.join(f'{k} ({v})' for k, v in list(stats['top_methods'].items())[:8])}",
         "",
@@ -137,8 +138,8 @@ def write_docs_landing(db: PaperDatabase, docs_root: Path) -> Path:
         "A self-updating, continuously running frontier-AI research intelligence.",
         "Weekly arXiv sweeps · living paper database · growing systematic survey.",
         "",
-        f"**{stats['total_papers']} papers tracked** across 6 pillars · "
-        f"last sweep {stats['newest_swept_on'][:10] or 'pending'}",
+        f"**{stats['total_papers']} papers tracked** ({stats['verified_papers']} full-text verified) "
+        f"across 6 pillars · last sweep {stats['newest_swept_on'][:10] or 'pending'}",
         "",
         "## Latest papers",
         "",
@@ -179,7 +180,8 @@ def write_survey_outline(db: PaperDatabase, survey_root: Path) -> Path:
         "",
         "> Working title: *The Compute-Allocation Frontier: A Living, Reproducible "
         "Survey of LLM Reasoning and Test-Time Compute*",
-        f"> Status: evidence-accumulating (v0.2). {total} papers in corpus.",
+        f"> Status: evidence-accumulating (v0.3). {total} papers in corpus, "
+        f"{stats['verified_papers']} full-text verified.",
         "",
         "## Inclusion criteria (corpus v0.2)",
         "- Published on arXiv 2023-01-01 or later, primary category in the six pillar scopes.",

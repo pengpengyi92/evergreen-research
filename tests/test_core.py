@@ -5,6 +5,7 @@ from pathlib import Path
 from unittest import mock
 
 from evergreen.arxiv_client import parse_atom, parse_atom_lenient
+from evergreen.database import PaperDatabase
 from evergreen.structurer import detect_benchmarks, detect_methods, structure_entry
 
 SAMPLE_ATOM = """<?xml version="1.0" encoding="UTF-8"?>
@@ -71,6 +72,74 @@ class StructurerTest(unittest.TestCase):
         self.assertIn("AIME", record["benchmarks"])
         self.assertTrue(record["code_available"])
         self.assertGreater(record["confidence"], 0.6)
+
+
+class FulltextTest(unittest.TestCase):
+    def test_html_to_text_extracts_content(self) -> None:
+        from evergreen.fulltext import html_to_text, normalize_arxiv_id
+
+        html = (
+            "<html><head><title>x</title><style>.a{}</style></head><body>"
+            "<h1>Title</h1><p>We study <b>reasoning</b> models.</p>"
+            "<p>Second paragraph with AIME benchmark.</p>"
+            "<script>var x = 1;</script>"
+            "</body></html>"
+        )
+        text = html_to_text(html)
+        self.assertIn("reasoning", text)
+        self.assertIn("AIME", text)
+        self.assertNotIn("var x = 1", text)
+        self.assertEqual(normalize_arxiv_id("http://arxiv.org/abs/2501.12948v3"), "2501.12948")
+        self.assertEqual(normalize_arxiv_id("2501.12948"), "2501.12948")
+
+    def test_verify_pipeline_mocked(self) -> None:
+        from evergreen.pipeline import run_verification
+
+        record = {
+            "id": "evg-test-fulltext",
+            "title": "Test-Time Scaling Paper",
+            "authors": ["A. Researcher"],
+            "year": 2026,
+            "published": "2026-08-01T00:00:00Z",
+            "arxiv_id": "http://arxiv.org/abs/2608.00002",
+            "url": "https://arxiv.org/abs/2608.00002",
+            "primary_category": "cs.AI",
+            "categories": ["cs.AI"],
+            "pillar": "LLM Reasoning / Test-time Compute",
+            "methods": ["Verifier / PRM"],
+            "benchmarks": ["AIME"],
+            "models": [],
+            "key_results": [],
+            "abstract": "abstract",
+            "code_available": False,
+            "confidence": 0.7,
+            "swept_on": "2026-08-18T00:00:00Z",
+        }
+        html = (
+            "<html><body><p>"
+            + ("We use a process reward model with chain-of-thought. " * 400)
+            + "Evaluated on AIME and MATH.</p></body></html>"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            db = PaperDatabase(Path(tmp))
+            db.upsert_many([record])
+            with mock.patch(
+                "evergreen.fulltext.fetch_fulltext", return_value=(html, "ar5iv")
+            ):
+                summary = run_verification(Path(tmp), "LLM Reasoning / Test-time Compute", top_n=5, quiet=True)
+            self.assertEqual(summary["verified"], 1)
+            updated = db.load()[0]
+            self.assertTrue(updated["verified"])
+            self.assertIn("fulltext-verified", updated["verification"]["status"])
+            self.assertIn("Verifier / PRM", updated["verification"]["matched_methods"])
+
+    def test_db_update_record_atomic(self) -> None:
+        db = PaperDatabase(Path(tempfile.mkdtemp()))
+        record = {"id": "r1", "title": "x"}
+        db.upsert_many([record])
+        self.assertTrue(db.update_record("r1", {"verified": True}))
+        self.assertEqual(db.load()[0]["verified"], True)
+        self.assertFalse(db.update_record("nope", {"verified": True}))
 
 
 class PipelineTest(unittest.TestCase):

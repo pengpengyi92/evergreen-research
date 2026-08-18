@@ -8,7 +8,7 @@ from typing import Any
 from evergreen import __version__
 from evergreen import arxiv_client
 from evergreen.database import PaperDatabase
-from evergreen.pipeline import run_backfill, run_weekly
+from evergreen.pipeline import run_backfill, run_verification, run_weekly
 from evergreen.report import write_docs_landing, write_index, write_survey_outline, write_weekly
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +33,14 @@ def main(argv: list[str] | None = None) -> int:
     backfill.add_argument("--per-pillar", type=int, default=30)
     backfill.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
     backfill.add_argument("--docs-root", default=str(PROJECT_ROOT / "docs"))
+
+    verify = subparsers.add_parser("verify")
+    verify.add_argument(
+        "--pillar", default="LLM Reasoning / Test-time Compute", help="pillar to verify"
+    )
+    verify.add_argument("--top", type=int, default=10, help="newest N unverified papers")
+    verify.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+    verify.add_argument("--docs-root", default=str(PROJECT_ROOT / "docs"))
 
     fetch = subparsers.add_parser("fetch")
     fetch.add_argument("--query", default=None)
@@ -88,6 +96,19 @@ def main(argv: list[str] | None = None) -> int:
                 "summary": summary,
                 "index": str(index_path),
                 "survey_outline": str(survey_path),
+                "docs_landing": str(docs_path),
+            }
+        )
+    if args.command == "verify":
+        data_root = Path(args.data_root)
+        summary = run_verification(data_root, args.pillar, top_n=args.top)
+        db = PaperDatabase(data_root)
+        index_path = write_index(db, data_root)
+        docs_path = write_docs_landing(db, Path(args.docs_root))
+        return _emit(
+            {
+                "summary": summary,
+                "index": str(index_path),
                 "docs_landing": str(docs_path),
             }
         )

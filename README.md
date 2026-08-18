@@ -53,10 +53,19 @@ Other commands:
 
 ```bash
 evergreen fetch --categories cs.AI,cs.CL --max 20 --days 7   # raw arXiv fetch
-evergreen backfill --days 360,1080 --per-pillar 30            # historical corpus backfill
+evergreen backfill --windows 360-1080,1080-2160 --per-pillar 30  # historical backfill
+evergreen verify --pillar "LLM Reasoning / Test-time Compute" --top 40  # full-text verification
 evergreen db stats                                            # database statistics
 evergreen survey                                              # print the survey outline
 ```
+
+### Full-text verification (M2)
+
+`evergreen verify` promotes papers toward the survey core corpus by pulling
+their full text (ar5iv first, then arXiv native HTML for papers ar5iv has
+not converted yet), re-running the deterministic taggers on full text, and
+recording `verified` + matched-method metadata on each database record.
+Only full-text-verified papers may back survey claims.
 
 ## How it works
 
@@ -85,8 +94,8 @@ survey claim that cites it.
 ## Roadmap
 
 - [x] v0.1 weekly pipeline (fetch -> structure -> cluster -> publish)
-- [x] Historical corpus backfill (`evergreen backfill`)
-- [ ] Full-text extraction for papers promoted into the survey core corpus
+- [x] Historical corpus backfill (`evergreen backfill`) — 500+ papers, 2023-2026
+- [x] Full-text verification (`evergreen verify`) — ar5iv + arXiv native HTML
 - [ ] Citation-graph tracking (Semantic Scholar) for novelty scoring
 - [ ] Survey draft v1 -> arXiv submission (see `data/survey/outline.md`)
 - [ ] RSS feed of weekly digests

@@ -1,7 +1,7 @@
 # Frontier AI — Living Survey Outline
 
 > Working title: *The Compute-Allocation Frontier: A Living, Reproducible Survey of LLM Reasoning and Test-Time Compute*
-> Status: evidence-accumulating (v0.2). 503 papers in corpus.
+> Status: evidence-accumulating (v0.3). 503 papers in corpus, 45 full-text verified.
 
 ## Inclusion criteria (corpus v0.2)
 - Published on arXiv 2023-01-01 or later, primary category in the six pillar scopes.

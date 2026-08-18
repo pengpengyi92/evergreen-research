@@ -3,7 +3,7 @@
 A self-updating, continuously running frontier-AI research intelligence.
 Weekly arXiv sweeps · living paper database · growing systematic survey.
 
-**503 papers tracked** across 6 pillars · last sweep 2026-08-18
+**503 papers tracked** (45 full-text verified) across 6 pillars · last sweep 2026-08-18
 
 ## Latest papers
 

@@ -1,6 +1,6 @@
 # Evergreen Research Index
 
-- Total papers: **503**
+- Total papers: **503** · full-text verified: **45**
 - Last sweep: 2026-08-18T07:39:53.690619+00:00
 - Top methods: VLM (81), RLVR / GRPO (70), Quant / Trading (69), Preference Optimization (68), Interpretability (57), Distillation (50), Multi-Agent (49), Memory / RAG (49)
 
