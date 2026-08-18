@@ -93,6 +93,16 @@ def main(argv: list[str] | None = None) -> int:
     rss_p = subparsers.add_parser("rss")
     rss_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
 
+    matrix_p = subparsers.add_parser("matrix")
+    matrix_sub = matrix_p.add_subparsers(dest="matrix_command", required=True)
+    matrix_build = matrix_sub.add_parser("build")
+    matrix_build.add_argument("--k", type=int, default=10)
+    matrix_build.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+    matrix_query = matrix_sub.add_parser("query")
+    matrix_query.add_argument("--text", required=True)
+    matrix_query.add_argument("--k", type=int, default=10)
+    matrix_query.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+
     version = subparsers.add_parser("version")
 
     args = parser.parse_args(argv)
@@ -227,6 +237,44 @@ def main(argv: list[str] | None = None) -> int:
 
         path = write_feed(Path(args.data_root))
         return _emit({"feed": str(path)})
+    if args.command == "matrix" and args.matrix_command == "build":
+        from evergreen.matrix import (
+            build_matrix,
+            cluster_report,
+            kmeans,
+            save_matrix,
+            write_clusters_md,
+        )
+
+        data_root = Path(args.data_root)
+        db = PaperDatabase(data_root)
+        records = db.load()
+        matrix = build_matrix(records)
+        assignment = kmeans(matrix, k=args.k)
+        report = cluster_report(matrix, records, assignment, args.k)
+        matrix_path = save_matrix(data_root, matrix)
+        clusters_path = (data_root / "clusters.json").write_text(
+            json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
+        ) or (data_root / "clusters.json")
+        md_path = write_clusters_md(data_root, report)
+        sizes = [cluster["size"] for cluster in report["clusters"] if cluster.get("size")]
+        return _emit(
+            {
+                "matrix": str(matrix_path),
+                "clusters_json": str(clusters_path),
+                "clusters_md": str(md_path),
+                "docs": len(records),
+                "vocabulary": len(matrix["vocabulary"]),
+                "cluster_sizes": sizes,
+            }
+        )
+    if args.command == "matrix" and args.matrix_command == "query":
+        from evergreen.matrix import load_matrix, query
+
+        data_root = Path(args.data_root)
+        records = PaperDatabase(data_root).load()
+        matrix = load_matrix(data_root)
+        return _emit(query(matrix, records, args.text, k=args.k))
     if args.command == "version":
         print(__version__)
         return 0

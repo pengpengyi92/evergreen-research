@@ -363,6 +363,27 @@ class OpenAlexTest(unittest.TestCase):
                     self.assertEqual(again["citationCount"], 853)
 
 
+class MatrixTest(unittest.TestCase):
+    def test_build_query_cluster(self) -> None:
+        from evergreen.matrix import build_matrix, cluster_report, kmeans, query
+
+        records = [
+            {"id": "a", "title": "Reinforcement learning for reasoning models", "abstract": "we train reasoning models with reinforcement learning and verifiable rewards", "pillar": "LLM Reasoning / Test-time Compute", "year": 2025, "arxiv_id": "arXiv:1"},
+            {"id": "b", "title": "Reinforcement learning trading agents", "abstract": "we train trading agents with reinforcement learning and market rewards", "pillar": "Quant × AI", "year": 2025, "arxiv_id": "arXiv:2"},
+            {"id": "c", "title": "Video generation with diffusion models", "abstract": "we generate videos using diffusion and world models", "pillar": "Multimodal / World Models", "year": 2026, "arxiv_id": "arXiv:3"},
+            {"id": "d", "title": "Diffusion for image synthesis", "abstract": "image synthesis with diffusion models and text conditioning", "pillar": "Multimodal / World Models", "year": 2026, "arxiv_id": "arXiv:4"},
+        ]
+        matrix = build_matrix(records)
+        self.assertGreater(len(matrix["vocabulary"]), 5)
+        results = query(matrix, records, "reinforcement learning", k=2)
+        top_ids = {item["id"] for item in results}
+        self.assertEqual(top_ids, {"a", "b"})  # both RL papers; shorter doc ranks higher
+        assignment = kmeans(matrix, k=2)
+        report = cluster_report(matrix, records, assignment, 2)
+        self.assertEqual(len(report["clusters"]), 2)
+        self.assertGreater(sum(c["size"] for c in report["clusters"]), 0)
+
+
 class PipelineTest(unittest.TestCase):
     def test_cluster_signals(self) -> None:
         from evergreen.pipeline import _cluster_signals

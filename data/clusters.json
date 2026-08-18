@@ -1,0 +1,662 @@
+{
+  "k": 12,
+  "clusters": [
+    {
+      "cluster": 0,
+      "size": 27,
+      "top_terms": [
+        "planning",
+        "vla",
+        "agents",
+        "exploration",
+        "memory",
+        "tasks",
+        "language",
+        "long-horizon"
+      ],
+      "pillars": {
+        "LLM Reasoning / Test-time Compute": 8,
+        "Agentic AI / Deep Research Systems": 8,
+        "Efficient Training & Inference": 5,
+        "RL / Alignment / Safety": 5,
+        "Quant × AI": 1
+      },
+      "years": {
+        "2023": 8,
+        "2024": 2,
+        "2025": 4,
+        "2026": 13
+      },
+      "top_papers": [
+        {
+          "title": "Discrete Versus Continuous Algorithms in Dynamics of Affective Decision Making",
+          "id": "evg-da77217be12a22a6",
+          "arxiv_id": "http://arxiv.org/abs/2309.00357v1"
+        },
+        {
+          "title": "Neurosymbolic Embodied Agents",
+          "id": "evg-8b897512e31f92d6",
+          "arxiv_id": "http://arxiv.org/abs/2608.16794v1"
+        },
+        {
+          "title": "Topological Attribution Distance (TAD): Revealing Segment-Level RAG Influence on",
+          "id": "evg-a3fd3ab23ad0e341",
+          "arxiv_id": "http://arxiv.org/abs/2608.16775v1"
+        },
+        {
+          "title": "Semantic Bandits: In-Context Exploration-Exploitation is Biased by Semantic Prio",
+          "id": "evg-7f5cacfffd223609",
+          "arxiv_id": "http://arxiv.org/abs/2608.16707v1"
+        },
+        {
+          "title": "Don't Drop the BATON: Long-Horizon Robot Manipulation via Agentic Subtask Explor",
+          "id": "evg-4e48d42ef4f7ad7e",
+          "arxiv_id": "http://arxiv.org/abs/2608.16889v1"
+        }
+      ]
+    },
+    {
+      "cluster": 1,
+      "size": 43,
+      "top_terms": [
+        "image",
+        "generation",
+        "images",
+        "diffusion",
+        "models",
+        "video",
+        "text-to-image",
+        "mllm"
+      ],
+      "pillars": {
+        "Multimodal / World Models": 29,
+        "LLM Reasoning / Test-time Compute": 4,
+        "Agentic AI / Deep Research Systems": 3,
+        "Efficient Training & Inference": 3,
+        "RL / Alignment / Safety": 3,
+        "Quant × AI": 1
+      },
+      "years": {
+        "2023": 17,
+        "2024": 8,
+        "2025": 7,
+        "2026": 11
+      },
+      "top_papers": [
+        {
+          "title": "Towards Addressing the Misalignment of Object Proposal Evaluation for Vision-Lan",
+          "id": "evg-c0e4e427d8c7681e",
+          "arxiv_id": "http://arxiv.org/abs/2309.00215v1"
+        },
+        {
+          "title": "StyleInV: A Temporal Style Modulated Inversion Network for Unconditional Video G",
+          "id": "evg-168741303f3e0771",
+          "arxiv_id": "http://arxiv.org/abs/2308.16909v1"
+        },
+        {
+          "title": "AutoSR: Automatic Symbolic Regression by Searching Research States",
+          "id": "evg-37a3465e623bd6ff",
+          "arxiv_id": "http://arxiv.org/abs/2608.16876v1"
+        },
+        {
+          "title": "Remote-Sensing City Layout Extraction with MLLM",
+          "id": "evg-2a4bd8908a22ce15",
+          "arxiv_id": "http://arxiv.org/abs/2608.16484v1"
+        },
+        {
+          "title": "The Null Token Knows: Reducing Message-Free Hallucination in ASR and NMT",
+          "id": "evg-6cf320011b4e05e1",
+          "arxiv_id": "http://arxiv.org/abs/2608.15940v1"
+        }
+      ]
+    },
+    {
+      "cluster": 2,
+      "size": 40,
+      "top_terms": [
+        "speech",
+        "reasoning",
+        "audio",
+        "models",
+        "language",
+        "traces",
+        "model",
+        "legal"
+      ],
+      "pillars": {
+        "Efficient Training & Inference": 11,
+        "LLM Reasoning / Test-time Compute": 9,
+        "RL / Alignment / Safety": 6,
+        "Agentic AI / Deep Research Systems": 5,
+        "Multimodal / World Models": 5,
+        "Quant × AI": 4
+      },
+      "years": {
+        "2023": 10,
+        "2024": 3,
+        "2025": 11,
+        "2026": 16
+      },
+      "top_papers": [
+        {
+          "title": "Density-Reweighted Entropic Optimal Transport: Decoupling Geometry from Sampling",
+          "id": "evg-0f4ba78757467e6c",
+          "arxiv_id": "http://arxiv.org/abs/2608.16506v1"
+        },
+        {
+          "title": "Trustworthy Distributed Average Consensus based on Locally Assessed Trust Evalua",
+          "id": "evg-215c1b0d240cfbd4",
+          "arxiv_id": "http://arxiv.org/abs/2309.00920v1"
+        },
+        {
+          "title": "\"If It Looks Like a User\": Measuring Real-Time Moderation Effects via Social Med",
+          "id": "evg-e7ea1b3a3d5c5af7",
+          "arxiv_id": "http://arxiv.org/abs/2608.16601v1"
+        },
+        {
+          "title": "Cross-Entropy Risk Estimation for Language Models: Inconsistency Must Be Dense, ",
+          "id": "evg-e9cf1d0c275420ed",
+          "arxiv_id": "http://arxiv.org/abs/2608.15798v1"
+        },
+        {
+          "title": "Routing Divergence Is Not Evidence of Behavioral Influence in Same-Weight MoE Se",
+          "id": "evg-2d4a155b21ee6ae9",
+          "arxiv_id": "http://arxiv.org/abs/2608.15787v1"
+        }
+      ]
+    },
+    {
+      "cluster": 3,
+      "size": 29,
+      "top_terms": [
+        "user",
+        "sentiment",
+        "feedback",
+        "world",
+        "emotion",
+        "dialogue",
+        "multimodal",
+        "model"
+      ],
+      "pillars": {
+        "Multimodal / World Models": 9,
+        "Quant × AI": 6,
+        "Agentic AI / Deep Research Systems": 6,
+        "RL / Alignment / Safety": 5,
+        "LLM Reasoning / Test-time Compute": 2,
+        "Efficient Training & Inference": 1
+      },
+      "years": {
+        "2023": 7,
+        "2024": 11,
+        "2025": 7,
+        "2026": 4
+      },
+      "top_papers": [
+        {
+          "title": "Closing the Affective Loop: Multimodal Speaker-Listener Emotion-Dynamics-Aware E",
+          "id": "evg-61fa1dc3e33a4859",
+          "arxiv_id": "http://arxiv.org/abs/2608.16686v1"
+        },
+        {
+          "title": "Dream to Chat: Model-based Reinforcement Learning on Dialogues with User Belief ",
+          "id": "evg-964669cd2625570d",
+          "arxiv_id": "http://arxiv.org/abs/2508.16876v3"
+        },
+        {
+          "title": "Seeing Clearly, Forgetting Deeply: Revisiting Fine-Tuned Video Generators for Dr",
+          "id": "evg-68d8a7102264b38b",
+          "arxiv_id": "http://arxiv.org/abs/2508.16512v1"
+        },
+        {
+          "title": "EVINCE: Optimizing Multi-LLM Dialogues Using Conditional Statistics and Informat",
+          "id": "evg-4490e00116d2c8af",
+          "arxiv_id": "http://arxiv.org/abs/2408.14575v4"
+        },
+        {
+          "title": "Self-Supervised Auxiliary Task Discovery for Stable Reinforcement Learning in St",
+          "id": "evg-e9389ecae46e722a",
+          "arxiv_id": "http://arxiv.org/abs/2608.15841v1"
+        }
+      ]
+    },
+    {
+      "cluster": 4,
+      "size": 37,
+      "top_terms": [
+        "quantization",
+        "model",
+        "models",
+        "compression",
+        "language",
+        "bit",
+        "llms",
+        "methods"
+      ],
+      "pillars": {
+        "Efficient Training & Inference": 18,
+        "RL / Alignment / Safety": 7,
+        "Quant × AI": 6,
+        "LLM Reasoning / Test-time Compute": 3,
+        "Agentic AI / Deep Research Systems": 2,
+        "Multimodal / World Models": 1
+      },
+      "years": {
+        "2023": 10,
+        "2024": 7,
+        "2025": 10,
+        "2026": 10
+      },
+      "top_papers": [
+        {
+          "title": "Cost Scales with Change, Not Corpus Size: Incrementally Maintaining an Evolving ",
+          "id": "evg-98ce694faf17975c",
+          "arxiv_id": "http://arxiv.org/abs/2608.16621v1"
+        },
+        {
+          "title": "MIRROR: Multimodal Intelligent Radiology Reasoning and Observation Reporter",
+          "id": "evg-da5f363730510dd3",
+          "arxiv_id": "http://arxiv.org/abs/2608.16709v1"
+        },
+        {
+          "title": "BabelSteering: Multilingual Safety Alignment via English Steering Vectors",
+          "id": "evg-c92741f80bb56a99",
+          "arxiv_id": "http://arxiv.org/abs/2608.16577v1"
+        },
+        {
+          "title": "Generalization of Graph Neural Networks is Robust to Model Mismatch",
+          "id": "evg-2374c69633d4da10",
+          "arxiv_id": "http://arxiv.org/abs/2408.13878v2"
+        },
+        {
+          "title": "Maestro: Uncovering Low-Rank Structures via Trainable Decomposition",
+          "id": "evg-5130aef5b15feee0",
+          "arxiv_id": "http://arxiv.org/abs/2308.14929v2"
+        }
+      ]
+    },
+    {
+      "cluster": 5,
+      "size": 69,
+      "top_terms": [
+        "distillation",
+        "knowledge",
+        "teacher",
+        "model",
+        "learning",
+        "student",
+        "data",
+        "models"
+      ],
+      "pillars": {
+        "Efficient Training & Inference": 23,
+        "Multimodal / World Models": 13,
+        "Quant × AI": 12,
+        "RL / Alignment / Safety": 10,
+        "LLM Reasoning / Test-time Compute": 6,
+        "Agentic AI / Deep Research Systems": 5
+      },
+      "years": {
+        "2023": 7,
+        "2024": 20,
+        "2025": 20,
+        "2026": 22
+      },
+      "top_papers": [
+        {
+          "title": "Towards Computational Provenance: Carrying Causal-State Evidence in Generated Te",
+          "id": "evg-dd1db9e412574891",
+          "arxiv_id": "http://arxiv.org/abs/2608.16868v1"
+        },
+        {
+          "title": "Every Coin Has Two Sides: On the Dual Nature of Generalization in On-Policy Dist",
+          "id": "evg-a5642de1ba7f8289",
+          "arxiv_id": "http://arxiv.org/abs/2608.16647v1"
+        },
+        {
+          "title": "Spectral Saliency for Machine Unlearning",
+          "id": "evg-df1e1cfa4ad19d65",
+          "arxiv_id": "http://arxiv.org/abs/2608.15548v1"
+        },
+        {
+          "title": "Can VLMs Recall Factual Associations From Visual References?",
+          "id": "evg-8b5759fbff106cee",
+          "arxiv_id": "http://arxiv.org/abs/2508.18297v1"
+        },
+        {
+          "title": "SQuad: Sub-Quadratic Attention Distillation for Efficient Video Generation",
+          "id": "evg-6abfb1b23bb1ffb0",
+          "arxiv_id": "http://arxiv.org/abs/2608.16585v1"
+        }
+      ]
+    },
+    {
+      "cluster": 6,
+      "size": 69,
+      "top_terms": [
+        "llms",
+        "models",
+        "reasoning",
+        "language",
+        "model",
+        "large",
+        "framework",
+        "data"
+      ],
+      "pillars": {
+        "LLM Reasoning / Test-time Compute": 16,
+        "Agentic AI / Deep Research Systems": 14,
+        "Efficient Training & Inference": 13,
+        "RL / Alignment / Safety": 10,
+        "Quant × AI": 9,
+        "Multimodal / World Models": 7
+      },
+      "years": {
+        "2023": 22,
+        "2024": 18,
+        "2025": 20,
+        "2026": 9
+      },
+      "top_papers": [
+        {
+          "title": "Why do universal adversarial attacks work on large language models?: Geometry mi",
+          "id": "evg-69e21b5244bb54fa",
+          "arxiv_id": "http://arxiv.org/abs/2309.00254v1"
+        },
+        {
+          "title": "Graph Machine Learning: An Opportunity for Power Systems",
+          "id": "evg-49c0de6821dd6940",
+          "arxiv_id": "http://arxiv.org/abs/2608.16494v1"
+        },
+        {
+          "title": "Consensus Is All You Need: Gossip-Based Reasoning Among Large Language Models",
+          "id": "evg-f4a534c9ad5c8ef2",
+          "arxiv_id": "http://arxiv.org/abs/2508.18292v1"
+        },
+        {
+          "title": "Agent Teaming Situation Awareness (ATSA): A Situation Awareness Framework for Hu",
+          "id": "evg-4ff3bdf4a6040661",
+          "arxiv_id": "http://arxiv.org/abs/2308.16785v2"
+        },
+        {
+          "title": "Palmyra x6 Technical Report: An Agentic, Tool-Use Model Post-Trained via Anchore",
+          "id": "evg-3d07432eda2f93e1",
+          "arxiv_id": "http://arxiv.org/abs/2608.16620v1"
+        }
+      ]
+    },
+    {
+      "cluster": 7,
+      "size": 35,
+      "top_terms": [
+        "latent",
+        "learning",
+        "moe",
+        "modalities",
+        "data",
+        "models",
+        "representations",
+        "multi-modal"
+      ],
+      "pillars": {
+        "Multimodal / World Models": 10,
+        "Quant × AI": 9,
+        "RL / Alignment / Safety": 5,
+        "Efficient Training & Inference": 5,
+        "LLM Reasoning / Test-time Compute": 3,
+        "Agentic AI / Deep Research Systems": 3
+      },
+      "years": {
+        "2023": 8,
+        "2024": 8,
+        "2025": 11,
+        "2026": 8
+      },
+      "top_papers": [
+        {
+          "title": "LaGSplat: Inferring Physics-Governed Interactive Simulation from Monocular Video",
+          "id": "evg-e327d0acbb64282f",
+          "arxiv_id": "http://arxiv.org/abs/2608.16324v1"
+        },
+        {
+          "title": "Concentrated Differential Privacy for Bandits",
+          "id": "evg-5aaee1dbc375dac6",
+          "arxiv_id": "http://arxiv.org/abs/2309.00557v3"
+        },
+        {
+          "title": "Decentralized Federated Learning for Heterogeneous Multi-Task Semantic Communica",
+          "id": "evg-58d180a2bc54667c",
+          "arxiv_id": "http://arxiv.org/abs/2608.15256v1"
+        },
+        {
+          "title": "Kernel-based Equalized Odds: A Quantification of Accuracy-Fairness Trade-off in ",
+          "id": "evg-103e81654d20998b",
+          "arxiv_id": "http://arxiv.org/abs/2508.15084v1"
+        },
+        {
+          "title": "Conformal Disentanglement and Latent-Space Curation: A Neural Framework for Pers",
+          "id": "evg-0cc63e52a529cb48",
+          "arxiv_id": "http://arxiv.org/abs/2408.15344v2"
+        }
+      ]
+    },
+    {
+      "cluster": 8,
+      "size": 27,
+      "top_terms": [
+        "process",
+        "vision",
+        "artificial",
+        "intelligence",
+        "medical",
+        "learning",
+        "neurosymbolic",
+        "models"
+      ],
+      "pillars": {
+        "RL / Alignment / Safety": 8,
+        "Quant × AI": 5,
+        "LLM Reasoning / Test-time Compute": 5,
+        "Agentic AI / Deep Research Systems": 4,
+        "Multimodal / World Models": 3,
+        "Efficient Training & Inference": 2
+      },
+      "years": {
+        "2023": 11,
+        "2024": 5,
+        "2025": 8,
+        "2026": 3
+      },
+      "top_papers": [
+        {
+          "title": "Construction Grammar and Artificial Intelligence",
+          "id": "evg-b735826fe12ef7f8",
+          "arxiv_id": "http://arxiv.org/abs/2309.00135v1"
+        },
+        {
+          "title": "How transformers learn structured data: insights from hierarchical filtering",
+          "id": "evg-6331b85c967a56c6",
+          "arxiv_id": "http://arxiv.org/abs/2408.15138v3"
+        },
+        {
+          "title": "Baseline Defenses for Adversarial Attacks Against Aligned Language Models",
+          "id": "evg-05ef67b0773fee9a",
+          "arxiv_id": "http://arxiv.org/abs/2309.00614v2"
+        },
+        {
+          "title": "Evaluating the Energy Consumption of Machine Learning: Systematic Literature Rev",
+          "id": "evg-8fa36116b8d556c7",
+          "arxiv_id": "http://arxiv.org/abs/2408.15128v1"
+        },
+        {
+          "title": "From DDMs to DNNs: Using process data and models of decision-making to improve h",
+          "id": "evg-0974d74369c6511d",
+          "arxiv_id": "http://arxiv.org/abs/2308.15225v3"
+        }
+      ]
+    },
+    {
+      "cluster": 9,
+      "size": 63,
+      "top_terms": [
+        "detection",
+        "financial",
+        "stock",
+        "market",
+        "data",
+        "accuracy",
+        "fraud",
+        "forecasting"
+      ],
+      "pillars": {
+        "Quant × AI": 32,
+        "RL / Alignment / Safety": 11,
+        "Agentic AI / Deep Research Systems": 7,
+        "LLM Reasoning / Test-time Compute": 6,
+        "Multimodal / World Models": 4,
+        "Efficient Training & Inference": 3
+      },
+      "years": {
+        "2023": 21,
+        "2024": 13,
+        "2025": 17,
+        "2026": 12
+      },
+      "top_papers": [
+        {
+          "title": "Resource-Efficient QUBO Formulation for Anchored Currency Arbitrage",
+          "id": "evg-38e6ed1e860490cc",
+          "arxiv_id": "http://arxiv.org/abs/2608.15889v1"
+        },
+        {
+          "title": "The Financial Market of Environmental Indices",
+          "id": "evg-bb614a4e127d45c4",
+          "arxiv_id": "http://arxiv.org/abs/2308.15661v1"
+        },
+        {
+          "title": "Deep Semi-Supervised Anomaly Detection for Finding Fraud in the Futures Market",
+          "id": "evg-d4642421bc8a8b28",
+          "arxiv_id": "http://arxiv.org/abs/2309.00088v1"
+        },
+        {
+          "title": "An Empirical Analysis on Financial Markets: Insights from the Application of Sta",
+          "id": "evg-daf363e8577e33fc",
+          "arxiv_id": "http://arxiv.org/abs/2308.14235v6"
+        },
+        {
+          "title": "New general dependence measures: construction, estimation and application to hig",
+          "id": "evg-fb955f42d069cc55",
+          "arxiv_id": "http://arxiv.org/abs/2309.00025v1"
+        }
+      ]
+    },
+    {
+      "cluster": 10,
+      "size": 39,
+      "top_terms": [
+        "agents",
+        "learning",
+        "reinforcement",
+        "multi-agent",
+        "games",
+        "game",
+        "algorithm",
+        "agent"
+      ],
+      "pillars": {
+        "Agentic AI / Deep Research Systems": 25,
+        "LLM Reasoning / Test-time Compute": 9,
+        "Quant × AI": 4,
+        "Efficient Training & Inference": 1
+      },
+      "years": {
+        "2023": 13,
+        "2024": 13,
+        "2025": 8,
+        "2026": 5
+      },
+      "top_papers": [
+        {
+          "title": "Convergence Analysis of the Best Response Algorithm for Time-Varying Games",
+          "id": "evg-93840a08138bc4fc",
+          "arxiv_id": "http://arxiv.org/abs/2309.00307v1"
+        },
+        {
+          "title": "When Agents Coordinate: Measuring Coordination in Multi-Agent AI Coding",
+          "id": "evg-575de7ca8f179923",
+          "arxiv_id": "http://arxiv.org/abs/2608.16801v1"
+        },
+        {
+          "title": "Physics of Agents: Statistical Mechanics Predicts Collective Behavior of AI Agen",
+          "id": "evg-d5be4ed69845d58c",
+          "arxiv_id": "http://arxiv.org/abs/2608.16578v1"
+        },
+        {
+          "title": "Bidirectional Emergent Language in Situated Environments",
+          "id": "evg-4cad9ec1591a1e0d",
+          "arxiv_id": "http://arxiv.org/abs/2408.14649v2"
+        },
+        {
+          "title": "Distribution learning via neural differential equations: a nonparametric statist",
+          "id": "evg-d3019cf8da3ac9b0",
+          "arxiv_id": "http://arxiv.org/abs/2309.01043v1"
+        }
+      ]
+    },
+    {
+      "cluster": 11,
+      "size": 25,
+      "top_terms": [
+        "capacity",
+        "network",
+        "strategies",
+        "data",
+        "linear",
+        "coefficients",
+        "approach",
+        "parameter"
+      ],
+      "pillars": {
+        "LLM Reasoning / Test-time Compute": 6,
+        "Quant × AI": 6,
+        "Efficient Training & Inference": 5,
+        "RL / Alignment / Safety": 5,
+        "Agentic AI / Deep Research Systems": 2,
+        "Multimodal / World Models": 1
+      },
+      "years": {
+        "2023": 6,
+        "2024": 4,
+        "2025": 8,
+        "2026": 7
+      },
+      "top_papers": [
+        {
+          "title": "Proteus: Incremental Memory Activation for Long-Context Sequence Modeling",
+          "id": "evg-45b3b522c1cdc929",
+          "arxiv_id": "http://arxiv.org/abs/2608.16844v1"
+        },
+        {
+          "title": "Understanding Practitioners Perspectives on Monitoring Machine Learning Systems",
+          "id": "evg-cf9e7e577758ce80",
+          "arxiv_id": "http://arxiv.org/abs/2509.25195v1"
+        },
+        {
+          "title": "Interpretation of High-Dimensional Linear Regression: Effects of Nullspace and R",
+          "id": "evg-0885506bc8219928",
+          "arxiv_id": "http://arxiv.org/abs/2309.00564v2"
+        },
+        {
+          "title": "GraniKV: Asymmetric Granularity KV-Cache Paging for Multi-Agent Systems with Lon",
+          "id": "evg-4f3424408d7b4e9a",
+          "arxiv_id": "http://arxiv.org/abs/2608.15584v1"
+        },
+        {
+          "title": "Vector Autoregression in Cryptocurrency Markets: Unraveling Complex Causal Netwo",
+          "id": "evg-98314849b32f941e",
+          "arxiv_id": "http://arxiv.org/abs/2308.15769v1"
+        }
+      ]
+    }
+  ]
+}
