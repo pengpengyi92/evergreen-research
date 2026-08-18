@@ -67,6 +67,9 @@ def main(argv: list[str] | None = None) -> int:
     survey = subparsers.add_parser("survey")
     survey.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
 
+    assemble_p = subparsers.add_parser("assemble")
+    assemble_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+
     version = subparsers.add_parser("version")
 
     args = parser.parse_args(argv)
@@ -158,6 +161,11 @@ def main(argv: list[str] | None = None) -> int:
         path = write_survey_outline(db, Path(args.data_root) / "survey")
         print(path.read_text(encoding="utf-8"))
         return 0
+    if args.command == "assemble":
+        from evergreen.assemble import assemble
+
+        path = assemble(Path(args.data_root) / "survey")
+        return _emit({"draft": str(path)})
     if args.command == "version":
         print(__version__)
         return 0

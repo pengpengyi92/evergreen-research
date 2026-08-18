@@ -10,8 +10,9 @@
 - [x] §3 Foundations: CoT -> RLVR — drafted (`sections/03-foundations.md`)
 - [x] §4 Test-Time Compute — drafted (`sections/04-test-time-compute.md`)
 - [x] §5 Cross-Pillar Convergence — drafted (`sections/05-cross-pillar.md`)
-- [ ] §6 Empirical Trends from the Living Corpus
-- [ ] §7 Open Problems, Risks, and Outlook
+- [x] §6 Empirical Trends — drafted (`sections/06-empirical-trends.md`)
+- [x] §7 Open Problems — drafted (`sections/07-open-problems.md`)
+- [x] Full draft assembled (`draft.md` via `evergreen assemble`)
 - [ ] Hostile review + citation audit
 
 ## Inclusion criteria (corpus v0.2)
