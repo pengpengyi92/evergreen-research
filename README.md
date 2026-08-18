@@ -116,6 +116,8 @@ See CONTRIBUTING.md. The single most valuable contribution is a rigorous
 review of a weekly digest: challenge a claim, fix a tag, or verify a paper
 by reading its full text.
 
+Publishing roadmap (human steps only): see [LAUNCH.md](LAUNCH.md).
+
 ---
 
 *Evergreen Research is the public research output of the PRDT (Pengyi
