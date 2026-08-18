@@ -168,12 +168,15 @@ def main(argv: list[str] | None = None) -> int:
             }
         )
     if args.command == "novelty":
-        from evergreen.novelty import run_novelty
+        from evergreen.novelty import blend_scores, run_novelty
 
         summary = run_novelty(
             Path(args.data_root),
             args.pillar,
             verified_only=not args.include_unverified,
+        )
+        summary["blend"] = blend_scores(
+            Path(args.data_root), args.pillar, quiet=True
         )
         return _emit(summary)
     if args.command == "fetch":

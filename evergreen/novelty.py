@@ -50,6 +50,74 @@ def novelty_score(record: dict[str, Any], cohort: list[dict[str, Any]]) -> dict[
     }
 
 
+def blend_scores(
+    data_root: Path,
+    pillar: str,
+    quiet: bool = False,
+) -> dict[str, Any]:
+    """Blend method-overlap novelty with citation data where available (§7.4).
+
+    blend = 0.5 * novelty + 0.5 * citation_component; the citation component
+    is the log-scaled citation count when S2 data exists, otherwise the
+    method-novelty stands alone (citation-lag immune).
+    """
+    import math
+
+    from evergreen.citations import CitationStore
+
+    store = CitationStore(data_root)
+    citations = store.load()
+    novelty_path = data_root / "novelty.jsonl"
+    if not novelty_path.exists():
+        return {"error": "run `evergreen novelty` first"}
+    rows = [
+        json.loads(line)
+        for line in novelty_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    rows = [row for row in rows if row.get("pillar") == pillar]
+    # keep the newest score per record id
+    newest: dict[str, dict[str, Any]] = {}
+    for row in rows:
+        newest[row["id"]] = row
+    blended: list[dict[str, Any]] = []
+    for record_id, row in newest.items():
+        citation = citations.get(f"arXiv:{row.get('arxiv_id', '')}") or citations.get(record_id)
+        if citation and citation.get("citationCount") is not None:
+            log_component = math.log1p(citation["citationCount"]) / math.log1p(10000)
+            blend = round(0.5 * row["novelty"] + 0.5 * log_component, 4)
+            basis = "novelty+citations"
+        else:
+            blend = row["novelty"]
+            basis = "novelty-only"
+        blended.append(
+            {
+                "id": record_id,
+                "pillar": pillar,
+                "novelty": row["novelty"],
+                "citations": citation.get("citationCount") if citation else None,
+                "blend": blend,
+                "basis": basis,
+                "computed_on": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            }
+        )
+    blended.sort(key=lambda item: item["blend"], reverse=True)
+    path = data_root / "novelty_blend.jsonl"
+    with path.open("w", encoding="utf-8") as handle:
+        for item in blended:
+            handle.write(json.dumps(item, ensure_ascii=False) + "\n")
+    if not quiet:
+        print(f"[blend] {len(blended)} records -> {path}")
+        for item in blended[:5]:
+            print(f"  {item['blend']:.3f}  {item['id'][:16]}  ({item['basis']}, cit {item['citations']})")
+    return {
+        "store": str(path),
+        "scored": len(blended),
+        "with_citations": sum(1 for item in blended if item["basis"] == "novelty+citations"),
+        "top": [{"id": item["id"], "blend": item["blend"]} for item in blended[:10]],
+    }
+
+
 def run_novelty(
     data_root: Path,
     pillar: str,
