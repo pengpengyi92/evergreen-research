@@ -198,15 +198,14 @@ def run_citations(
     pillar: str,
     top_n: int = 25,
     verified_only: bool = True,
+    source: str = "openalex",
     quiet: bool = False,
 ) -> dict[str, Any]:
     """M3 gate: batch citation tracking for core-corpus papers.
 
-    Only successful fetches are persisted; rate-limited attempts are
-    reported but left for a later run (with S2_API_KEY set).
+    source "openalex" (default) is keyless; "s2" uses Semantic Scholar
+    (S2_API_KEY recommended). Only successful fetches are persisted.
     """
-    from evergreen import citations as s2
-
     db = PaperDatabase(data_root)
     candidates = [record for record in db.load() if record.get("pillar") == pillar]
     if verified_only:
@@ -214,9 +213,41 @@ def run_citations(
     candidates.sort(key=lambda record: record.get("published", ""), reverse=True)
     candidates = candidates[:top_n]
 
+    if source == "openalex":
+        from evergreen import openalex
+        from evergreen.citations import CitationStore
+
+        store = CitationStore(data_root)
+        known = store.load()
+        fresh = [
+            record
+            for record in candidates
+            if record.get("arxiv_id") and f"arXiv:{record['arxiv_id'].split('/abs/')[-1]}" not in known
+        ]
+        fetched = openalex.batch_citations(fresh, quiet=quiet)
+        for item in fetched:
+            base = item["arxiv_id"].split("/abs/")[-1]
+            if not base.lower().startswith("arxiv:"):
+                base = f"arXiv:{base}"
+            item["arxiv_id"] = base
+            item["source"] = "openalex"
+        stored = store.upsert(fetched)
+        results: dict[str, Any] = {
+            "source": "openalex",
+            "ok": len(fetched),
+            "rate_limited": 0,
+            "failed": len(fresh) - len(fetched),
+            "skipped_existing": len(candidates) - len(fresh),
+            "stored": stored,
+            "stats": store.stats(),
+        }
+        return results
+
+    from evergreen import citations as s2
+
     store = s2.CitationStore(data_root)
     known = store.load()
-    results: dict[str, Any] = {"ok": 0, "rate_limited": 0, "failed": 0, "skipped_existing": 0}
+    results = {"source": "s2", "ok": 0, "rate_limited": 0, "failed": 0, "skipped_existing": 0}
     to_store: list[dict[str, Any]] = []
     for record in candidates:
         arxiv_id = record.get("arxiv_id", "")

@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 from datetime import UTC, datetime
@@ -219,7 +220,9 @@ class CitationsTest(unittest.TestCase):
             with mock.patch(
                 "evergreen.citations.paper_by_arxiv_id", side_effect=lambda aid: fake_fetch(aid)
             ):
-                summary = run_citations(Path(tmp), "LLM Reasoning / Test-time Compute", top_n=10, quiet=True)
+                summary = run_citations(
+                    Path(tmp), "LLM Reasoning / Test-time Compute", top_n=10, quiet=True, source="s2"
+                )
             self.assertEqual(summary["ok"], 2)
             self.assertEqual(summary["rate_limited"], 1)
             self.assertEqual(summary["stored"], 2)
@@ -320,6 +323,44 @@ class RssTest(unittest.TestCase):
             items = root.findall(".//item")
             self.assertEqual(len(items), 1)
             self.assertIn("2026-W34", items[0].findtext("title"))
+
+
+class OpenAlexTest(unittest.TestCase):
+    def test_paper_by_title_match(self) -> None:
+        from evergreen import openalex
+
+        record = {"title": "DeepSeek-R1: Incentivizing Reasoning", "authors": ["DeepSeek-AI"]}
+        payload = {
+            "results": [
+                {
+                    "id": "W1",
+                    "title": "DeepSeek-R1: Incentivizing Reasoning",
+                    "cited_by_count": 853,
+                    "publication_date": "2025-01-22",
+                    "authorships": [{"author": {"display_name": "DeepSeek-AI"}}],
+                    "primary_location": None,
+                }
+            ]
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.dict("os.environ", {"EVERGREEN_OPENALEX_CACHE": tmp}):
+                with mock.patch.object(openalex, "_rate_limit"):
+
+                    def fake_urlopen(request, timeout=30):
+                        response = mock.MagicMock()
+                        response.read.return_value = json.dumps(payload).encode("utf-8")
+                        response.__enter__ = lambda self: self
+                        response.__exit__ = lambda *a: None
+                        return response
+
+                    with mock.patch("urllib.request.urlopen", side_effect=fake_urlopen):
+                        result = openalex.paper_by_title(record)
+                    self.assertEqual(result["citationCount"], 853)
+                    self.assertEqual(result["source"], "openalex")
+                    # cached: second call must not hit the network again
+                    with mock.patch("urllib.request.urlopen", side_effect=AssertionError("network used")):
+                        again = openalex.paper_by_title(record)
+                    self.assertEqual(again["citationCount"], 853)
 
 
 class PipelineTest(unittest.TestCase):

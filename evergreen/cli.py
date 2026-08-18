@@ -50,6 +50,10 @@ def main(argv: list[str] | None = None) -> int:
     citations_p.add_argument(
         "--include-unverified", action="store_true", help="track unverified papers too"
     )
+    citations_p.add_argument(
+        "--source", choices=["openalex", "s2"], default="openalex",
+        help="citation source: openalex (keyless, default) or s2 (S2_API_KEY recommended)",
+    )
     citations_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
     citations_p.add_argument("--docs-root", default=str(PROJECT_ROOT / "docs"))
 
@@ -156,6 +160,7 @@ def main(argv: list[str] | None = None) -> int:
             args.pillar,
             top_n=args.top,
             verified_only=not args.include_unverified,
+            source=args.source,
         )
         db = PaperDatabase(data_root)
         index_path = write_index(db, data_root)
