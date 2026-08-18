@@ -289,4 +289,5 @@ def run_weekly(
         "signals": signals,
         "failures": failures,
         "total_db": len(db.load()),
+        "swept_records": structured,
     }

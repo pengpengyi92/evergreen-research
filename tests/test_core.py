@@ -301,6 +301,27 @@ class AuditTest(unittest.TestCase):
             self.assertGreaterEqual(summary["warn"], 1)  # unverified + external
 
 
+class RssTest(unittest.TestCase):
+    def test_feed_generation(self) -> None:
+        import xml.etree.ElementTree as ET
+
+        from evergreen.rss import write_feed
+
+        with tempfile.TemporaryDirectory() as tmp:
+            data_root = Path(tmp)
+            weekly = data_root / "weekly"
+            weekly.mkdir(parents=True)
+            (weekly / "2026-W34.md").write_text(
+                "# Frontier AI Weekly\n\n- **Paper One** ([arXiv](https://arxiv.org/abs/x)) — conf 0.80\n",
+                encoding="utf-8",
+            )
+            path = write_feed(data_root, quiet=True)
+            root = ET.parse(path).getroot()
+            items = root.findall(".//item")
+            self.assertEqual(len(items), 1)
+            self.assertIn("2026-W34", items[0].findtext("title"))
+
+
 class PipelineTest(unittest.TestCase):
     def test_cluster_signals(self) -> None:
         from evergreen.pipeline import _cluster_signals

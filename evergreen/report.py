@@ -40,7 +40,9 @@ def _paper_lines(records: list[dict[str, Any]], pillar: str) -> list[str]:
 def write_weekly(db: PaperDatabase, summary: dict[str, Any], weekly_root: Path) -> Path:
     weekly_root.mkdir(parents=True, exist_ok=True)
     path = weekly_root / f"{iso_week()}.md"
-    records = [record for record in db.load() if record.get("swept_on") == summary["swept_on"]]
+    records = summary.get("swept_records") or [
+        record for record in db.load() if record.get("swept_on") == summary["swept_on"]
+    ]
 
     lines: list[str] = [
         f"# Frontier AI Weekly — {iso_week()}",

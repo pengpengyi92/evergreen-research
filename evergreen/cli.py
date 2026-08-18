@@ -86,6 +86,9 @@ def main(argv: list[str] | None = None) -> int:
     snapshot_p = subparsers.add_parser("snapshot")
     snapshot_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
 
+    rss_p = subparsers.add_parser("rss")
+    rss_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+
     version = subparsers.add_parser("version")
 
     args = parser.parse_args(argv)
@@ -98,6 +101,9 @@ def main(argv: list[str] | None = None) -> int:
         index_path = write_index(db, data_root)
         survey_path = write_survey_outline(db, data_root / "survey")
         docs_path = write_docs_landing(db, Path(args.docs_root))
+        from evergreen.rss import write_feed
+
+        feed_path = write_feed(data_root, quiet=True)
         return _emit(
             {
                 "summary": summary,
@@ -105,6 +111,7 @@ def main(argv: list[str] | None = None) -> int:
                 "index": str(index_path),
                 "survey_outline": str(survey_path),
                 "docs_landing": str(docs_path),
+                "feed": str(feed_path),
             }
         )
     if args.command == "backfill":
@@ -207,6 +214,11 @@ def main(argv: list[str] | None = None) -> int:
         from evergreen.snapshot import snapshot
 
         return _emit(snapshot(Path(args.data_root)))
+    if args.command == "rss":
+        from evergreen.rss import write_feed
+
+        path = write_feed(Path(args.data_root))
+        return _emit({"feed": str(path)})
     if args.command == "version":
         print(__version__)
         return 0

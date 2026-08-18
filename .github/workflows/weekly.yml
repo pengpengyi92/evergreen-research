@@ -22,6 +22,7 @@ jobs:
           python -m evergreen.cli weekly
           python -m evergreen.cli audit
           python -m evergreen.cli snapshot
+          python -m evergreen.cli rss
       - name: Commit and push research updates
         run: |
           git config user.name "evergreen-bot"
