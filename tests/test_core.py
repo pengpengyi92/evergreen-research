@@ -1,5 +1,8 @@
+import tempfile
 import unittest
 from datetime import UTC, datetime
+from pathlib import Path
+from unittest import mock
 
 from evergreen.arxiv_client import parse_atom, parse_atom_lenient
 from evergreen.structurer import detect_benchmarks, detect_methods, structure_entry
@@ -83,6 +86,29 @@ class PipelineTest(unittest.TestCase):
         self.assertEqual(len(signals), 1)
         self.assertEqual(signals[0]["method"], "RLVR / GRPO")
         self.assertEqual(len(signals[0]["spanning_pillars"]), 3)
+
+    def test_backfill_dedups(self) -> None:
+        from evergreen.pipeline import run_backfill
+
+        entry = {
+            "arxiv_id": "http://arxiv.org/abs/2608.00001",
+            "title": "Backfill Test Paper",
+            "summary": "We study reinforcement learning with process reward models on AIME.",
+            "published": "2026-01-01T00:00:00Z",
+            "updated": "2026-01-01T00:00:00Z",
+            "url": "https://arxiv.org/abs/2608.00001",
+            "primary_category": "cs.AI",
+            "categories": ["cs.AI"],
+            "authors": ["A. Researcher"],
+            "comment": "",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch("evergreen.pipeline.arxiv_client.search_recent", return_value=[entry]):
+                first = run_backfill(Path(tmp), [(360, 0)], per_pillar=30, quiet=True)
+                # same arXiv id across six pillars -> one record after dedup
+                self.assertEqual(first["new_records"], 1)
+                second = run_backfill(Path(tmp), [(360, 0)], per_pillar=30, quiet=True)
+                self.assertEqual(second["new_records"], 0)  # already in DB
 
 
 if __name__ == "__main__":

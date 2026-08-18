@@ -8,7 +8,7 @@ from typing import Any
 from evergreen import __version__
 from evergreen import arxiv_client
 from evergreen.database import PaperDatabase
-from evergreen.pipeline import run_weekly
+from evergreen.pipeline import run_backfill, run_weekly
 from evergreen.report import write_docs_landing, write_index, write_survey_outline, write_weekly
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +22,17 @@ def main(argv: list[str] | None = None) -> int:
     weekly.add_argument("--max-per-pillar", type=int, default=None)
     weekly.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
     weekly.add_argument("--docs-root", default=str(PROJECT_ROOT / "docs"))
+
+    backfill = subparsers.add_parser("backfill")
+    backfill.add_argument(
+        "--windows",
+        default="0-360,360-1080,1080-2160",
+        help="comma-separated non-overlapping day windows as UNTIL-DAYSBACK "
+        "(e.g. 0-360 = the last year)",
+    )
+    backfill.add_argument("--per-pillar", type=int, default=30)
+    backfill.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+    backfill.add_argument("--docs-root", default=str(PROJECT_ROOT / "docs"))
 
     fetch = subparsers.add_parser("fetch")
     fetch.add_argument("--query", default=None)
@@ -53,6 +64,28 @@ def main(argv: list[str] | None = None) -> int:
             {
                 "summary": summary,
                 "weekly": str(weekly_path),
+                "index": str(index_path),
+                "survey_outline": str(survey_path),
+                "docs_landing": str(docs_path),
+            }
+        )
+    if args.command == "backfill":
+        data_root = Path(args.data_root)
+        windows: list[tuple[int, int]] = []
+        for part in args.windows.split(","):
+            part = part.strip()
+            if not part:
+                continue
+            until_str, _, back_str = part.partition("-")
+            windows.append((int(back_str), int(until_str)))
+        summary = run_backfill(data_root, windows, per_pillar=args.per_pillar)
+        db = PaperDatabase(data_root)
+        index_path = write_index(db, data_root)
+        survey_path = write_survey_outline(db, data_root / "survey")
+        docs_path = write_docs_landing(db, Path(args.docs_root))
+        return _emit(
+            {
+                "summary": summary,
                 "index": str(index_path),
                 "survey_outline": str(survey_path),
                 "docs_landing": str(docs_path),

@@ -41,6 +41,55 @@ def _cluster_signals(records: list[dict[str, Any]], limit: int = 8) -> list[dict
     return signals
 
 
+def run_backfill(
+    data_root: Path,
+    windows: list[tuple[int, int]],
+    per_pillar: int = 30,
+    quiet: bool = False,
+) -> dict[str, Any]:
+    """Historical backfill over non-overlapping (days_back, until_days_back)
+    windows; the database dedups by paper id."""
+    swept_on = datetime.now(UTC).isoformat()
+    db = PaperDatabase(data_root)
+    structured: list[dict[str, Any]] = []
+    failures: list[str] = []
+
+    for days_back, until_days_back in windows:
+        for pillar, spec in pillars_config.PILLARS.items():
+            categories = list(spec["categories"])  # type: ignore[arg-type]
+            terms = str(spec["terms"])  # type: ignore[arg-type]
+            try:
+                entries = arxiv_client.search_recent(
+                    categories,
+                    max_results=per_pillar,
+                    days_back=days_back,
+                    until_days_back=until_days_back,
+                    terms=terms,
+                )
+            except Exception as exc:
+                failures.append(f"{pillar} ({until_days_back}-{days_back}d): {exc}")
+                entries = []
+            for entry in entries:
+                structured.append(structure_entry(entry, pillar, swept_on))
+
+    added = db.upsert_many(structured)
+    if not quiet:
+        print(
+            f"[evergreen] backfill fetched {len(structured)} papers over "
+            f"{windows}, {added} new records"
+        )
+    if failures and not quiet:
+        for failure in failures:
+            print(f"[evergreen] degraded pillar: {failure}")
+    return {
+        "swept_on": swept_on,
+        "fetched": len(structured),
+        "new_records": added,
+        "failures": failures,
+        "total_db": len(db.load()),
+    }
+
+
 def run_weekly(
     data_root: Path,
     max_per_pillar: int | None = None,

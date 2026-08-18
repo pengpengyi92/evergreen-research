@@ -227,12 +227,19 @@ def search_recent(
     categories: list[str],
     max_results: int = 40,
     days_back: int = 14,
+    until_days_back: int | None = None,
     terms: str | None = None,
     sort_by: str = "submittedDate",
 ) -> list[dict[str, Any]]:
+    """Fetch papers in the window [now-days_back, now-until_days_back).
+
+    When until_days_back is None the window reaches "now"; otherwise windows
+    can be made non-overlapping for historical backfills.
+    """
     now = datetime.now(UTC)
     window_start = now - timedelta(days=days_back)
-    window = f"[{window_start:%Y%m%d%H%M} TO {now:%Y%m%d%H%M}]"
+    window_end = now - timedelta(days=until_days_back) if until_days_back else now
+    window = f"[{window_start:%Y%m%d%H%M} TO {window_end:%Y%m%d%H%M}]"
     clauses = [f"submittedDate:{window}"]
     if terms:
         clauses.append(f"({terms})")

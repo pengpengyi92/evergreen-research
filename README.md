@@ -53,6 +53,7 @@ Other commands:
 
 ```bash
 evergreen fetch --categories cs.AI,cs.CL --max 20 --days 7   # raw arXiv fetch
+evergreen backfill --days 360,1080 --per-pillar 30            # historical corpus backfill
 evergreen db stats                                            # database statistics
 evergreen survey                                              # print the survey outline
 ```
@@ -84,9 +85,10 @@ survey claim that cites it.
 ## Roadmap
 
 - [x] v0.1 weekly pipeline (fetch -> structure -> cluster -> publish)
+- [x] Historical corpus backfill (`evergreen backfill`)
 - [ ] Full-text extraction for papers promoted into the survey core corpus
 - [ ] Citation-graph tracking (Semantic Scholar) for novelty scoring
-- [ ] Survey draft v1 -> arXiv submission
+- [ ] Survey draft v1 -> arXiv submission (see `data/survey/outline.md`)
 - [ ] RSS feed of weekly digests
 - [ ] Python API (`pip install evergreen-research`)
 

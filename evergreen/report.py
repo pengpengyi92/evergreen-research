@@ -173,20 +173,35 @@ def write_survey_outline(db: PaperDatabase, survey_root: Path) -> Path:
     survey_root.mkdir(parents=True, exist_ok=True)
     stats = db.stats()
     total = stats["total_papers"]
-    counter = Counter(
-        record.get("pillar", "?") for record in db.load()
-    )
+    counter = Counter(record.get("pillar", "?") for record in db.load())
     lines: list[str] = [
         "# Frontier AI — Living Survey Outline",
         "",
-        f"Status: evidence-accumulating (v0.1). {total} papers in corpus.",
+        "> Working title: *The Compute-Allocation Frontier: A Living, Reproducible "
+        "Survey of LLM Reasoning and Test-Time Compute*",
+        f"> Status: evidence-accumulating (v0.2). {total} papers in corpus.",
+        "",
+        "## Inclusion criteria (corpus v0.2)",
+        "- Published on arXiv 2023-01-01 or later, primary category in the six pillar scopes.",
+        "- Retrieved by the deterministic pillar queries; records are abstract-level until full-text verified.",
+        "- Records are append-only and deduplicated by arXiv id; retractions or withdrawn papers are excluded during weekly re-verification.",
+        "- A paper may enter the *core corpus* (citable claims) only after full-text verification (M2 gate).",
         "",
         "## 1. Introduction",
-        "- [ ] Scope: six pillars of frontier AI research",
-        "- [ ] Method: reproducible weekly arXiv corpus pipeline",
-        "- [ ] Contributions: living evidence base + cross-pillar signals",
+        "- [ ] The train-time -> test-time compute shift; why a living survey now.",
         "",
-        "## 2. Taxonomy",
+        "## 2. Method: A Reproducible, Continuously-Updating Corpus Pipeline",
+        "- [ ] Six-pillar taxonomy, arXiv queries, deterministic structuring",
+        "- [ ] Append-only `data/papers.jsonl` and the evidence chain",
+        "",
+        "## 3. Foundations: From Chain-of-Thought to RLVR",
+        "- [ ] Verifiable rewards, GRPO/PPO, reward hacking",
+        "",
+        "## 4. Test-Time Compute",
+        "- [ ] Search (MCTS/beam), verifiers & PRMs",
+        "- [ ] Inference-time scaling laws and budget allocation",
+        "",
+        "## 5. Cross-Pillar Convergence under a Compute-Allocation Lens",
         "",
     ]
     for pillar in PILLARS:
@@ -194,18 +209,11 @@ def write_survey_outline(db: PaperDatabase, survey_root: Path) -> Path:
     lines.extend(
         [
             "",
-            "## 3. LLM Reasoning / Test-time Compute (lead pillar)",
-            "- [ ] Chain-of-thought to RLVR: the paradigm shift",
-            "- [ ] Verifiers and process reward models",
-            "- [ ] Inference-time scaling laws",
+            "## 6. Empirical Trends from the Living Corpus",
+            "- [ ] Method migration, benchmark saturation, convergence clusters",
             "",
-            "## 4. Cross-Pillar Convergence",
-            "- [ ] Methods migrating across subfields (see weekly signals)",
-            "",
-            "## 5. Open Problems",
-            "- [ ] to be derived from full-text review",
-            "",
-            "## 6. Conclusion",
+            "## 7. Open Problems, Risks, and Outlook",
+            "- [ ] Verifier quality, compute budgets, safety, reproducibility",
             "",
             "---",
             "_Every section claim must cite paper records from `data/papers.jsonl`._",
