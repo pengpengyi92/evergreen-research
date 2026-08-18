@@ -9,3 +9,7 @@ build/
 .cache/
 .venv/
 data/snapshots/
+
+data/survey/arxiv/*.aux
+data/survey/arxiv/*.log
+data/survey/arxiv/*.out
