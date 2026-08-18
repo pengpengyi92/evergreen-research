@@ -96,8 +96,12 @@ survey claim that cites it.
 - [x] v0.1 weekly pipeline (fetch -> structure -> cluster -> publish)
 - [x] Historical corpus backfill (`evergreen backfill`) — 500+ papers, 2023-2026
 - [x] Full-text verification (`evergreen verify`) — ar5iv + arXiv native HTML
-- [ ] Citation-graph tracking (Semantic Scholar) for novelty scoring
-- [ ] Survey draft v1 -> arXiv submission (see `data/survey/outline.md`)
+- [x] Citation tracking (`evergreen citations`) — S2 connector (batch runs want a free S2_API_KEY)
+- [x] Method-overlap novelty scoring (`evergreen novelty`)
+- [x] Automated citation audit (`evergreen audit`) — 0 FAIL on the current draft
+- [x] Checksummed snapshots (`evergreen snapshot`) — Zenodo-ready archives
+- [x] Survey draft v1 (7 sections) + compiled PDF (`data/survey/draft.pdf`)
+- [ ] Hostile human review (>= 2 reviewers) -> arXiv submission
 - [ ] RSS feed of weekly digests
 - [ ] Python API (`pip install evergreen-research`)
 
