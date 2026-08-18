@@ -236,6 +236,7 @@ def run_citations(
                 print(f"[citations] {arxiv_id}: rate limited (set S2_API_KEY for batch runs)")
             continue
         results["ok"] += 1
+        data["arxiv_id"] = s2.normalize_arxiv_id(arxiv_id)
         to_store.append(data)
     results["stored"] = store.upsert(to_store)
     results["stats"] = store.stats()
