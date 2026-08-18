@@ -161,7 +161,7 @@ def write_docs_landing(db: PaperDatabase, docs_root: Path) -> Path:
             "",
             "## Repository",
             "",
-            "- [Source & methodology](https://github.com/)",
+            "- [Source & methodology](https://github.com/pengpengyi92/evergreen-research)",
             "- [Paper database](../data/papers.jsonl)",
             "- [Survey outline](../data/survey/outline.md)",
         ]

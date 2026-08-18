@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 CHANNEL_TITLE = "Evergreen Research — Frontier AI Weekly"
-CHANNEL_LINK = "https://github.com/evergreen-research"  # updated after push
+CHANNEL_LINK = "https://github.com/pengpengyi92/evergreen-research"
 CHANNEL_DESCRIPTION = (
     "Weekly digests of the frontier-AI research corpus: arXiv sweeps, "
     "cross-pillar convergence signals, and survey progress."
