@@ -53,6 +53,13 @@ def main(argv: list[str] | None = None) -> int:
     citations_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
     citations_p.add_argument("--docs-root", default=str(PROJECT_ROOT / "docs"))
 
+    novelty_p = subparsers.add_parser("novelty")
+    novelty_p.add_argument(
+        "--pillar", default="LLM Reasoning / Test-time Compute", help="pillar to score"
+    )
+    novelty_p.add_argument("--include-unverified", action="store_true")
+    novelty_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+
     fetch = subparsers.add_parser("fetch")
     fetch.add_argument("--query", default=None)
     fetch.add_argument("--categories", default="cs.AI,cs.LG,cs.CL")
@@ -69,6 +76,9 @@ def main(argv: list[str] | None = None) -> int:
 
     assemble_p = subparsers.add_parser("assemble")
     assemble_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+
+    latex_p = subparsers.add_parser("latex")
+    latex_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
 
     version = subparsers.add_parser("version")
 
@@ -144,6 +154,15 @@ def main(argv: list[str] | None = None) -> int:
                 "docs_landing": str(docs_path),
             }
         )
+    if args.command == "novelty":
+        from evergreen.novelty import run_novelty
+
+        summary = run_novelty(
+            Path(args.data_root),
+            args.pillar,
+            verified_only=not args.include_unverified,
+        )
+        return _emit(summary)
     if args.command == "fetch":
         if args.query:
             entries = arxiv_client.fetch_entries(args.query, max_results=args.max)
@@ -166,6 +185,11 @@ def main(argv: list[str] | None = None) -> int:
 
         path = assemble(Path(args.data_root) / "survey")
         return _emit({"draft": str(path)})
+    if args.command == "latex":
+        from evergreen.latex import build_tex
+
+        path = build_tex(Path(args.data_root) / "survey")
+        return _emit({"main_tex": str(path)})
     if args.command == "version":
         print(__version__)
         return 0

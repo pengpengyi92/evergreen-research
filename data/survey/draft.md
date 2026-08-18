@@ -303,7 +303,7 @@ Verified corpus examples show search moving from "sample many answers" to
 - `evg-4e48d42ef4f7` (BATON) — subtask-level exploration: each subtask is
   explored in a cheap short-horizon regime, and long-horizon trajectories
   are *composed* from stored solutions, turning multiplicative exploration
-  cost (T^K) into additive (T·K).
+  cost (T to the power K) into additive (T times K).
 - `evg-37a3465e623b` (AutoSR) — symbolic regression framed as searching
   "research states", with a verifier-governed transition model.
 - `evg-6742b060cb56` (Le Critique) — privileged value functions steer LLM

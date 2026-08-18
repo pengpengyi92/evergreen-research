@@ -226,6 +226,38 @@ class CitationsTest(unittest.TestCase):
             self.assertEqual(CitationStore(Path(tmp)).stats()["tracked"], 2)
 
 
+class NoveltyTest(unittest.TestCase):
+    def test_jaccard_and_score(self) -> None:
+        from evergreen.novelty import jaccard, novelty_score
+
+        self.assertEqual(jaccard(frozenset("ab"), frozenset("bc")), 1 / 3)
+        records = [
+            {"id": "a", "methods": ["RLVR / GRPO", "Verifier / PRM"]},
+            {"id": "b", "methods": ["RLVR / GRPO", "Verifier / PRM", "Search / MCTS"]},
+            {"id": "c", "methods": ["RLVR / GRPO", "Verifier / PRM"]},
+        ]
+        score = novelty_score(records[0], records)
+        # overlapping cohort of 2 with jaccards 2/3 and 1 -> novelty 1 - mean
+        self.assertAlmostEqual(score["mean_jaccard"], (2 / 3 + 1.0) / 2, places=3)
+        self.assertAlmostEqual(score["novelty"], 1 - (2 / 3 + 1.0) / 2, places=3)
+        lone = novelty_score({"id": "d", "methods": ["Speculative Decoding"]}, records)
+        self.assertEqual(lone["novelty"], 1.0)
+
+    def test_md_to_latex_subset(self) -> None:
+        from evergreen.latex import md_to_latex
+
+        markdown = "## Heading\n\n- item **bold** and `code`\n- [link](https://x)\n\n> quote\n\n| A | B |\n|---|---|\n| 1 | 2 |\n"
+        tex = md_to_latex(markdown)
+        self.assertIn(r"\section{Heading}", tex)
+        self.assertIn(r"\textbf{bold}", tex)
+        self.assertIn(r"\texttt{code}", tex)
+        self.assertIn(r"\href{https://x}{link}", tex)
+        self.assertIn(r"\begin{itemize}", tex)
+        self.assertIn(r"\begin{quote}", tex)
+        self.assertIn(r"\begin{tabular}{ll}", tex)
+        self.assertIn("A & B", tex)
+
+
 class PipelineTest(unittest.TestCase):
     def test_cluster_signals(self) -> None:
         from evergreen.pipeline import _cluster_signals
