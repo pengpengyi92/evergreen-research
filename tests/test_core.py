@@ -518,6 +518,53 @@ class PillarsPluginTest(unittest.TestCase):
             self.assertEqual(len(load_pillars(Path(tmp) / "nope.json")), len(PILLARS))
 
 
+class GraphRagTest(unittest.TestCase):
+    def test_graph_communities_and_query(self) -> None:
+        from presearch.graphrag import (
+            build_graph,
+            label_propagation,
+            query_communities,
+            summarize_communities,
+        )
+
+        papers = [
+            {"id": "p1", "title": "RL for reasoning", "methods": ["RLVR / GRPO", "Verifier / PRM"],
+             "benchmarks": ["MATH"], "pillar": "LLM Reasoning / Test-time Compute",
+             "year": 2025, "verified": True, "arxiv_id": "arXiv:1"},
+            {"id": "p2", "title": "Verifiers at test time", "methods": ["Verifier / PRM", "Test-time Scaling"],
+             "benchmarks": ["AIME"], "pillar": "LLM Reasoning / Test-time Compute",
+             "year": 2026, "verified": True, "arxiv_id": "arXiv:2"},
+            {"id": "p3", "title": "Trading agents", "methods": ["Quant / Trading"],
+             "benchmarks": [], "pillar": "Quant × AI", "year": 2026, "verified": False, "arxiv_id": "arXiv:3"},
+        ]
+        nodes, edges = build_graph(papers)
+        self.assertGreater(len(nodes), 3)
+        communities = label_propagation(nodes, edges)
+        self.assertEqual(len(communities), len(nodes))
+        summaries = summarize_communities(nodes, communities, edges)
+        # p1/p2 共享 Verifier -> 应同社区；p3 孤立
+        self.assertEqual(communities["p1"], communities["p2"])
+        self.assertNotEqual(communities["p1"], communities["p3"])
+        results = query_communities("verifier", nodes, communities, summaries, top_k=3)
+        self.assertGreaterEqual(len(results), 1)
+
+    def test_build_graphrag_end_to_end(self) -> None:
+        from presearch.graphrag import build_graphrag
+
+        with tempfile.TemporaryDirectory() as tmp:
+            data_root = Path(tmp)
+            (data_root / "papers.jsonl").write_text(
+                json.dumps({"id": "p1", "title": "RL reasoning", "methods": ["RLVR / GRPO"],
+                            "benchmarks": ["MATH"], "pillar": "P", "year": 2025,
+                            "verified": True, "arxiv_id": "arXiv:1"}) + "\n",
+                encoding="utf-8",
+            )
+            result = build_graphrag(data_root)
+            self.assertGreaterEqual(result["nodes"], 1)
+            self.assertGreaterEqual(result["communities"], 1)
+            self.assertTrue((data_root / "graphrag" / "graph.json").exists())
+
+
 class PipelineTest(unittest.TestCase):
     def test_cluster_signals(self) -> None:
         from presearch.pipeline import _cluster_signals

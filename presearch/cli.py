@@ -68,6 +68,15 @@ def main(argv: list[str] | None = None) -> int:
     predict_p.add_argument("--top", type=int, default=20)
     predict_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
 
+    graphrag_p = subparsers.add_parser("graphrag")
+    graphrag_sub = graphrag_p.add_subparsers(dest="graphrag_command", required=True)
+    graphrag_build = graphrag_sub.add_parser("build")
+    graphrag_build.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+    graphrag_query = graphrag_sub.add_parser("query")
+    graphrag_query.add_argument("--text", required=True)
+    graphrag_query.add_argument("--top", type=int, default=5)
+    graphrag_query.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+
     fetch = subparsers.add_parser("fetch")
     fetch.add_argument("--query", default=None)
     fetch.add_argument("--categories", default="cs.AI,cs.LG,cs.CL")
@@ -191,6 +200,21 @@ def main(argv: list[str] | None = None) -> int:
                 "docs_landing": str(docs_path),
             }
         )
+    if args.command == "graphrag" and args.graphrag_command == "build":
+        from presearch.graphrag import build_graphrag
+
+        return _emit(build_graphrag(Path(args.data_root)))
+    if args.command == "graphrag" and args.graphrag_command == "query":
+        import json as _json
+
+        from presearch.graphrag import query_communities
+
+        data_root = Path(args.data_root)
+        payload = _json.loads((data_root / "graphrag" / "graph.json").read_text(encoding="utf-8"))
+        results = query_communities(
+            args.text, payload["nodes"], payload["communities"], payload["summaries"], top_k=args.top
+        )
+        return _emit(results)
     if args.command == "predict":
         from presearch.predict import run_predict
 
