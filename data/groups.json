@@ -1,5 +1,5 @@
 {
-  "generated_on": "2026-08-19T01:36:19Z",
+  "generated_on": "2026-08-19T01:47:16Z",
   "groups": {
     "hku": {
       "name": "The University of Hong Kong (HKU)",
@@ -821,6 +821,21 @@
         "Shell",
         "TypeScript"
       ],
+      "by_pillar": {
+        "Graph / RecSys (pre-LLM line)": 48,
+        "Agentic AI / Deep Research Systems": 26,
+        "Other / Uncategorized": 11,
+        "Quant × AI": 2,
+        "Multimodal / World Models": 2,
+        "Efficient Training & Inference": 2,
+        "LLM Reasoning / Test-time Compute": 1
+      },
+      "by_venue_year": {
+        "2023": 20,
+        "2024": 18,
+        "2025": 9,
+        "2026": 2
+      },
       "top_repos": [
         {
           "name": "CLI-Anything",

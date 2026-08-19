@@ -15,6 +15,7 @@ import hashlib
 import http.client
 import json
 import os
+import re
 import time
 import urllib.error
 import urllib.parse
@@ -105,6 +106,64 @@ def org_repos(org: str, per_page: int = 100, use_cache: bool = True) -> list[dic
             if attempt + 1 < MAX_RETRIES:
                 time.sleep(2 * (attempt + 1))
     raise RuntimeError(f"GitHub org fetch failed after {MAX_RETRIES} attempts: {last_error}")
+
+
+_PILLAR_KEYWORDS: dict[str, list[str]] = {
+    "LLM Reasoning / Test-time Compute": ["reasoning", "chain-of-thought", "verifier", "reward", "think"],
+    "Agentic AI / Deep Research Systems": ["agent", "multi-agent", "tool", "browser", "computer", "swarm", "tutor", "coworker", "research", "deepcode", "harness", "skill"],
+    "Efficient Training & Inference": ["quantiz", "moe", "distill", "long-context", "long context", "kv cache", "pruning", "compression"],
+    "RL / Alignment / Safety": ["alignment", "safety", "interpretab", "jailbreak", "guard"],
+    "Multimodal / World Models": ["video", "vision", "image", "multimodal", "world model", "vlm", "music", "audio"],
+    "Quant × AI": ["trading", "trader", "stock", "finance", "market", "portfolio", "quant", "money"],
+    "Graph / RecSys (pre-LLM line)": ["graph", "recommend", "recsys", "collaborative", "sequential", "spatio", "contrastive"],
+}
+
+_VENUE_YEAR_RE = re.compile(r"\[?([A-Za-z]+['\u2019]?\d{2,4})\]?")
+
+
+def classify_repos(repos: list[dict[str, Any]]) -> dict[str, Any]:
+    """Map repos onto the six-pillar taxonomy (+ legacy bucket) and extract
+    venue years from paper-repo descriptions."""
+    from collections import Counter
+
+    pillar_counter: Counter = Counter()
+    year_counter: Counter = Counter()
+    classified: list[dict[str, Any]] = []
+    for repo in repos:
+        text = " ".join(
+            [repo.get("name", ""), repo.get("description", ""), " ".join(repo.get("topics", []))]
+        ).lower()
+        hit_counts = {
+            pillar: sum(1 for keyword in keywords if keyword in text)
+            for pillar, keywords in _PILLAR_KEYWORDS.items()
+        }
+        if any(hit_counts.values()):
+            pillar = max(hit_counts, key=lambda name: hit_counts[name])
+        else:
+            pillar = "Other / Uncategorized"
+        pillar_counter[pillar] += 1
+        year = ""
+        match = _VENUE_YEAR_RE.search(repo.get("description", ""))
+        if match:
+            raw = match.group(1)
+            digits = re.sub(r"\D", "", raw)
+            year = ("20" + digits[-2:]) if len(digits) == 2 and digits[-2:] >= "20" else digits[:4]
+            if len(year) == 4:
+                year_counter[year] += 1
+        classified.append(
+            {
+                "name": repo["name"],
+                "stars": repo["stars"],
+                "pillar": pillar,
+                "venue_year": year or "",
+                "pushed": repo["pushed_at"][:10],
+            }
+        )
+    return {
+        "by_pillar": dict(pillar_counter.most_common()),
+        "by_venue_year": dict(sorted(year_counter.items())),
+        "classified": classified,
+    }
 
 
 def repos_report(repos: list[dict[str, Any]], org: str) -> dict[str, Any]:

@@ -3,6 +3,20 @@
 > Generated 2026-08-19 · 92 repos, 54 active (2025+), 355618 total stars.
 > Languages: Jupyter Notebook, Python, Roff, Shell, TypeScript
 
+## Six-pillar alignment (Evergreen taxonomy)
+
+- Graph / RecSys (pre-LLM line): 48 repos
+- Agentic AI / Deep Research Systems: 26 repos
+- Other / Uncategorized: 11 repos
+- Quant × AI: 2 repos
+- Multimodal / World Models: 2 repos
+- Efficient Training & Inference: 2 repos
+- LLM Reasoning / Test-time Compute: 1 repos
+
+## Evolution by paper-repo venue year
+
+- {'2023': 20, '2024': 18, '2025': 9, '2026': 2}
+
 ## Top repos by stars
 
 - **CLI-Anything** ⭐47778 (pushed 2026-08-13) — "CLI-Anything: Making ALL Software Agent-Native" -- CLI-Hub: https://clianything.cc/

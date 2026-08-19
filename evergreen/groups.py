@@ -211,6 +211,7 @@ def run_groups(
                 print(f"[groups] github {slug}: {exc}")
             continue
         report = github_client.repos_report(repos, spec["org"])
+        alignment = github_client.classify_repos(repos)
         aggregate["groups"][slug] = {
             "name": spec["name"],
             "type": "github-org",
@@ -218,6 +219,8 @@ def run_groups(
             "active_repos": report["active_repos"],
             "total_stars": report["total_stars"],
             "languages": report["languages"],
+            "by_pillar": alignment["by_pillar"],
+            "by_venue_year": alignment["by_venue_year"],
             "top_repos": [
                 {
                     "name": repo["name"],
@@ -231,7 +234,7 @@ def run_groups(
         (data_root / "groups.json").write_text(
             json.dumps(aggregate, ensure_ascii=False, indent=2), encoding="utf-8"
         )
-        write_github_md(groups_dir, slug, spec, aggregate["groups"][slug])
+        write_github_md(groups_dir, slug, spec, aggregate["groups"][slug], alignment)
         if not quiet:
             print(
                 f"[groups] github {slug}: {report['total_repos']} repos, "
@@ -245,6 +248,7 @@ def write_github_md(
     slug: str,
     spec: dict[str, str],
     group: dict[str, Any],
+    alignment: dict[str, Any] | None = None,
 ) -> Path:
     lines = [
         f"# {spec['name']} — GitHub Repo Radar",
@@ -253,9 +257,27 @@ def write_github_md(
         f"{group['active_repos']} active (2025+), {group['total_stars']} total stars.",
         f"> Languages: {', '.join(group['languages'])}",
         "",
-        "## Top repos by stars",
-        "",
     ]
+    if alignment:
+        lines.extend(
+            [
+                "## Six-pillar alignment (Evergreen taxonomy)",
+                "",
+            ]
+        )
+        for pillar, count in alignment["by_pillar"].items():
+            lines.append(f"- {pillar}: {count} repos")
+        lines.extend(
+            [
+                "",
+                "## Evolution by paper-repo venue year",
+                "",
+                f"- {alignment['by_venue_year']}",
+                "",
+            ]
+        )
+    lines.append("## Top repos by stars")
+    lines.append("")
     for repo in group["top_repos"]:
         lines.append(
             f"- **{repo['name']}** ⭐{repo['stars']} (pushed {repo['pushed']}) — "
