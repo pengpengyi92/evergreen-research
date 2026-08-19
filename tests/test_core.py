@@ -442,6 +442,56 @@ class GroupsTest(unittest.TestCase):
             self.assertIn("Equity Forecasting", (data_root / "groups" / "hku-ds.md").read_text())
 
 
+class GithubRadarTest(unittest.TestCase):
+    def test_org_repos_radar(self) -> None:
+        from evergreen import github
+
+        payload = [
+            {
+                "name": "LightRAG",
+                "full_name": "HKUDS/LightRAG",
+                "description": "Simple and Fast RAG",
+                "language": "Python",
+                "stargazers_count": 38951,
+                "forks_count": 1200,
+                "topics": ["rag", "llm"],
+                "pushed_at": "2026-08-19T00:00:00Z",
+                "html_url": "https://github.com/HKUDS/LightRAG",
+            },
+            {
+                "name": "OldRepo",
+                "full_name": "HKUDS/OldRepo",
+                "description": "dormant",
+                "language": "Roff",
+                "stargazers_count": 2,
+                "forks_count": 0,
+                "topics": [],
+                "pushed_at": "2023-01-01T00:00:00Z",
+                "html_url": "https://github.com/HKUDS/OldRepo",
+            },
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.dict("os.environ", {"EVERGREEN_GH_CACHE": tmp, "GITHUB_TOKEN": "fake"}):
+                captured = {}
+
+                def fake_urlopen(request, timeout=30):
+                    captured["auth"] = request.headers.get("Authorization")
+                    response = mock.MagicMock()
+                    response.read.return_value = json.dumps(payload).encode("utf-8")
+                    response.__enter__ = lambda self: self
+                    response.__exit__ = lambda *a: None
+                    return response
+
+                with mock.patch("urllib.request.urlopen", side_effect=fake_urlopen):
+                    repos = github.org_repos("HKUDS")
+                self.assertEqual(len(repos), 2)
+                self.assertEqual(captured["auth"], "Bearer fake")
+                report = github.repos_report(repos, "HKUDS")
+                self.assertEqual(report["active_repos"], 1)
+                self.assertEqual(report["total_stars"], 38953)
+                self.assertEqual(report["top"][0]["name"], "LightRAG")
+
+
 class PipelineTest(unittest.TestCase):
     def test_cluster_signals(self) -> None:
         from evergreen.pipeline import _cluster_signals

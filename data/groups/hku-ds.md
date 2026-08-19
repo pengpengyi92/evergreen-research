@@ -8,7 +8,7 @@
 - RLVR / GRPO: 1
 - Preference Optimization: 1
 
-## Top authors (affiliated, any field)
+## Top authors (on matched works; includes co-authors)
 
 - Meng Lou: 3 works
 - Yizhou Yu: 3 works

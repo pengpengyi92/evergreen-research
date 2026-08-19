@@ -10,7 +10,7 @@
 - Distillation: 1
 - Video Generation: 1
 
-## Top authors (affiliated, any field)
+## Top authors (on matched works; includes co-authors)
 
 - Ben Zhong Tang: 10 works
 - Jacky W. Y. Lam: 5 works

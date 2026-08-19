@@ -86,6 +86,14 @@ def is_ai_quant(text: str) -> bool:
     return any(keyword in lowered for keyword in _AI_QUANT_KEYWORDS)
 
 
+GITHUB_WATCHLIST: dict[str, dict[str, str]] = {
+    "hkuds": {
+        "org": "HKUDS",
+        "name": "HKU Data Intelligence Lab (HKUDS, Prof. Chao Huang's group)",
+    },
+}
+
+
 def _slug(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
@@ -191,7 +199,79 @@ def run_groups(
                 f"[groups] {slug}: {len(papers)} AI/quant papers "
                 f"(from {len(works)} works)"
             )
+
+    # GitHub repo radar (development side of research groups)
+    from evergreen import github as github_client
+
+    for slug, spec in GITHUB_WATCHLIST.items():
+        try:
+            repos = github_client.org_repos(spec["org"])
+        except Exception as exc:
+            if not quiet:
+                print(f"[groups] github {slug}: {exc}")
+            continue
+        report = github_client.repos_report(repos, spec["org"])
+        aggregate["groups"][slug] = {
+            "name": spec["name"],
+            "type": "github-org",
+            "total_repos": report["total_repos"],
+            "active_repos": report["active_repos"],
+            "total_stars": report["total_stars"],
+            "languages": report["languages"],
+            "top_repos": [
+                {
+                    "name": repo["name"],
+                    "stars": repo["stars"],
+                    "pushed": repo["pushed_at"][:10],
+                    "description": repo["description"][:90],
+                }
+                for repo in report["top"]
+            ],
+        }
+        (data_root / "groups.json").write_text(
+            json.dumps(aggregate, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        write_github_md(groups_dir, slug, spec, aggregate["groups"][slug])
+        if not quiet:
+            print(
+                f"[groups] github {slug}: {report['total_repos']} repos, "
+                f"{report['total_stars']} total stars"
+            )
     return aggregate
+
+
+def write_github_md(
+    groups_dir: Path,
+    slug: str,
+    spec: dict[str, str],
+    group: dict[str, Any],
+) -> Path:
+    lines = [
+        f"# {spec['name']} — GitHub Repo Radar",
+        "",
+        f"> Generated {time.strftime('%Y-%m-%d')} · {group['total_repos']} repos, "
+        f"{group['active_repos']} active (2025+), {group['total_stars']} total stars.",
+        f"> Languages: {', '.join(group['languages'])}",
+        "",
+        "## Top repos by stars",
+        "",
+    ]
+    for repo in group["top_repos"]:
+        lines.append(
+            f"- **{repo['name']}** ⭐{repo['stars']} (pushed {repo['pushed']}) — "
+            f"{repo['description']}"
+        )
+    lines.extend(
+        [
+            "",
+            "---",
+            "_Repo radar from the public GitHub API; stars are an impact proxy, "
+            "not a quality measure. Research and development, tracked together._",
+        ]
+    )
+    path = groups_dir / f"github-{slug}.md"
+    path.write_text("\n".join(lines), encoding="utf-8")
+    return path
 
 
 def write_group_md(

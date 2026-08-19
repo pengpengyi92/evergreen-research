@@ -290,7 +290,11 @@ def main(argv: list[str] | None = None) -> int:
         )
         return _emit(
             {
-                slug: {"name": group["name"], "papers": group["papers"]}
+                slug: {
+                    "name": group["name"],
+                    "papers": group.get("papers", group.get("total_repos")),
+                    "type": group.get("type", "papers"),
+                }
                 for slug, group in summary["groups"].items()
             }
         )

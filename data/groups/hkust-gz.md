@@ -7,7 +7,7 @@
 - Memory / RAG: 1
 - VLM: 1
 
-## Top authors (affiliated, any field)
+## Top authors (on matched works; includes co-authors)
 
 - Yunhao Wang: 1 works
 - Fengkun Hao: 1 works

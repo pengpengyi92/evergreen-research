@@ -9,7 +9,7 @@
 - Deep Research: 1
 - Interpretability: 1
 
-## Top authors (affiliated, any field)
+## Top authors (on matched works; includes co-authors)
 
 - Ben Zhong Tang: 4 works
 - Chao Li: 3 works

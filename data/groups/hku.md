@@ -10,7 +10,7 @@
 - Deep Research: 1
 - Video Generation: 1
 
-## Top authors (affiliated, any field)
+## Top authors (on matched works; includes co-authors)
 
 - Masatoshi Kudo: 5 works
 - Bruno Sangro: 4 works

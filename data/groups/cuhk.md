@@ -13,7 +13,7 @@
 - Computer Use: 1
 - Memory / RAG: 1
 
-## Top authors (affiliated, any field)
+## Top authors (on matched works; includes co-authors)
 
 - Masatoshi Kudo: 4 works
 - Stephen L. Chan: 4 works

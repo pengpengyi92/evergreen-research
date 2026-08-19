@@ -6,7 +6,7 @@
 
 - Computer Use: 1
 
-## Top authors (affiliated, any field)
+## Top authors (on matched works; includes co-authors)
 
 - Gang Xu: 2 works
 - Xinyu Fan: 2 works
