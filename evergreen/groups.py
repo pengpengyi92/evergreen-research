@@ -21,7 +21,27 @@ from typing import Any
 
 from evergreen.structurer import detect_benchmarks, detect_methods
 
-GROUP_WATCHLIST: dict[str, dict[str, str]] = {
+GROUP_WATCHLIST: dict[str, dict[str, object]] = {
+    "hku-cs": {
+        "name": "HKU Computer Science (CS / CDS)",
+        "search": "computer science university of hong kong",
+        "per_page": 40,
+        "require": "university of hong kong",
+        "exclude": "science and technology",
+        "require_raw": ["computer science", "computing and data science"],
+    },
+    "hku-ds": {
+        "name": "HKU Data Science / Statistics",
+        "search": "data science university of hong kong",
+        "per_page": 40,
+        "require": "university of hong kong",
+        "exclude": "science and technology",
+        "require_raw": [
+            "data science",
+            "statistics and actuarial science",
+            "institute of data science",
+        ],
+    },
     "hku": {
         "name": "The University of Hong Kong (HKU)",
         "search": '"University of Hong Kong"',
@@ -80,12 +100,23 @@ def run_groups(
 
     groups_dir = data_root / "groups"
     groups_dir.mkdir(parents=True, exist_ok=True)
-    aggregate: dict[str, Any] = {"generated_on": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "groups": {}}
+    existing_path = data_root / "groups.json"
+    existing: dict[str, Any] = {}
+    if existing_path.exists():
+        try:
+            existing = json.loads(existing_path.read_text(encoding="utf-8")).get("groups", {})
+        except (OSError, ValueError):
+            existing = {}
+    aggregate: dict[str, Any] = {
+        "generated_on": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "groups": dict(existing),
+    }
     consecutive_failures = 0
 
     for slug, spec in GROUP_WATCHLIST.items():
+        group_per_page = int(spec.get("per_page", per_group))
         try:
-            works = openalex.works_by_institution(spec["search"], from_date=from_date, per_page=per_group)
+            works = openalex.works_by_institution(spec["search"], from_date=from_date, per_page=group_per_page)
         except Exception as exc:
             consecutive_failures += 1
             if not quiet:
@@ -95,8 +126,9 @@ def run_groups(
                 break
             continue
         consecutive_failures = 0
-        require = spec.get("require", "").lower()
-        exclude = spec.get("exclude", "").lower()
+        require = str(spec.get("require", "")).lower()
+        exclude = str(spec.get("exclude", "")).lower()
+        require_raw = [term.lower() for term in spec.get("require_raw", [])]
         works = [
             work
             for work in works
@@ -107,6 +139,14 @@ def run_groups(
             and not (
                 exclude
                 and any(exclude in institution.lower() for institution in work.get("institutions", []))
+            )
+            and (
+                not require_raw
+                or any(
+                    term in raw.lower()
+                    for raw in work.get("affiliations_raw", [])
+                    for term in require_raw
+                )
             )
         ]
         papers: list[dict[str, Any]] = []

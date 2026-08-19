@@ -398,6 +398,7 @@ class GroupsTest(unittest.TestCase):
                 "abstract": "We build trading agents with reinforcement learning and memory",
                 "authorships": [{"author": "A. Chan", "institutions": ["Hong Kong University of Science and Technology"]}],
                 "institutions": ["Hong Kong University of Science and Technology"],
+                "affiliations_raw": ["Department of Computer Science, Hong Kong University of Science and Technology"],
                 "cited_by_count": 12,
                 "publication_date": "2026-01-05",
                 "doi": "10.1/x",
@@ -408,9 +409,21 @@ class GroupsTest(unittest.TestCase):
                 "abstract": "A historical analysis of poetry",
                 "authorships": [{"author": "B. Lee", "institutions": ["Hong Kong University of Science and Technology"]}],
                 "institutions": ["Hong Kong University of Science and Technology"],
+                "affiliations_raw": ["Department of Computer Science, Hong Kong University of Science and Technology"],
                 "cited_by_count": 3,
                 "publication_date": "2026-02-01",
                 "doi": "10.1/y",
+            },
+            {
+                "openalex_id": "W3",
+                "title": "Graph Neural Networks for Equity Forecasting",
+                "abstract": "forecasting equities with graph neural networks",
+                "authorships": [{"author": "C. Wong", "institutions": ["University of Hong Kong"]}],
+                "institutions": ["University of Hong Kong"],
+                "affiliations_raw": ["Department of Statistics and Actuarial Science, University of Hong Kong"],
+                "cited_by_count": 8,
+                "publication_date": "2026-03-01",
+                "doi": "10.1/z",
             },
         ]
         with tempfile.TemporaryDirectory() as tmp:
@@ -423,6 +436,10 @@ class GroupsTest(unittest.TestCase):
             self.assertEqual(hkust.get("papers"), 1)  # only the AI/quant work
             self.assertTrue((data_root / "groups" / "hkust.md").exists())
             self.assertIn("Portfolio Optimization", (data_root / "groups" / "hkust.md").read_text())
+            # hku-ds requires department-level raw affiliation strings
+            hku_ds = aggregate["groups"].get("hku-ds", {})
+            self.assertEqual(hku_ds.get("papers"), 1)
+            self.assertIn("Equity Forecasting", (data_root / "groups" / "hku-ds.md").read_text())
 
 
 class PipelineTest(unittest.TestCase):

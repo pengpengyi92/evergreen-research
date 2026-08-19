@@ -160,6 +160,7 @@ def works_by_institution(
                             for institution in row["institutions"]
                         }
                     ),
+                    "affiliations_raw": work.get("raw_affiliation_strings") or [],
                     "cited_by_count": work.get("cited_by_count"),
                     "publication_date": work.get("publication_date"),
                     "doi": work.get("doi"),
