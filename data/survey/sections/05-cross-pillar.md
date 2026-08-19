@@ -100,7 +100,7 @@ confirms the abstract-level convergence claims:
 | Test-time Scaling | 12 | 3 | 2 | 2 | 4 | 2 |
 
 *Sampling bias disclosure: 45 of 92 verified records come from the lead
-pillar, so lead-pillar counts dominate. The table proves the span of each
+pillar, so lead-pillar counts dominate. The table demonstrates the span of each
 family across pillars — not relative pillar intensity. The 99% abstract-
 to-fulltext tag-match rate (§2.4) is the bridge that lets the abstract
 level stand in where verification has not yet reached.*
