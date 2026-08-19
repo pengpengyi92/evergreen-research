@@ -711,6 +711,45 @@ both effects rather than hiding either.
 4. Quant$\times$AI is the frontier stack's most demanding verifiable-reward testbed.
 
 
+\section{5.8 Verified-subset table (n = 92, updated 2026-08-19)}
+
+Full-text verification now spans all six pillars (45 reasoning, 10
+
+RL/alignment, 10 quant, 9 agents, 9 efficiency, 9 multimodal). The
+
+verified-subset matrix --- computed only from full-text re-tagged records ---
+
+confirms the abstract-level convergence claims:
+
+
+\begin{table}[h]\centering\begin{tabular}{lllllll}
+\hline
+Family & Reasoning & Agents & Efficiency & RL/Align & Multimodal & Quant \\
+\hline
+Preference optimization & 30 & 2 & 6 & 8 & 7 & 5 \\
+RLVR / GRPO & 28 & 3 & 6 & 4 & 3 & 3 \\
+Memory / RAG & 25 & 7 & 5 & 3 & 3 & 4 \\
+Interpretability & 18 & 3 & 3 & 8 & 7 & 5 \\
+Quant / Trading & 19 & 2 & 3 & 6 & 3 & 8 \\
+VLM & 14 & 4 & 4 & 1 & 8 & 2 \\
+Multi-Agent & 11 & 7 & 4 & 3 & 5 & 2 \\
+Deep Research & 12 & 4 & 2 & 6 & 3 & 3 \\
+Verifier / PRM & 15 & 2 & 4 & 1 & 3 & 0 \\
+Test-time Scaling & 12 & 3 & 2 & 2 & 4 & 2 \\
+\hline\end{tabular}\end{table}
+
+
+*Sampling bias disclosure: 45 of 92 verified records come from the lead
+
+pillar, so lead-pillar counts dominate. The table proves the span of each
+
+family across pillars --- not relative pillar intensity. The 99\% abstract-
+
+to-fulltext tag-match rate (\S2.4) is the bridge that lets the abstract
+
+level stand in where verification has not yet reached.*
+
+
 
 % ---- 06-empirical-trends.md ----
 \section*{\S6 Empirical Trends from the Living Corpus}
