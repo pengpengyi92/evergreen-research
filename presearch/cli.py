@@ -68,6 +68,9 @@ def main(argv: list[str] | None = None) -> int:
     predict_p.add_argument("--top", type=int, default=20)
     predict_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
 
+    security_p = subparsers.add_parser("security")
+    security_p.add_argument("name", nargs="?", default=None, help="档案名（attacks/defenses/benchmarks/incidents/landscape/readme）")
+
     graphrag_p = subparsers.add_parser("graphrag")
     graphrag_sub = graphrag_p.add_subparsers(dest="graphrag_command", required=True)
     graphrag_build = graphrag_sub.add_parser("build")
@@ -215,6 +218,26 @@ def main(argv: list[str] | None = None) -> int:
             args.text, payload["nodes"], payload["communities"], payload["summaries"], top_k=args.top
         )
         return _emit(results)
+    if args.command == "security":
+        from pathlib import Path as _P
+
+        security_dir = _P(__file__).resolve().parents[1] / "ai-security"
+        if not security_dir.exists():
+            raise FileNotFoundError(f"ai-security 栏目不存在: {security_dir}")
+        if args.name:
+            target = security_dir / f"{args.name.upper() if args.name.isupper() else args.name.lower()}.md"
+            candidates = [target, security_dir / f"{args.name.lower()}.md"]
+            chosen = next((c for c in candidates if c.exists()), None)
+            if chosen is None:
+                available = ", ".join(sorted(p.stem.lower() for p in security_dir.glob("*.md")))
+                raise ValueError(f"无此档案: {args.name}。可用: {available}")
+            print(chosen.read_text(encoding="utf-8"))
+            return 0
+        for path in sorted(security_dir.glob("*.md")):
+            first = next((line for line in path.read_text(encoding="utf-8").splitlines()
+                          if line.startswith("# ")), "")
+            print(f"{path.stem.lower():16s} {first.lstrip('# ').strip()}")
+        return 0
     if args.command == "predict":
         from presearch.predict import run_predict
 
