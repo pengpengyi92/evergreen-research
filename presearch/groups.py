@@ -42,16 +42,36 @@ GROUP_WATCHLIST: dict[str, dict[str, object]] = {
             "institute of data science",
         ],
     },
-    "hku": {
-        "name": "The University of Hong Kong (HKU)",
-        "search": '"University of Hong Kong"',
-        "require": "university of hong kong",
-        "exclude": "science and technology",
+    "cuhksz-cs": {
+        "name": "CUHK-Shenzhen CS / Data Science (SSE / SDS)",
+        "search": '"Chinese University of Hong Kong, Shenzhen"',
+        "per_page": 60,
+        "require": "shenzhen",
+        "require_raw": [
+            "computer science",
+            "data science",
+            "information engineering",
+            "computer engineering",
+            "science and engineering",
+        ],
+    },
+    "hkust-sz": {
+        "name": "HKUST Shenzhen Research Institute",
+        "search": '"Shenzhen Research Institute"',
+        "per_page": 40,
+        "require": "hong kong university of science and technology",
+        "exclude": "guangzhou",
     },
     "hkust-gz": {
         "name": "HKUST (Guangzhou)",
         "search": '"Hong Kong University of Science and Technology"',
         "require": "guangzhou",
+    },
+    "hku": {
+        "name": "The University of Hong Kong (HKU)",
+        "search": '"University of Hong Kong"',
+        "require": "university of hong kong",
+        "exclude": "science and technology",
     },
     "hkust": {
         "name": "Hong Kong University of Science and Technology (HKUST)",
