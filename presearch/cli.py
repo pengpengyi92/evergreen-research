@@ -64,6 +64,10 @@ def main(argv: list[str] | None = None) -> int:
     novelty_p.add_argument("--include-unverified", action="store_true")
     novelty_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
 
+    predict_p = subparsers.add_parser("predict")
+    predict_p.add_argument("--top", type=int, default=20)
+    predict_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+
     fetch = subparsers.add_parser("fetch")
     fetch.add_argument("--query", default=None)
     fetch.add_argument("--categories", default="cs.AI,cs.LG,cs.CL")
@@ -187,6 +191,10 @@ def main(argv: list[str] | None = None) -> int:
                 "docs_landing": str(docs_path),
             }
         )
+    if args.command == "predict":
+        from presearch.predict import run_predict
+
+        return _emit(run_predict(Path(args.data_root), top_n=args.top))
     if args.command == "novelty":
         from presearch.novelty import blend_scores, run_novelty
 
