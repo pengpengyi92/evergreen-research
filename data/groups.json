@@ -1,0 +1,466 @@
+{
+  "generated_on": "2026-08-19T00:59:25Z",
+  "groups": {
+    "hku": {
+      "name": "The University of Hong Kong (HKU)",
+      "papers": 10,
+      "total_works_fetched": 31,
+      "top_methods": {
+        "VLM": 2,
+        "Interpretability": 2,
+        "Long Context": 1,
+        "Deep Research": 1,
+        "Video Generation": 1
+      },
+      "top_authors": {
+        "Masatoshi Kudo": 5,
+        "Bruno Sangro": 4,
+        "Stephen L. Chan": 4,
+        "Mohamed Bouattour": 3,
+        "Vincent Wai‐Sun Wong": 3,
+        "Lorenza Rimassa": 3,
+        "Bin Liu": 2,
+        "Hang Viet Dao": 2,
+        "Thomas Yau": 2,
+        "Thomas Decaens": 2
+      },
+      "years": {
+        "2025": 10
+      },
+      "recent": [
+        {
+          "title": "A Comprehensive Overview of Large Language Models",
+          "doi": "https://doi.org/10.1145/3744746",
+          "openalex_id": "https://openalex.org/W4411403346",
+          "published": "2025-06-18",
+          "citations": 637,
+          "methods": [
+            "Long Context",
+            "Deep Research",
+            "VLM"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Hepatocellular carcinoma: signaling pathways and therapeutic advances",
+          "doi": "https://doi.org/10.1038/s41392-024-02075-w",
+          "openalex_id": "https://openalex.org/W4407203105",
+          "published": "2025-02-06",
+          "citations": 308,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "U-KAN Makes Strong Backbone for Medical Image Segmentation and Generation",
+          "doi": "https://doi.org/10.1609/aaai.v39i5.32491",
+          "openalex_id": "https://openalex.org/W4409367393",
+          "published": "2025-04-11",
+          "citations": 271,
+          "methods": [
+            "Interpretability",
+            "Video Generation"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "DEIM: DETR with Improved Matching for Fast Convergence",
+          "doi": "https://doi.org/10.1109/cvpr52734.2025.01412",
+          "openalex_id": "https://openalex.org/W4413147183",
+          "published": "2025-06-10",
+          "citations": 226,
+          "methods": [],
+          "benchmarks": [
+            "COCO"
+          ]
+        },
+        {
+          "title": "The Transformative Role of Artificial Intelligence in Dentistry: A Comprehensive Overview. Part 1: Fundamentals of AI, and its Contemporary Applications in Dentistry",
+          "doi": "https://doi.org/10.1016/j.identj.2025.02.005",
+          "openalex_id": "https://openalex.org/W4408306782",
+          "published": "2025-03-11",
+          "citations": 199,
+          "methods": [
+            "VLM"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Life cycle comparison of industrial-scale lithium-ion battery recycling and mining supply chains",
+          "doi": "https://doi.org/10.1038/s41467-025-56063-x",
+          "openalex_id": "https://openalex.org/W4406799825",
+          "published": "2025-01-24",
+          "citations": 179,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Mobile Edge Intelligence for Large Language Models: A Contemporary Survey",
+          "doi": "https://doi.org/10.1109/comst.2025.3527641",
+          "openalex_id": "https://openalex.org/W4406207083",
+          "published": "2025-01-09",
+          "citations": 171,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "The Transformative Role of Artificial Intelligence in Dentistry: A Comprehensive Overview Part 2: The Promise and Perils, and the International Dental Federation Communique",
+          "doi": "https://doi.org/10.1016/j.identj.2025.02.006",
+          "openalex_id": "https://openalex.org/W4407932918",
+          "published": "2025-02-25",
+          "citations": 166,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Artificial intelligence in mental health care: a systematic review of diagnosis, monitoring, and intervention applications",
+          "doi": "https://doi.org/10.1017/s0033291724003295",
+          "openalex_id": "https://openalex.org/W4407229447",
+          "published": "2025-01-01",
+          "citations": 164,
+          "methods": [
+            "Interpretability"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "A generalist medical language model for disease diagnosis assistance",
+          "doi": "https://doi.org/10.1038/s41591-024-03416-6",
+          "openalex_id": "https://openalex.org/W4406152280",
+          "published": "2025-01-08",
+          "citations": 162,
+          "methods": [],
+          "benchmarks": []
+        }
+      ]
+    },
+    "hkust-gz": {
+      "name": "HKUST (Guangzhou)",
+      "papers": 1,
+      "total_works_fetched": 2,
+      "top_methods": {
+        "Memory / RAG": 1,
+        "VLM": 1
+      },
+      "top_authors": {
+        "Yunhao Wang": 1,
+        "Fengkun Hao": 1,
+        "Hongming Xu": 1,
+        "Mingzi Sun": 1,
+        "Xixi Wang": 1,
+        "Yuecheng Xiong": 1,
+        "Jingwen Zhou": 1,
+        "Fu Liu": 1,
+        "Yubing Hu": 1,
+        "Yangbo Ma": 1
+      },
+      "years": {
+        "2025": 1
+      },
+      "recent": [
+        {
+          "title": "Pyridinium Rotor Strategy toward a Robust Photothermal Agent for STING Activation and Multimodal Image-Guided Immunotherapy for Triple-Negative Breast Cancer",
+          "doi": "https://doi.org/10.1021/jacs.4c15534",
+          "openalex_id": "https://openalex.org/W4407780836",
+          "published": "2025-02-20",
+          "citations": 81,
+          "methods": [
+            "Memory / RAG",
+            "VLM"
+          ],
+          "benchmarks": []
+        }
+      ]
+    },
+    "hkust": {
+      "name": "Hong Kong University of Science and Technology (HKUST)",
+      "papers": 14,
+      "total_works_fetched": 29,
+      "top_methods": {
+        "VLM": 2,
+        "Video Generation": 1,
+        "Deep Research": 1,
+        "Interpretability": 1
+      },
+      "top_authors": {
+        "Ben Zhong Tang": 4,
+        "Chao Li": 3,
+        "Jiali Song": 3,
+        "Junwei Liu": 3,
+        "Zheng Zhao": 3,
+        "Jacky W. Y. Lam": 3,
+        "Yang Li": 3,
+        "Min Hun Jee": 2,
+        "Han Young Woo": 2,
+        "He Yan": 2
+      },
+      "years": {
+        "2025": 14
+      },
+      "recent": [
+        {
+          "title": "Convex Optimization Theory",
+          "doi": "https://doi.org/10.1017/9781009428095.021",
+          "openalex_id": "https://openalex.org/W633277346",
+          "published": "2025-05-31",
+          "citations": 608,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "MB-TaylorFormer V2: Improved Multi-Branch Linear Transformer Expanded by Taylor Formula for Image Restoration",
+          "doi": "https://doi.org/10.1109/tpami.2025.3559891",
+          "openalex_id": "https://openalex.org/W4409326045",
+          "published": "2025-04-10",
+          "citations": 210,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Opportunities, challenges and school strategies for integrating generative AI in education",
+          "doi": "https://doi.org/10.1016/j.caeai.2025.100373",
+          "openalex_id": "https://openalex.org/W4406818641",
+          "published": "2025-01-25",
+          "citations": 130,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "LLDiffusion: Learning degradation representations in diffusion models for low-light image enhancement",
+          "doi": "https://doi.org/10.1016/j.patcog.2025.111628",
+          "openalex_id": "https://openalex.org/W4409349224",
+          "published": "2025-04-11",
+          "citations": 123,
+          "methods": [
+            "Video Generation"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "A Survey on Large Language Models for Code Generation",
+          "doi": "https://doi.org/10.1145/3747588",
+          "openalex_id": "https://openalex.org/W7125135101",
+          "published": "2025-07-08",
+          "citations": 118,
+          "methods": [
+            "Deep Research"
+          ],
+          "benchmarks": [
+            "HumanEval",
+            "MBPP"
+          ]
+        },
+        {
+          "title": "Worldwide rooftop photovoltaic electricity generation may mitigate global warming",
+          "doi": "https://doi.org/10.1038/s41558-025-02276-3",
+          "openalex_id": "https://openalex.org/W4408235317",
+          "published": "2025-03-07",
+          "citations": 100,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Foundation models in bioinformatics",
+          "doi": "https://doi.org/10.1093/nsr/nwaf028",
+          "openalex_id": "https://openalex.org/W4406817136",
+          "published": "2025-01-25",
+          "citations": 98,
+          "methods": [
+            "Interpretability",
+            "VLM"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Lone Pairs-Mediated Multiple Through-Space Interactions for Efficient Room-Temperature Phosphorescence",
+          "doi": "https://doi.org/10.1021/jacs.5c02567",
+          "openalex_id": "https://openalex.org/W4408545780",
+          "published": "2025-03-18",
+          "citations": 74,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Suppression of Charge Recombination Induced by Solid Additive Assisting Organic Solar Cells with Efficiency over 20%",
+          "doi": "https://doi.org/10.1002/adma.202504396",
+          "openalex_id": "https://openalex.org/W4409148737",
+          "published": "2025-04-03",
+          "citations": 73,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Integration of Motion and Stillness: A Paradigm Shift in Constructing Nearly Planar NIR-II AIEgen with Ultrahigh Molar Absorptivity and Photothermal Effect for Multimodal Phototheranostics",
+          "doi": "https://doi.org/10.1021/jacs.4c15216",
+          "openalex_id": "https://openalex.org/W4406391494",
+          "published": "2025-01-15",
+          "citations": 73,
+          "methods": [
+            "VLM"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Explainable spatiotemporal multi-task learning for electric vehicle charging demand prediction",
+          "doi": "https://doi.org/10.1016/j.apenergy.2025.125460",
+          "openalex_id": "https://openalex.org/W4407389450",
+          "published": "2025-02-12",
+          "citations": 69,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Recent Advances in Metasurfaces: From THz Biosensing to Microwave Wireless Communications",
+          "doi": "https://doi.org/10.34133/research.0820",
+          "openalex_id": "https://openalex.org/W4412413509",
+          "published": "2025-01-01",
+          "citations": 68,
+          "methods": [],
+          "benchmarks": []
+        }
+      ]
+    },
+    "cuhk-shenzhen": {
+      "name": "The Chinese University of Hong Kong, Shenzhen (CUHK-SZ)",
+      "papers": 26,
+      "total_works_fetched": 40,
+      "top_methods": {
+        "VLM": 4,
+        "Memory / RAG": 2,
+        "Deep Research": 1,
+        "Distillation": 1,
+        "Video Generation": 1
+      },
+      "top_authors": {
+        "Ben Zhong Tang": 10,
+        "Jacky W. Y. Lam": 5,
+        "Zheng Zhao": 4,
+        "Ryan T. K. Kwok": 4,
+        "Jun Yan": 3,
+        "Feng Gao": 3,
+        "Yuxuan Sun": 3,
+        "Rui Zhang": 3,
+        "Parvej Alam": 3,
+        "Huotian Zhang": 2
+      },
+      "years": {
+        "2025": 25,
+        "2026": 1
+      },
+      "recent": [
+        {
+          "title": "A generalist medical language model for disease diagnosis assistance",
+          "doi": "https://doi.org/10.1038/s41591-024-03416-6",
+          "openalex_id": "https://openalex.org/W4406152280",
+          "published": "2025-01-08",
+          "citations": 162,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "A single-cell atlas reveals immune heterogeneity in anti-PD-1-treated non-small cell lung cancer",
+          "doi": "https://doi.org/10.1016/j.cell.2025.03.018",
+          "openalex_id": "https://openalex.org/W4408896223",
+          "published": "2025-03-27",
+          "citations": 124,
+          "methods": [
+            "Memory / RAG"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "6D Movable Antenna Enhanced Wireless Network via Discrete Position and Rotation Optimization",
+          "doi": "https://doi.org/10.1109/jsac.2025.3531571",
+          "openalex_id": "https://openalex.org/W4406689889",
+          "published": "2025-01-21",
+          "citations": 122,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Generative Artificial Intelligence: Evolving Technology, Growing Societal Impact, and Opportunities for Information Systems Research",
+          "doi": "https://doi.org/10.1007/s10796-025-10581-7",
+          "openalex_id": "https://openalex.org/W4407931566",
+          "published": "2025-02-24",
+          "citations": 109,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Rate Maximization for Downlink Pinching-Antenna Systems",
+          "doi": "https://doi.org/10.1109/lwc.2025.3543889",
+          "openalex_id": "https://openalex.org/W4407782736",
+          "published": "2025-02-20",
+          "citations": 106,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Integrated Sensing and Communication for Low Altitude Economy: Opportunities and Challenges",
+          "doi": "https://doi.org/10.1109/mcom.001.2400685",
+          "openalex_id": "https://openalex.org/W4409234864",
+          "published": "2025-04-07",
+          "citations": 105,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Networked ISAC for Low-Altitude Economy: Coordinated Transmit Beamforming and UAV Trajectory Design",
+          "doi": "https://doi.org/10.1109/tcomm.2025.3541027",
+          "openalex_id": "https://openalex.org/W4407390651",
+          "published": "2025-02-11",
+          "citations": 83,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Pyridinium Rotor Strategy toward a Robust Photothermal Agent for STING Activation and Multimodal Image-Guided Immunotherapy for Triple-Negative Breast Cancer",
+          "doi": "https://doi.org/10.1021/jacs.4c15534",
+          "openalex_id": "https://openalex.org/W4407780836",
+          "published": "2025-02-20",
+          "citations": 81,
+          "methods": [
+            "Memory / RAG",
+            "VLM"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Optimized Dynamic Network Biomarker Deciphers a High‐Resolution Heterogeneity Within Thyroid Cancer Molecular Subtypes",
+          "doi": "https://doi.org/10.1002/mdr2.70004",
+          "openalex_id": "https://openalex.org/W4409920743",
+          "published": "2025-04-29",
+          "citations": 81,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "pH‐Responsive AIE Photosensitizers for Enhanced Antibacterial Therapy",
+          "doi": "https://doi.org/10.1002/anie.202506505",
+          "openalex_id": "https://openalex.org/W4409919737",
+          "published": "2025-04-29",
+          "citations": 79,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "LLM Fine-Tuning: Concepts, Opportunities, and Challenges",
+          "doi": "https://doi.org/10.3390/bdcc9040087",
+          "openalex_id": "https://openalex.org/W4409098775",
+          "published": "2025-04-02",
+          "citations": 78,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "MXenes and MXene-based composites for biomedical applications",
+          "doi": "https://doi.org/10.1039/d4tb02834a",
+          "openalex_id": "https://openalex.org/W4407979559",
+          "published": "2025-01-01",
+          "citations": 78,
+          "methods": [],
+          "benchmarks": []
+        }
+      ]
+    }
+  }
+}

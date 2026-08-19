@@ -103,6 +103,11 @@ def main(argv: list[str] | None = None) -> int:
     matrix_query.add_argument("--k", type=int, default=10)
     matrix_query.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
 
+    groups_p = subparsers.add_parser("groups")
+    groups_p.add_argument("--from-date", default="2025-01-01")
+    groups_p.add_argument("--per-group", type=int, default=40)
+    groups_p.add_argument("--data-root", default=str(PROJECT_ROOT / "data"))
+
     version = subparsers.add_parser("version")
 
     args = parser.parse_args(argv)
@@ -275,6 +280,20 @@ def main(argv: list[str] | None = None) -> int:
         records = PaperDatabase(data_root).load()
         matrix = load_matrix(data_root)
         return _emit(query(matrix, records, args.text, k=args.k))
+    if args.command == "groups":
+        from evergreen.groups import run_groups
+
+        summary = run_groups(
+            Path(args.data_root),
+            from_date=args.from_date,
+            per_group=args.per_group,
+        )
+        return _emit(
+            {
+                slug: {"name": group["name"], "papers": group["papers"]}
+                for slug, group in summary["groups"].items()
+            }
+        )
     if args.command == "version":
         print(__version__)
         return 0

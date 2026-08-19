@@ -23,6 +23,7 @@ jobs:
           python -m evergreen.cli audit
           python -m evergreen.cli snapshot
           python -m evergreen.cli rss
+          python -m evergreen.cli groups || echo "[groups] rate-limited this week; cached data kept"
       - name: Commit and push research updates
         run: |
           git config user.name "evergreen-bot"

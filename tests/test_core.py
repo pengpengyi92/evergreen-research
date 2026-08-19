@@ -384,6 +384,47 @@ class MatrixTest(unittest.TestCase):
         self.assertGreater(sum(c["size"] for c in report["clusters"]), 0)
 
 
+class GroupsTest(unittest.TestCase):
+    def test_group_classification_and_report(self) -> None:
+        from evergreen.groups import is_ai_quant, run_groups
+
+        self.assertTrue(is_ai_quant("We train a transformer for stock prediction"))
+        self.assertFalse(is_ai_quant("A study of medieval poetry in translation"))
+
+        works = [
+            {
+                "openalex_id": "W1",
+                "title": "LLM Agents for Portfolio Optimization",
+                "abstract": "We build trading agents with reinforcement learning and memory",
+                "authorships": [{"author": "A. Chan", "institutions": ["Hong Kong University of Science and Technology"]}],
+                "institutions": ["Hong Kong University of Science and Technology"],
+                "cited_by_count": 12,
+                "publication_date": "2026-01-05",
+                "doi": "10.1/x",
+            },
+            {
+                "openalex_id": "W2",
+                "title": "Poetry in the Tang Dynasty",
+                "abstract": "A historical analysis of poetry",
+                "authorships": [{"author": "B. Lee", "institutions": ["Hong Kong University of Science and Technology"]}],
+                "institutions": ["Hong Kong University of Science and Technology"],
+                "cited_by_count": 3,
+                "publication_date": "2026-02-01",
+                "doi": "10.1/y",
+            },
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            data_root = Path(tmp)
+            with mock.patch(
+                "evergreen.groups.openalex.works_by_institution", return_value=works
+            ):
+                aggregate = run_groups(data_root, per_group=10, quiet=True)
+            hkust = aggregate["groups"].get("hkust", {})
+            self.assertEqual(hkust.get("papers"), 1)  # only the AI/quant work
+            self.assertTrue((data_root / "groups" / "hkust.md").exists())
+            self.assertIn("Portfolio Optimization", (data_root / "groups" / "hkust.md").read_text())
+
+
 class PipelineTest(unittest.TestCase):
     def test_cluster_signals(self) -> None:
         from evergreen.pipeline import _cluster_signals
