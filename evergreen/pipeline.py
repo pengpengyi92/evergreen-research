@@ -53,9 +53,10 @@ def run_backfill(
     db = PaperDatabase(data_root)
     structured: list[dict[str, Any]] = []
     failures: list[str] = []
+    pillars = pillars_config.load_pillars(data_root / "evergreen_pillars.json")
 
     for days_back, until_days_back in windows:
-        for pillar, spec in pillars_config.PILLARS.items():
+        for pillar, spec in pillars.items():
             categories = list(spec["categories"])  # type: ignore[arg-type]
             terms = str(spec["terms"])  # type: ignore[arg-type]
             try:
@@ -284,8 +285,9 @@ def run_weekly(
     db = PaperDatabase(data_root)
     structured: list[dict[str, Any]] = []
     failures: list[str] = []
+    pillars = pillars_config.load_pillars(data_root / "evergreen_pillars.json")
 
-    for pillar, spec in pillars_config.PILLARS.items():
+    for pillar, spec in pillars.items():
         categories = list(spec["categories"])  # type: ignore[arg-type]
         terms = str(spec["terms"])  # type: ignore[arg-type]
         days_back = int(spec["days_back"])  # type: ignore[arg-type]

@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from evergreen.database import PaperDatabase
-from evergreen.pillars import PILLARS
+from evergreen.pillars import load_pillars
 
 
 def iso_week() -> str:
@@ -53,7 +53,7 @@ def write_weekly(db: PaperDatabase, summary: dict[str, Any], weekly_root: Path) 
         "> Evidence is abstract-level (arXiv metadata). Treat claims as research signals.",
         "",
     ]
-    for pillar in PILLARS:
+    for pillar in load_pillars(weekly_root.parent / "evergreen_pillars.json"):
         lines.append(f"## {pillar}")
         lines.append("")
         lines.extend(_paper_lines(records, pillar))
@@ -84,7 +84,7 @@ def write_weekly(db: PaperDatabase, summary: dict[str, Any], weekly_root: Path) 
 def write_index(db: PaperDatabase, data_root: Path) -> Path:
     records = db.load()
     stats = db.stats()
-    by_pillar = {pillar: [] for pillar in PILLARS}
+    by_pillar = {pillar: [] for pillar in load_pillars(data_root / "evergreen_pillars.json")}
     for record in records:
         if record.get("pillar") in by_pillar:
             by_pillar[record["pillar"]].append(record)
@@ -221,7 +221,7 @@ def write_survey_outline(db: PaperDatabase, survey_root: Path) -> Path:
         "## 5. Cross-Pillar Convergence under a Compute-Allocation Lens",
         "",
     ]
-    for pillar in PILLARS:
+    for pillar in load_pillars(survey_root.parent / "evergreen_pillars.json"):
         lines.append(f"- [ ] {pillar} — {counter.get(pillar, 0)} papers")
     lines.extend(
         [

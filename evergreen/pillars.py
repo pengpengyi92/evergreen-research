@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 PILLARS: dict[str, dict[str, object]] = {
     "LLM Reasoning / Test-time Compute": {
         "categories": ["cs.AI", "cs.CL", "cs.LG"],
@@ -59,3 +62,22 @@ PILLARS: dict[str, dict[str, object]] = {
         "days_back": 30,
     },
 }
+
+
+def load_pillars(custom_path: Path | None = None) -> dict[str, dict[str, object]]:
+    """Built-in six pillars merged with an optional user pillar manifest.
+
+    The manifest (e.g. `data/evergreen_pillars.json`) is the first plugin
+    point: add new pillars or override built-in queries without touching
+    code. Format: {"My Pillar": {"categories": [...], "terms": "...",
+    "max": 15, "days_back": 21}}.
+    """
+    merged: dict[str, dict[str, object]] = dict(PILLARS)
+    if custom_path and Path(custom_path).exists():
+        try:
+            extra = json.loads(Path(custom_path).read_text(encoding="utf-8"))
+            if isinstance(extra, dict):
+                merged.update(extra)
+        except (OSError, ValueError):
+            pass
+    return merged

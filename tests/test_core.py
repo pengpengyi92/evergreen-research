@@ -492,6 +492,32 @@ class GithubRadarTest(unittest.TestCase):
                 self.assertEqual(report["top"][0]["name"], "LightRAG")
 
 
+class PillarsPluginTest(unittest.TestCase):
+    def test_load_pillars_merges_manifest(self) -> None:
+        from evergreen.pillars import PILLARS, load_pillars
+
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest = Path(tmp) / "evergreen_pillars.json"
+            manifest.write_text(
+                json.dumps(
+                    {
+                        "Crypto / DeFi × AI": {
+                            "categories": ["q-fin.TR"],
+                            "terms": 'all:"crypto" OR all:"defi"',
+                            "max": 10,
+                            "days_back": 21,
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            merged = load_pillars(manifest)
+            self.assertEqual(len(merged), len(PILLARS) + 1)
+            self.assertIn("Crypto / DeFi × AI", merged)
+            # missing manifest -> built-ins only
+            self.assertEqual(len(load_pillars(Path(tmp) / "nope.json")), len(PILLARS))
+
+
 class PipelineTest(unittest.TestCase):
     def test_cluster_signals(self) -> None:
         from evergreen.pipeline import _cluster_signals
