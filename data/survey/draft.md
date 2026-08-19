@@ -51,7 +51,7 @@ full-text-verified papers from 2024, 18 from 2025, and 6 in the first part
 of 2026 — while classic chain-of-thought language rises more slowly
 (2 → 12 → 4). Test-time scaling and verifier/process-reward-model methods
 follow the same trajectory. (Full corpus: `data/papers.jsonl`; verified
-subset: 45 records, method-tag match rate 99%.)
+subset: 92 records; the first 45 lead-pillar records show a 99% method-tag match rate.)
 
 ## 1.2 Why a living survey
 
@@ -170,7 +170,7 @@ Each arXiv entry is mapped to a record with:
   rejected by `ltx_` marker detection.
 - **Procedure**: pull full text → re-run the deterministic taggers on it →
   record `verified` plus matched-method overlap vs. the abstract-level tags.
-- **Status**: 45 lead-pillar records verified; source split ar5iv/arxiv-html
+- **Status**: 92 records verified across all six pillars; source split ar5iv/arxiv-html
   recorded per record.
 
 ## 2.5 Citation tracking (in progress)

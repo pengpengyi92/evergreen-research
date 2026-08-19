@@ -1,6 +1,6 @@
 # HKU Data Intelligence Lab (HKUDS, Prof. Chao Huang's group) — GitHub Repo Radar
 
-> Generated 2026-08-19 · 92 repos, 54 active (2025+), 355676 total stars.
+> Generated 2026-08-19 · 92 repos, 54 active (2025+), 355618 total stars.
 > Languages: Jupyter Notebook, Python, Roff, Shell, TypeScript
 
 ## Six-pillar alignment (Evergreen taxonomy)
@@ -19,19 +19,19 @@
 
 ## Top repos by stars
 
-- **CLI-Anything** ⭐47784 (pushed 2026-08-13) — "CLI-Anything: Making ALL Software Agent-Native" -- CLI-Hub: https://clianything.cc/
-- **nanobot** ⭐47155 (pushed 2026-08-19) — Ultra-lightweight, open-source, self-hosted personal AI agent framework in Python with Web
-- **LightRAG** ⭐38954 (pushed 2026-08-19) — [EMNLP2025] LightRAG: Simple and Fast Retrieval-Augmented Generation
-- **DeepTutor** ⭐36342 (pushed 2026-08-17) — DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.
-- **Vibe-Trading** ⭐31240 (pushed 2026-08-18) — "Vibe-Trading: Your Personal Trading Agent"
-- **RAG-Anything** ⭐22976 (pushed 2026-08-13) — "RAG-Anything: All-in-One RAG Framework"
-- **AI-Trader** ⭐21450 (pushed 2026-06-11) — "AI-Trader: 100% Fully-Automated Agent-Native Trading"  
-- **DeepCode** ⭐16370 (pushed 2026-08-17) — "DeepCode: Open Agentic Coding (Agent Harness & Loop Engineering & Multi-Agent Orchestrati
-- **OpenHarness** ⭐15417 (pushed 2026-06-04) — "OpenHarness: Open Agent Harness with a Built-in Personal Agent--Ohmo!"
-- **ViMax** ⭐12024 (pushed 2026-07-29) — "ViMax: Agentic Video Generation (Director, Screenwriter, Producer, and Video Generator Al
+- **CLI-Anything** ⭐47778 (pushed 2026-08-13) — "CLI-Anything: Making ALL Software Agent-Native" -- CLI-Hub: https://clianything.cc/
+- **nanobot** ⭐47151 (pushed 2026-08-18) — Ultra-lightweight, open-source, self-hosted personal AI agent framework in Python with Web
+- **LightRAG** ⭐38951 (pushed 2026-08-19) — [EMNLP2025] LightRAG: Simple and Fast Retrieval-Augmented Generation
+- **DeepTutor** ⭐36317 (pushed 2026-08-17) — DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.
+- **Vibe-Trading** ⭐31234 (pushed 2026-08-18) — "Vibe-Trading: Your Personal Trading Agent"
+- **RAG-Anything** ⭐22975 (pushed 2026-08-13) — "RAG-Anything: All-in-One RAG Framework"
+- **AI-Trader** ⭐21448 (pushed 2026-06-11) — "AI-Trader: 100% Fully-Automated Agent-Native Trading"  
+- **DeepCode** ⭐16368 (pushed 2026-08-17) — "DeepCode: Open Agentic Coding (Agent Harness & Loop Engineering & Multi-Agent Orchestrati
+- **OpenHarness** ⭐15415 (pushed 2026-06-04) — "OpenHarness: Open Agent Harness with a Built-in Personal Agent--Ohmo!"
+- **ViMax** ⭐12023 (pushed 2026-07-29) — "ViMax: Agentic Video Generation (Director, Screenwriter, Producer, and Video Generator Al
 - **AutoAgent** ⭐9738 (pushed 2025-10-16) — "AutoAgent: Fully-Automated and Zero-Code LLM Agent Framework"
-- **ClawWork** ⭐8353 (pushed 2026-03-03) — "ClawWork: OpenClaw as Your AI Coworker - 💰 $15K earned in 11 Hours"
-- **OpenSpace** ⭐7424 (pushed 2026-08-12) — "OpenSpace: The Skill Management Layer for AI Agents" -- https://open-space.cloud/
+- **ClawWork** ⭐8351 (pushed 2026-03-03) — "ClawWork: OpenClaw as Your AI Coworker - 💰 $15K earned in 11 Hours"
+- **OpenSpace** ⭐7423 (pushed 2026-08-12) — "OpenSpace: The Skill Management Layer for AI Agents" -- https://open-space.cloud/
 - **AI-Researcher** ⭐5682 (pushed 2025-10-16) — [NeurIPS2025] "AI-Researcher: Autonomous Scientific Innovation" -- A production-ready vers
 - **ClawTeam** ⭐5498 (pushed 2026-05-09) — "ClawTeam: Agent Swarm Intelligence" (One Command → Full Automation)
 

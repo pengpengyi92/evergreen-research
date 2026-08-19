@@ -55,7 +55,7 @@ Each arXiv entry is mapped to a record with:
   rejected by `ltx_` marker detection.
 - **Procedure**: pull full text → re-run the deterministic taggers on it →
   record `verified` plus matched-method overlap vs. the abstract-level tags.
-- **Status**: 45 lead-pillar records verified; source split ar5iv/arxiv-html
+- **Status**: 92 records verified across all six pillars; source split ar5iv/arxiv-html
   recorded per record.
 
 ## 2.5 Citation tracking (in progress)
