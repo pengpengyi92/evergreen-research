@@ -214,7 +214,7 @@ def write_group_md(
     lines.extend(
         [
             "",
-            "## Top authors (affiliated, any field)",
+            "## Top authors (on matched works; includes co-authors)",
             "",
         ]
     )

@@ -89,7 +89,7 @@ def _author_surname_overlap(record: dict[str, Any], work: dict[str, Any]) -> int
 
 
 def _extract_authorships(work: dict[str, Any]) -> list[dict[str, Any]]:
-    """Flatten authorships into {author, institutions} entries."""
+    """Flatten authorships into {author, institutions, raw_affiliations}."""
     rows = []
     for authorship in work.get("authorships", []):
         institutions = [
@@ -97,10 +97,14 @@ def _extract_authorships(work: dict[str, Any]) -> list[dict[str, Any]]:
             for institution in authorship.get("institutions", [])
             if institution.get("display_name")
         ]
+        raw_affiliations = authorship.get("raw_affiliation_strings") or []
+        if isinstance(raw_affiliations, str):
+            raw_affiliations = [raw_affiliations]
         rows.append(
             {
                 "author": (authorship.get("author") or {}).get("display_name", ""),
                 "institutions": institutions,
+                "raw_affiliations": raw_affiliations,
             }
         )
     return rows
@@ -125,7 +129,7 @@ def works_by_institution(
     use_cache: bool = True,
 ) -> list[dict[str, Any]]:
     """Fetch recent works whose raw affiliation matches an institution name."""
-    key = f"inst-{search_term.lower()}-{from_date}-{per_page}"
+    key = f"v2-inst-{search_term.lower()}-{from_date}-{per_page}"
     if use_cache:
         cached = _load_cache(key)
         if cached is not None:
@@ -134,6 +138,10 @@ def works_by_institution(
         "filter": (
             f"raw_affiliation_strings.search:{search_term},"
             f"from_publication_date:{from_date}"
+        ),
+        "select": (
+            "id,title,abstract_inverted_index,authorships,"
+            "cited_by_count,publication_date,doi,primary_location"
         ),
         "per-page": per_page,
         "sort": "cited_by_count:desc",
@@ -160,7 +168,13 @@ def works_by_institution(
                             for institution in row["institutions"]
                         }
                     ),
-                    "affiliations_raw": work.get("raw_affiliation_strings") or [],
+                    "affiliations_raw": sorted(
+                        {
+                            raw
+                            for row in _extract_authorships(work)
+                            for raw in row["raw_affiliations"]
+                        }
+                    ),
                     "cited_by_count": work.get("cited_by_count"),
                     "publication_date": work.get("publication_date"),
                     "doi": work.get("doi"),

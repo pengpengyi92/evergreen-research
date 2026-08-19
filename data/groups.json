@@ -1,5 +1,5 @@
 {
-  "generated_on": "2026-08-19T00:59:25Z",
+  "generated_on": "2026-08-19T01:26:13Z",
   "groups": {
     "hku": {
       "name": "The University of Hong Kong (HKU)",
@@ -457,6 +457,352 @@
           "openalex_id": "https://openalex.org/W4407979559",
           "published": "2025-01-01",
           "citations": 78,
+          "methods": [],
+          "benchmarks": []
+        }
+      ]
+    },
+    "hku-cs": {
+      "name": "HKU Computer Science (CS / CDS)",
+      "papers": 5,
+      "total_works_fetched": 9,
+      "top_methods": {
+        "Computer Use": 1
+      },
+      "top_authors": {
+        "Gang Xu": 2,
+        "Xinyu Fan": 2,
+        "Shiyuan Xu": 2,
+        "Yibo Cao": 2,
+        "Xiu‐Bo Chen": 2,
+        "Viktoria Cologna": 1,
+        "Niels G. Mede": 1,
+        "Sebastian Berger": 1,
+        "John C. Besley": 1,
+        "Cameron Brick": 1
+      },
+      "years": {
+        "2025": 3,
+        "2026": 2
+      },
+      "recent": [
+        {
+          "title": "Graph Neural Networks for Graphs With Heterophily: A Survey",
+          "doi": "https://doi.org/10.1109/tkde.2026.3680353",
+          "openalex_id": "https://openalex.org/W4221150249",
+          "published": "2026-04-02",
+          "citations": 99,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Machine learning guided design and ablation behavior of ZrC-TaC-SiC ternary coatings",
+          "doi": "https://doi.org/10.1016/j.corsci.2025.113499",
+          "openalex_id": "https://openalex.org/W4416552669",
+          "published": "2025-11-23",
+          "citations": 80,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "SAM2-UNet: segment anything 2 makes strong encoder for natural and medical image segmentation",
+          "doi": "https://doi.org/10.1007/s44267-025-00106-w",
+          "openalex_id": "https://openalex.org/W4402501200",
+          "published": "2026-01-13",
+          "citations": 76,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Deep Graph Anomaly Detection: A Survey and New Perspectives",
+          "doi": "https://doi.org/10.1109/tkde.2025.3581578",
+          "openalex_id": "https://openalex.org/W4411550850",
+          "published": "2025-06-23",
+          "citations": 72,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Oculomics: Current concepts and evidence",
+          "doi": "https://doi.org/10.1016/j.preteyeres.2025.101350",
+          "openalex_id": "https://openalex.org/W4408129742",
+          "published": "2025-03-04",
+          "citations": 68,
+          "methods": [
+            "Computer Use"
+          ],
+          "benchmarks": []
+        }
+      ]
+    },
+    "hku-ds": {
+      "name": "HKU Data Science / Statistics",
+      "papers": 9,
+      "total_works_fetched": 13,
+      "top_methods": {
+        "Video Generation": 1,
+        "RLVR / GRPO": 1,
+        "Preference Optimization": 1
+      },
+      "top_authors": {
+        "Meng Lou": 3,
+        "Yizhou Yu": 3,
+        "Dusit Niyato": 3,
+        "Xianhao Chen": 2,
+        "Kaibin Huang": 2,
+        "Yi Wang": 2,
+        "Yali Wang": 2,
+        "Jiacheng Wang": 2,
+        "Changyuan Zhao": 2,
+        "Hongyang Du": 2
+      },
+      "years": {
+        "2025": 9
+      },
+      "recent": [
+        {
+          "title": "Mobile Edge Intelligence for Large Language Models: A Contemporary Survey",
+          "doi": "https://doi.org/10.1109/comst.2025.3527641",
+          "openalex_id": "https://openalex.org/W4406207083",
+          "published": "2025-01-09",
+          "citations": 171,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "The Digital Health Competencies in Medical Education Framework",
+          "doi": "https://doi.org/10.1001/jamanetworkopen.2024.53131",
+          "openalex_id": "https://openalex.org/W4407010033",
+          "published": "2025-01-31",
+          "citations": 132,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Modulation of metabolic, inflammatory and fibrotic pathways by semaglutide in metabolic dysfunction-associated steatohepatitis",
+          "doi": "https://doi.org/10.1038/s41591-025-03799-0",
+          "openalex_id": "https://openalex.org/W4412514920",
+          "published": "2025-07-21",
+          "citations": 85,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "OverLoCK: An Overview-first-Look-Closely-next ConvNet with Context-Mixing Dynamic Kernels",
+          "doi": "https://doi.org/10.1109/cvpr52734.2025.00021",
+          "openalex_id": "https://openalex.org/W4413146210",
+          "published": "2025-06-10",
+          "citations": 81,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Deep Graph Anomaly Detection: A Survey and New Perspectives",
+          "doi": "https://doi.org/10.1109/tkde.2025.3581578",
+          "openalex_id": "https://openalex.org/W4411550850",
+          "published": "2025-06-23",
+          "citations": 72,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "TransXNet: Learning Both Global and Local Dynamics With a Dual Dynamic Token Mixer for Visual Recognition",
+          "doi": "https://doi.org/10.1109/tnnls.2025.3550979",
+          "openalex_id": "https://openalex.org/W4409134989",
+          "published": "2025-04-03",
+          "citations": 70,
+          "methods": [],
+          "benchmarks": [
+            "ImageNet"
+          ]
+        },
+        {
+          "title": "Generative AI Enabled Robust Data Augmentation for Wireless Sensing in ISAC Networks",
+          "doi": "https://doi.org/10.1109/jsac.2025.3613672",
+          "openalex_id": "https://openalex.org/W4414463166",
+          "published": "2025-09-24",
+          "citations": 56,
+          "methods": [
+            "Video Generation"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Embodied AI-Enhanced Vehicular Networks: An Integrated Vision Language Models and Reinforcement Learning Method",
+          "doi": "https://doi.org/10.1109/tmc.2025.3582864",
+          "openalex_id": "https://openalex.org/W4411599731",
+          "published": "2025-06-24",
+          "citations": 53,
+          "methods": [
+            "RLVR / GRPO",
+            "Preference Optimization"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Integrated Sensing and Edge AI: Realizing Intelligent Perception in 6G",
+          "doi": "https://doi.org/10.1109/comst.2025.3592989",
+          "openalex_id": "https://openalex.org/W4413267785",
+          "published": "2025-07-28",
+          "citations": 49,
+          "methods": [],
+          "benchmarks": []
+        }
+      ]
+    },
+    "cuhk": {
+      "name": "The Chinese University of Hong Kong (CUHK)",
+      "papers": 12,
+      "total_works_fetched": 27,
+      "top_methods": {
+        "Deep Research": 3,
+        "Interpretability": 2,
+        "Long Context": 1,
+        "VLM": 1,
+        "Video Generation": 1,
+        "Quant / Trading": 1,
+        "Computer Use": 1,
+        "Memory / RAG": 1
+      },
+      "top_authors": {
+        "Masatoshi Kudo": 4,
+        "Stephen L. Chan": 4,
+        "Bruno Sangro": 3,
+        "Mohamed Bouattour": 3,
+        "Lorenza Rimassa": 3,
+        "Steven James": 2,
+        "Ronald C.W.": 2,
+        "Dianna J. Magliano": 2,
+        "Jeong Heo": 2,
+        "Jose Escobar": 2
+      },
+      "years": {
+        "2025": 12
+      },
+      "recent": [
+        {
+          "title": "A Comprehensive Overview of Large Language Models",
+          "doi": "https://doi.org/10.1145/3744746",
+          "openalex_id": "https://openalex.org/W4411403346",
+          "published": "2025-06-18",
+          "citations": 637,
+          "methods": [
+            "Long Context",
+            "Deep Research",
+            "VLM"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "U-KAN Makes Strong Backbone for Medical Image Segmentation and Generation",
+          "doi": "https://doi.org/10.1609/aaai.v39i5.32491",
+          "openalex_id": "https://openalex.org/W4409367393",
+          "published": "2025-04-11",
+          "citations": 271,
+          "methods": [
+            "Interpretability",
+            "Video Generation"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Higher education students’ perceptions of ChatGPT: A global study of early reactions",
+          "doi": "https://doi.org/10.1371/journal.pone.0315011",
+          "openalex_id": "https://openalex.org/W4407172847",
+          "published": "2025-02-05",
+          "citations": 194,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "20.6% Efficiency Organic Solar Cells Enabled by Incorporating a Lower Bandgap Guest Nonfullerene Acceptor Without Open‐Circuit Voltage Loss",
+          "doi": "https://doi.org/10.1002/adma.202500282",
+          "openalex_id": "https://openalex.org/W4408070236",
+          "published": "2025-02-28",
+          "citations": 153,
+          "methods": [
+            "Interpretability"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "The Digital Health Competencies in Medical Education Framework",
+          "doi": "https://doi.org/10.1001/jamanetworkopen.2024.53131",
+          "openalex_id": "https://openalex.org/W4407010033",
+          "published": "2025-01-31",
+          "citations": 132,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "Ligustrazine nano-drug delivery system ameliorates doxorubicin-mediated myocardial injury via piezo-type mechanosensitive ion channel component 1-prohibitin 2-mediated mitochondrial quality surveillance",
+          "doi": "https://doi.org/10.1186/s12951-025-03420-z",
+          "openalex_id": "https://openalex.org/W4410776900",
+          "published": "2025-05-27",
+          "citations": 119,
+          "methods": [
+            "Quant / Trading"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Health outcomes of sarcopenia: a consensus report by the outcome working group of the Global Leadership Initiative in Sarcopenia (GLIS)",
+          "doi": "https://doi.org/10.1007/s40520-025-02995-9",
+          "openalex_id": "https://openalex.org/W4408744532",
+          "published": "2025-03-22",
+          "citations": 110,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "How ChatGPT impacts student engagement from a systematic review and meta-analysis study",
+          "doi": "https://doi.org/10.1016/j.caeai.2025.100361",
+          "openalex_id": "https://openalex.org/W4406071412",
+          "published": "2025-01-05",
+          "citations": 109,
+          "methods": [
+            "Computer Use",
+            "Deep Research"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "European Association of Urology Guidelines on Upper Urinary Tract Urothelial Carcinoma: Summary of the 2025 Update",
+          "doi": "https://doi.org/10.1016/j.eururo.2025.02.023",
+          "openalex_id": "https://openalex.org/W4408674340",
+          "published": "2025-03-20",
+          "citations": 109,
+          "methods": [
+            "Deep Research"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Octree-GS: Towards Consistent Real-time Rendering with LOD-Structured 3D Gaussians",
+          "doi": "https://doi.org/10.1109/tpami.2025.3568201",
+          "openalex_id": "https://openalex.org/W4410204460",
+          "published": "2025-01-01",
+          "citations": 104,
+          "methods": [],
+          "benchmarks": []
+        },
+        {
+          "title": "4D Printing of Magnetically Responsive Shape Memory Polymers: Toward Sustainable Solutions in Soft Robotics, Wearables, and Biomedical Devices",
+          "doi": "https://doi.org/10.1002/advs.202513091",
+          "openalex_id": "https://openalex.org/W4413442968",
+          "published": "2025-08-22",
+          "citations": 103,
+          "methods": [
+            "Memory / RAG"
+          ],
+          "benchmarks": []
+        },
+        {
+          "title": "Two-step crystallization modulated through acenaphthene enabling 21% binary organic solar cells and 83.2% fill factor",
+          "doi": "https://doi.org/10.1038/s41560-025-01862-1",
+          "openalex_id": "https://openalex.org/W4414555015",
+          "published": "2025-09-26",
+          "citations": 97,
           "methods": [],
           "benchmarks": []
         }
