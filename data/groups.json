@@ -1,5 +1,5 @@
 {
-  "generated_on": "2026-08-19T01:47:16Z",
+  "generated_on": "2026-08-19T03:25:33Z",
   "groups": {
     "hku": {
       "name": "The University of Hong Kong (HKU)",
@@ -813,7 +813,7 @@
       "type": "github-org",
       "total_repos": 92,
       "active_repos": 54,
-      "total_stars": 355618,
+      "total_stars": 355676,
       "languages": [
         "Jupyter Notebook",
         "Python",
@@ -839,61 +839,61 @@
       "top_repos": [
         {
           "name": "CLI-Anything",
-          "stars": 47778,
+          "stars": 47784,
           "pushed": "2026-08-13",
           "description": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/"
         },
         {
           "name": "nanobot",
-          "stars": 47151,
-          "pushed": "2026-08-18",
+          "stars": 47155,
+          "pushed": "2026-08-19",
           "description": "Ultra-lightweight, open-source, self-hosted personal AI agent framework in Python with Web"
         },
         {
           "name": "LightRAG",
-          "stars": 38951,
+          "stars": 38954,
           "pushed": "2026-08-19",
           "description": "[EMNLP2025] LightRAG: Simple and Fast Retrieval-Augmented Generation"
         },
         {
           "name": "DeepTutor",
-          "stars": 36317,
+          "stars": 36342,
           "pushed": "2026-08-17",
           "description": "DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/."
         },
         {
           "name": "Vibe-Trading",
-          "stars": 31234,
+          "stars": 31240,
           "pushed": "2026-08-18",
           "description": "\"Vibe-Trading: Your Personal Trading Agent\""
         },
         {
           "name": "RAG-Anything",
-          "stars": 22975,
+          "stars": 22976,
           "pushed": "2026-08-13",
           "description": "\"RAG-Anything: All-in-One RAG Framework\""
         },
         {
           "name": "AI-Trader",
-          "stars": 21448,
+          "stars": 21450,
           "pushed": "2026-06-11",
           "description": "\"AI-Trader: 100% Fully-Automated Agent-Native Trading\"  "
         },
         {
           "name": "DeepCode",
-          "stars": 16368,
+          "stars": 16370,
           "pushed": "2026-08-17",
           "description": "\"DeepCode: Open Agentic Coding (Agent Harness & Loop Engineering & Multi-Agent Orchestrati"
         },
         {
           "name": "OpenHarness",
-          "stars": 15415,
+          "stars": 15417,
           "pushed": "2026-06-04",
           "description": "\"OpenHarness: Open Agent Harness with a Built-in Personal Agent--Ohmo!\""
         },
         {
           "name": "ViMax",
-          "stars": 12023,
+          "stars": 12024,
           "pushed": "2026-07-29",
           "description": "\"ViMax: Agentic Video Generation (Director, Screenwriter, Producer, and Video Generator Al"
         },
@@ -905,13 +905,13 @@
         },
         {
           "name": "ClawWork",
-          "stars": 8351,
+          "stars": 8353,
           "pushed": "2026-03-03",
           "description": "\"ClawWork: OpenClaw as Your AI Coworker - 💰 $15K earned in 11 Hours\""
         },
         {
           "name": "OpenSpace",
-          "stars": 7423,
+          "stars": 7424,
           "pushed": "2026-08-12",
           "description": "\"OpenSpace: The Skill Management Layer for AI Agents\" -- https://open-space.cloud/"
         },
