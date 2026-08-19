@@ -5,7 +5,7 @@ the stdlib HTMLParser, no PDF dependencies. Cached 7 days, retried, and
 rate-limited politely.
 
 Environment override for the cache dir (used by tests):
-    EVERGREEN_AR5IV_CACHE=<path>
+    PRESEARCH_AR5IV_CACHE=<path>
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ from typing import Any
 
 AR5IV_URL = "https://ar5iv.labs.arxiv.org/html"
 ARXIV_HTML_URL = "https://arxiv.org/html"
-USER_AGENT = "evergreen-research/0.2 (open-source frontier-AI research; stdlib client)"
+USER_AGENT = "p-research/0.2 (open-source frontier-AI research; stdlib client)"
 REQUEST_GAP_SECONDS = 1.5
 CACHE_TTL_SECONDS = 7 * 24 * 3600
 MAX_RETRIES = 3
@@ -35,7 +35,7 @@ _TAG_IGNORE = {"script", "style", "nav", "noscript", "svg", "math", "annotation"
 
 
 def _cache_root() -> Path:
-    override = os.environ.get("EVERGREEN_AR5IV_CACHE")
+    override = os.environ.get("PRESEARCH_AR5IV_CACHE")
     if override:
         return Path(override)
     return Path(__file__).resolve().parents[1] / ".cache" / "ar5iv"

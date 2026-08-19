@@ -6,7 +6,7 @@ time-boxed on-disk store so re-runs are cheap and offline runs degrade
 gracefully.
 
 Environment override for the cache dir (used by tests):
-    EVERGREEN_ARXIV_CACHE=<path>
+    PRESEARCH_ARXIV_CACHE=<path>
 """
 
 from __future__ import annotations
@@ -30,7 +30,7 @@ ATOM_NS = {
     "atom": "http://www.w3.org/2005/Atom",
     "arxiv": "http://arxiv.org/schemas/atom",
 }
-USER_AGENT = "evergreen-research/0.1 (open-source frontier-AI research; stdlib client)"
+USER_AGENT = "p-research/0.1 (open-source frontier-AI research; stdlib client)"
 REQUEST_GAP_SECONDS = 3.1
 CACHE_TTL_SECONDS = 6 * 3600
 MAX_RETRIES = 3
@@ -39,7 +39,7 @@ _last_request_ts = 0.0
 
 
 def _cache_root() -> Path:
-    override = os.environ.get("EVERGREEN_ARXIV_CACHE")
+    override = os.environ.get("PRESEARCH_ARXIV_CACHE")
     if override:
         return Path(override)
     return Path(__file__).resolve().parents[1] / ".cache" / "arxiv"

@@ -1,8 +1,8 @@
-# 🌲 Evergreen Research
+# 🌲 P-Research
 
 **A self-updating, continuously running frontier-AI research intelligence.**
 
-Every week, Evergreen Research ingests the latest papers from arXiv, structures
+Every week, P-Research ingests the latest papers from arXiv, structures
 them into a living database, clusters cross-pillar signals, and publishes:
 
 - a **weekly frontier-AI digest** — `data/weekly/`
@@ -15,7 +15,7 @@ run it locally in one command.
 
 ## Why "Evergreen"
 
-Most research write-ups die the day they are published. Evergreen Research
+Most research write-ups die the day they are published. P-Research
 stays alive: the corpus grows every week, the survey accumulates evidence
 instead of rotting, and every claim links back to the paper records that
 support it. 常青 — always growing.
@@ -33,11 +33,11 @@ support it. 常青 — always growing.
 
 ```bash
 # no dependencies beyond the Python standard library
-python3 -m evergreen.cli weekly --max-per-pillar 10
+python3 -m presearch.cli weekly --max-per-pillar 10
 
 # or install the CLI
 pip install .
-evergreen weekly
+presearch weekly
 ```
 
 Outputs:
@@ -52,16 +52,16 @@ docs/index.md              # GitHub Pages landing (auto-regenerated)
 Other commands:
 
 ```bash
-evergreen fetch --categories cs.AI,cs.CL --max 20 --days 7   # raw arXiv fetch
-evergreen backfill --windows 360-1080,1080-2160 --per-pillar 30  # historical backfill
-evergreen verify --pillar "LLM Reasoning / Test-time Compute" --top 40  # full-text verification
-evergreen db stats                                            # database statistics
-evergreen survey                                              # print the survey outline
+presearch fetch --categories cs.AI,cs.CL --max 20 --days 7   # raw arXiv fetch
+presearch backfill --windows 360-1080,1080-2160 --per-pillar 30  # historical backfill
+presearch verify --pillar "LLM Reasoning / Test-time Compute" --top 40  # full-text verification
+presearch db stats                                            # database statistics
+presearch survey                                              # print the survey outline
 ```
 
 ### Full-text verification (M2)
 
-`evergreen verify` promotes papers toward the survey core corpus by pulling
+`presearch verify` promotes papers toward the survey core corpus by pulling
 their full text (ar5iv first, then arXiv native HTML for papers ar5iv has
 not converted yet), re-running the deterministic taggers on full text, and
 recording `verified` + matched-method metadata on each database record.
@@ -94,16 +94,16 @@ survey claim that cites it.
 ## Roadmap
 
 - [x] v0.1 weekly pipeline (fetch -> structure -> cluster -> publish)
-- [x] Historical corpus backfill (`evergreen backfill`) — 500+ papers, 2023-2026
-- [x] Full-text verification (`evergreen verify`) — ar5iv + arXiv native HTML
-- [x] Citation tracking (`evergreen citations`) — S2 connector (batch runs want a free S2_API_KEY)
-- [x] Method-overlap novelty scoring (`evergreen novelty`)
-- [x] Automated citation audit (`evergreen audit`) — 0 FAIL on the current draft
-- [x] Checksummed snapshots (`evergreen snapshot`) — Zenodo-ready archives
+- [x] Historical corpus backfill (`presearch backfill`) — 500+ papers, 2023-2026
+- [x] Full-text verification (`presearch verify`) — ar5iv + arXiv native HTML
+- [x] Citation tracking (`presearch citations`) — S2 connector (batch runs want a free S2_API_KEY)
+- [x] Method-overlap novelty scoring (`presearch novelty`)
+- [x] Automated citation audit (`presearch audit`) — 0 FAIL on the current draft
+- [x] Checksummed snapshots (`presearch snapshot`) — Zenodo-ready archives
 - [x] Survey draft v1 (7 sections) + compiled PDF (`data/survey/draft.pdf`)
 - [ ] Hostile human review (>= 2 reviewers) -> arXiv submission
 - [ ] RSS feed of weekly digests
-- [ ] Python API (`pip install evergreen-research`)
+- [ ] Python API (`pip install p-research`)
 
 ## Data license
 
@@ -120,5 +120,5 @@ Publishing roadmap (human steps only): see [LAUNCH.md](LAUNCH.md).
 
 ---
 
-*Evergreen Research is the public research output of the PRDT (Pengyi
+*P-Research is the public research output of the PRDT (Pengyi
 Research Development Team) research intelligence program.*

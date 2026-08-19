@@ -1,6 +1,6 @@
 # Survey Draft — Automated Audit Report
 
-> Generated 2026-08-18 by `evergreen audit`.
+> Generated 2026-08-18 by `presearch audit`.
 > Corpus: 503 papers, 45 verified. Citations checked: 12 record ids, 4 arXiv ids.
 
 ## Findings

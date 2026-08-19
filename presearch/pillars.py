@@ -67,7 +67,7 @@ PILLARS: dict[str, dict[str, object]] = {
 def load_pillars(custom_path: Path | None = None) -> dict[str, dict[str, object]]:
     """Built-in six pillars merged with an optional user pillar manifest.
 
-    The manifest (e.g. `data/evergreen_pillars.json`) is the first plugin
+    The manifest (e.g. `data/presearch_pillars.json`) is the first plugin
     point: add new pillars or override built-in queries without touching
     code. Format: {"My Pillar": {"categories": [...], "terms": "...",
     "max": 15, "days_back": 21}}.

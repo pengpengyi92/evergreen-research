@@ -66,7 +66,7 @@ degrades gracefully and records are only persisted on success.
 
 ## 2.6 Reproducibility artifacts
 
-- `evergreen` CLI (stdlib-only Python, ≥3.10): `weekly`, `backfill`,
+- `presearch` CLI (stdlib-only Python, ≥3.10): `weekly`, `backfill`,
   `verify`, `citations`, `db stats`, `survey`.
 - GitHub Actions cron (weekly) commits new research back to the repository.
 - MIT code, CC BY 4.0 data.

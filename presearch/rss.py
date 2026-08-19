@@ -9,8 +9,8 @@ from email.utils import format_datetime
 from pathlib import Path
 from typing import Any
 
-CHANNEL_TITLE = "Evergreen Research — Frontier AI Weekly"
-CHANNEL_LINK = "https://github.com/pengpengyi92/evergreen-research"
+CHANNEL_TITLE = "P-Research — Frontier AI Weekly"
+CHANNEL_LINK = "https://github.com/pengpengyi92/p-research"
 CHANNEL_DESCRIPTION = (
     "Weekly digests of the frontier-AI research corpus: arXiv sweeps, "
     "cross-pillar convergence signals, and survey progress."
@@ -40,7 +40,7 @@ def write_feed(data_root: Path, quiet: bool = False) -> Path:
         item = ET.SubElement(channel, "item")
         ET.SubElement(item, "title").text = title
         ET.SubElement(item, "link").text = f"{CHANNEL_LINK}/blob/main/data/weekly/{digest.name}"
-        ET.SubElement(item, "guid").text = f"evergreen-weekly-{digest.stem}"
+        ET.SubElement(item, "guid").text = f"presearch-weekly-{digest.stem}"
         published = datetime.now(timezone.utc)
         ET.SubElement(item, "pubDate").text = format_datetime(published)
         ET.SubElement(item, "description").text = _item_description(content)

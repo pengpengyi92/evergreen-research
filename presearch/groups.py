@@ -19,7 +19,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from evergreen.structurer import detect_benchmarks, detect_methods
+from presearch.structurer import detect_benchmarks, detect_methods
 
 GROUP_WATCHLIST: dict[str, dict[str, object]] = {
     "hku-cs": {
@@ -104,7 +104,7 @@ def run_groups(
     per_group: int = 40,
     quiet: bool = False,
 ) -> dict[str, Any]:
-    from evergreen import openalex
+    from presearch import openalex
 
     groups_dir = data_root / "groups"
     groups_dir.mkdir(parents=True, exist_ok=True)
@@ -201,7 +201,7 @@ def run_groups(
             )
 
     # GitHub repo radar (development side of research groups)
-    from evergreen import github as github_client
+    from presearch import github as github_client
 
     for slug, spec in GITHUB_WATCHLIST.items():
         try:

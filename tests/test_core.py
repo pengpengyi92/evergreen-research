@@ -5,9 +5,9 @@ from datetime import UTC, datetime
 from pathlib import Path
 from unittest import mock
 
-from evergreen.arxiv_client import parse_atom, parse_atom_lenient
-from evergreen.database import PaperDatabase
-from evergreen.structurer import detect_benchmarks, detect_methods, structure_entry
+from presearch.arxiv_client import parse_atom, parse_atom_lenient
+from presearch.database import PaperDatabase
+from presearch.structurer import detect_benchmarks, detect_methods, structure_entry
 
 SAMPLE_ATOM = """<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:arxiv="http://arxiv.org/schemas/atom">
@@ -77,7 +77,7 @@ class StructurerTest(unittest.TestCase):
 
 class FulltextTest(unittest.TestCase):
     def test_html_to_text_extracts_content(self) -> None:
-        from evergreen.fulltext import html_to_text, normalize_arxiv_id
+        from presearch.fulltext import html_to_text, normalize_arxiv_id
 
         html = (
             "<html><head><title>x</title><style>.a{}</style></head><body>"
@@ -94,7 +94,7 @@ class FulltextTest(unittest.TestCase):
         self.assertEqual(normalize_arxiv_id("2501.12948"), "2501.12948")
 
     def test_verify_pipeline_mocked(self) -> None:
-        from evergreen.pipeline import run_verification
+        from presearch.pipeline import run_verification
 
         record = {
             "id": "evg-test-fulltext",
@@ -125,7 +125,7 @@ class FulltextTest(unittest.TestCase):
             db = PaperDatabase(Path(tmp))
             db.upsert_many([record])
             with mock.patch(
-                "evergreen.fulltext.fetch_fulltext", return_value=(html, "ar5iv")
+                "presearch.fulltext.fetch_fulltext", return_value=(html, "ar5iv")
             ):
                 summary = run_verification(Path(tmp), "LLM Reasoning / Test-time Compute", top_n=5, quiet=True)
             self.assertEqual(summary["verified"], 1)
@@ -145,7 +145,7 @@ class FulltextTest(unittest.TestCase):
 
 class CitationsTest(unittest.TestCase):
     def test_store_round_trip_and_stats(self) -> None:
-        from evergreen.citations import CitationStore
+        from presearch.citations import CitationStore
 
         with tempfile.TemporaryDirectory() as tmp:
             store = CitationStore(Path(tmp))
@@ -171,11 +171,11 @@ class CitationsTest(unittest.TestCase):
             self.assertEqual(stats["max_citations"], 4200)
 
     def test_paper_by_arxiv_id_mock(self) -> None:
-        from evergreen.citations import paper_by_arxiv_id
+        from presearch.citations import paper_by_arxiv_id
 
         with tempfile.TemporaryDirectory() as tmp:
-            with mock.patch.dict("os.environ", {"EVERGREEN_S2_CACHE": tmp}):
-                with mock.patch("evergreen.citations._rate_limit"):
+            with mock.patch.dict("os.environ", {"PRESEARCH_S2_CACHE": tmp}):
+                with mock.patch("presearch.citations._rate_limit"):
                     record = paper_by_arxiv_id(
                         "2501.12948",
                         fetch_func=lambda url: {
@@ -191,8 +191,8 @@ class CitationsTest(unittest.TestCase):
                     self.assertEqual(calls, [])
 
     def test_run_citations_persists_only_successes(self) -> None:
-        from evergreen.citations import CitationStore
-        from evergreen.pipeline import run_citations
+        from presearch.citations import CitationStore
+        from presearch.pipeline import run_citations
 
         papers = []
         for i in range(3):
@@ -218,7 +218,7 @@ class CitationsTest(unittest.TestCase):
                 return {"citationCount": 10 + calls["n"], "influentialCitationCount": 1}
 
             with mock.patch(
-                "evergreen.citations.paper_by_arxiv_id", side_effect=lambda aid: fake_fetch(aid)
+                "presearch.citations.paper_by_arxiv_id", side_effect=lambda aid: fake_fetch(aid)
             ):
                 summary = run_citations(
                     Path(tmp), "LLM Reasoning / Test-time Compute", top_n=10, quiet=True, source="s2"
@@ -231,7 +231,7 @@ class CitationsTest(unittest.TestCase):
 
 class NoveltyTest(unittest.TestCase):
     def test_jaccard_and_score(self) -> None:
-        from evergreen.novelty import jaccard, novelty_score
+        from presearch.novelty import jaccard, novelty_score
 
         self.assertEqual(jaccard(frozenset("ab"), frozenset("bc")), 1 / 3)
         records = [
@@ -247,7 +247,7 @@ class NoveltyTest(unittest.TestCase):
         self.assertEqual(lone["novelty"], 1.0)
 
     def test_md_to_latex_subset(self) -> None:
-        from evergreen.latex import md_to_latex
+        from presearch.latex import md_to_latex
 
         markdown = "## Heading\n\n- item **bold** and `code`\n- [link](https://x)\n\n> quote\n\n| A | B |\n|---|---|\n| 1 | 2 |\n"
         tex = md_to_latex(markdown)
@@ -263,7 +263,7 @@ class NoveltyTest(unittest.TestCase):
 
 class AuditTest(unittest.TestCase):
     def test_audit_catches_missing_and_unverified(self) -> None:
-        from evergreen.audit import run_audit
+        from presearch.audit import run_audit
 
         with tempfile.TemporaryDirectory() as tmp:
             data_root = Path(tmp) / "data"
@@ -308,7 +308,7 @@ class RssTest(unittest.TestCase):
     def test_feed_generation(self) -> None:
         import xml.etree.ElementTree as ET
 
-        from evergreen.rss import write_feed
+        from presearch.rss import write_feed
 
         with tempfile.TemporaryDirectory() as tmp:
             data_root = Path(tmp)
@@ -327,7 +327,7 @@ class RssTest(unittest.TestCase):
 
 class OpenAlexTest(unittest.TestCase):
     def test_paper_by_title_match(self) -> None:
-        from evergreen import openalex
+        from presearch import openalex
 
         record = {"title": "DeepSeek-R1: Incentivizing Reasoning", "authors": ["DeepSeek-AI"]}
         payload = {
@@ -343,7 +343,7 @@ class OpenAlexTest(unittest.TestCase):
             ]
         }
         with tempfile.TemporaryDirectory() as tmp:
-            with mock.patch.dict("os.environ", {"EVERGREEN_OPENALEX_CACHE": tmp}):
+            with mock.patch.dict("os.environ", {"PRESEARCH_OPENALEX_CACHE": tmp}):
                 with mock.patch.object(openalex, "_rate_limit"):
 
                     def fake_urlopen(request, timeout=30):
@@ -365,7 +365,7 @@ class OpenAlexTest(unittest.TestCase):
 
 class MatrixTest(unittest.TestCase):
     def test_build_query_cluster(self) -> None:
-        from evergreen.matrix import build_matrix, cluster_report, kmeans, query
+        from presearch.matrix import build_matrix, cluster_report, kmeans, query
 
         records = [
             {"id": "a", "title": "Reinforcement learning for reasoning models", "abstract": "we train reasoning models with reinforcement learning and verifiable rewards", "pillar": "LLM Reasoning / Test-time Compute", "year": 2025, "arxiv_id": "arXiv:1"},
@@ -386,7 +386,7 @@ class MatrixTest(unittest.TestCase):
 
 class GroupsTest(unittest.TestCase):
     def test_group_classification_and_report(self) -> None:
-        from evergreen.groups import is_ai_quant, run_groups
+        from presearch.groups import is_ai_quant, run_groups
 
         self.assertTrue(is_ai_quant("We train a transformer for stock prediction"))
         self.assertFalse(is_ai_quant("A study of medieval poetry in translation"))
@@ -429,7 +429,7 @@ class GroupsTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             data_root = Path(tmp)
             with mock.patch(
-                "evergreen.openalex.works_by_institution", return_value=works
+                "presearch.openalex.works_by_institution", return_value=works
             ):
                 aggregate = run_groups(data_root, per_group=10, quiet=True)
             hkust = aggregate["groups"].get("hkust", {})
@@ -444,7 +444,7 @@ class GroupsTest(unittest.TestCase):
 
 class GithubRadarTest(unittest.TestCase):
     def test_org_repos_radar(self) -> None:
-        from evergreen import github
+        from presearch import github
 
         payload = [
             {
@@ -471,7 +471,7 @@ class GithubRadarTest(unittest.TestCase):
             },
         ]
         with tempfile.TemporaryDirectory() as tmp:
-            with mock.patch.dict("os.environ", {"EVERGREEN_GH_CACHE": tmp, "GITHUB_TOKEN": "fake"}):
+            with mock.patch.dict("os.environ", {"PRESEARCH_GH_CACHE": tmp, "GITHUB_TOKEN": "fake"}):
                 captured = {}
 
                 def fake_urlopen(request, timeout=30):
@@ -494,10 +494,10 @@ class GithubRadarTest(unittest.TestCase):
 
 class PillarsPluginTest(unittest.TestCase):
     def test_load_pillars_merges_manifest(self) -> None:
-        from evergreen.pillars import PILLARS, load_pillars
+        from presearch.pillars import PILLARS, load_pillars
 
         with tempfile.TemporaryDirectory() as tmp:
-            manifest = Path(tmp) / "evergreen_pillars.json"
+            manifest = Path(tmp) / "presearch_pillars.json"
             manifest.write_text(
                 json.dumps(
                     {
@@ -520,7 +520,7 @@ class PillarsPluginTest(unittest.TestCase):
 
 class PipelineTest(unittest.TestCase):
     def test_cluster_signals(self) -> None:
-        from evergreen.pipeline import _cluster_signals
+        from presearch.pipeline import _cluster_signals
 
         records = [
             {"methods": ["RLVR / GRPO", "Verifier / PRM"], "pillar": "LLM Reasoning / Test-time Compute"},
@@ -533,7 +533,7 @@ class PipelineTest(unittest.TestCase):
         self.assertEqual(len(signals[0]["spanning_pillars"]), 3)
 
     def test_backfill_dedups(self) -> None:
-        from evergreen.pipeline import run_backfill
+        from presearch.pipeline import run_backfill
 
         entry = {
             "arxiv_id": "http://arxiv.org/abs/2608.00001",
@@ -548,7 +548,7 @@ class PipelineTest(unittest.TestCase):
             "comment": "",
         }
         with tempfile.TemporaryDirectory() as tmp:
-            with mock.patch("evergreen.pipeline.arxiv_client.search_recent", return_value=[entry]):
+            with mock.patch("presearch.pipeline.arxiv_client.search_recent", return_value=[entry]):
                 first = run_backfill(Path(tmp), [(360, 0)], per_pillar=30, quiet=True)
                 # same arXiv id across six pillars -> one record after dedup
                 self.assertEqual(first["new_records"], 1)

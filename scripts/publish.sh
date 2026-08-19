@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# First-time publish for evergreen-research.
+# First-time publish for p-research.
 # Run AFTER `gh auth login`. Then follow the LAUNCH.md steps for Pages.
 set -euo pipefail
 
@@ -11,9 +11,9 @@ if ! gh auth status >/dev/null 2>&1; then
 fi
 
 echo "== creating public repo =="
-gh repo create evergreen-research --public --source=. --push \
+gh repo create p-research --public --source=. --push \
   --description "Self-updating frontier-AI research intelligence: weekly arXiv sweeps, a living paper database (500+ papers), full-text verification, and a growing survey." \
-  --homepage "https://github.com/$(gh api user --jq .login)/evergreen-research"
+  --homepage "https://github.com/$(gh api user --jq .login)/p-research"
 
 echo "== setting topics =="
 gh repo edit --add-topic arxiv --add-topic deep-research \

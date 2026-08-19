@@ -6,7 +6,7 @@ Unauthenticated GitHub API is 60 req/h — one weekly call per watchlist
 entry is well within limits.
 
 Environment override for the cache dir (used by tests):
-    EVERGREEN_GH_CACHE=<path>
+    PRESEARCH_GH_CACHE=<path>
 """
 
 from __future__ import annotations
@@ -24,13 +24,13 @@ from pathlib import Path
 from typing import Any
 
 API_URL = "https://api.github.com"
-USER_AGENT = "evergreen-research/0.5 (open-source frontier-AI research; contact: pengpengyi92@gmail.com)"
+USER_AGENT = "p-research/0.5 (open-source frontier-AI research; contact: pengpengyi92@gmail.com)"
 CACHE_TTL_SECONDS = 24 * 3600
 MAX_RETRIES = 3
 
 
 def _cache_root() -> Path:
-    override = os.environ.get("EVERGREEN_GH_CACHE")
+    override = os.environ.get("PRESEARCH_GH_CACHE")
     if override:
         return Path(override)
     return Path(__file__).resolve().parents[1] / ".cache" / "github"

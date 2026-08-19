@@ -5,17 +5,17 @@ import json
 from pathlib import Path
 from typing import Any
 
-from evergreen import __version__
-from evergreen import arxiv_client
-from evergreen.database import PaperDatabase
-from evergreen.pipeline import run_backfill, run_citations, run_verification, run_weekly
-from evergreen.report import write_docs_landing, write_index, write_survey_outline, write_weekly
+from presearch import __version__
+from presearch import arxiv_client
+from presearch.database import PaperDatabase
+from presearch.pipeline import run_backfill, run_citations, run_verification, run_weekly
+from presearch.report import write_docs_landing, write_index, write_survey_outline, write_weekly
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="evergreen")
+    parser = argparse.ArgumentParser(prog="presearch")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     weekly = subparsers.add_parser("weekly")
@@ -120,7 +120,7 @@ def main(argv: list[str] | None = None) -> int:
         index_path = write_index(db, data_root)
         survey_path = write_survey_outline(db, data_root / "survey")
         docs_path = write_docs_landing(db, Path(args.docs_root))
-        from evergreen.rss import write_feed
+        from presearch.rss import write_feed
 
         feed_path = write_feed(data_root, quiet=True)
         return _emit(
@@ -188,7 +188,7 @@ def main(argv: list[str] | None = None) -> int:
             }
         )
     if args.command == "novelty":
-        from evergreen.novelty import blend_scores, run_novelty
+        from presearch.novelty import blend_scores, run_novelty
 
         summary = run_novelty(
             Path(args.data_root),
@@ -217,33 +217,33 @@ def main(argv: list[str] | None = None) -> int:
         print(path.read_text(encoding="utf-8"))
         return 0
     if args.command == "assemble":
-        from evergreen.assemble import assemble
+        from presearch.assemble import assemble
 
         path = assemble(Path(args.data_root) / "survey")
         return _emit({"draft": str(path)})
     if args.command == "latex":
-        from evergreen.latex import build_tex
+        from presearch.latex import build_tex
 
         path = build_tex(Path(args.data_root) / "survey")
         return _emit({"main_tex": str(path)})
     if args.command == "audit":
-        from evergreen.audit import run_audit
+        from presearch.audit import run_audit
 
         summary = run_audit(
             Path(args.data_root) / "survey", Path(args.data_root)
         )
         return _emit(summary)
     if args.command == "snapshot":
-        from evergreen.snapshot import snapshot
+        from presearch.snapshot import snapshot
 
         return _emit(snapshot(Path(args.data_root)))
     if args.command == "rss":
-        from evergreen.rss import write_feed
+        from presearch.rss import write_feed
 
         path = write_feed(Path(args.data_root))
         return _emit({"feed": str(path)})
     if args.command == "matrix" and args.matrix_command == "build":
-        from evergreen.matrix import (
+        from presearch.matrix import (
             build_matrix,
             cluster_report,
             kmeans,
@@ -274,14 +274,14 @@ def main(argv: list[str] | None = None) -> int:
             }
         )
     if args.command == "matrix" and args.matrix_command == "query":
-        from evergreen.matrix import load_matrix, query
+        from presearch.matrix import load_matrix, query
 
         data_root = Path(args.data_root)
         records = PaperDatabase(data_root).load()
         matrix = load_matrix(data_root)
         return _emit(query(matrix, records, args.text, k=args.k))
     if args.command == "groups":
-        from evergreen.groups import run_groups
+        from presearch.groups import run_groups
 
         summary = run_groups(
             Path(args.data_root),

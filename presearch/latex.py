@@ -194,7 +194,7 @@ def build_tex(survey_root: Path) -> Path:
 \\usepackage{{microtype}}
 
 \\title{{{TITLE}}}
-\\author{{Pengyi Research\\\\ \\small Evergreen Research (living corpus pipeline) \\\\ \\small \\texttt{{github.com/evergreen-research}}}}
+\\author{{Pengyi Research\\\\ \\small P-Research (living corpus pipeline) \\\\ \\small \\texttt{{github.com/p-research}}}}
 \\date{{Draft v0.1 -- generated \\today}}
 
 \\begin{{document}}

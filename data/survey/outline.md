@@ -12,8 +12,8 @@
 - [x] §5 Cross-Pillar Convergence — drafted (`sections/05-cross-pillar.md`)
 - [x] §6 Empirical Trends — drafted (`sections/06-empirical-trends.md`)
 - [x] §7 Open Problems — drafted (`sections/07-open-problems.md`)
-- [x] Full draft assembled (`draft.md` via `evergreen assemble`)
-- [x] Automated citation audit (`evergreen audit`, `audit-report.md`) — 0 FAIL
+- [x] Full draft assembled (`draft.md` via `presearch assemble`)
+- [x] Automated citation audit (`presearch audit`, `audit-report.md`) — 0 FAIL
 - [ ] Hostile human review (>= 2 reviewers) + arXiv submission prep
 
 ## Inclusion criteria (corpus v0.2)

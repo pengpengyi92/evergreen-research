@@ -6,9 +6,9 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from evergreen import arxiv_client, pillars as pillars_config
-from evergreen.database import PaperDatabase
-from evergreen.structurer import structure_entry
+from presearch import arxiv_client, pillars as pillars_config
+from presearch.database import PaperDatabase
+from presearch.structurer import structure_entry
 
 
 def _cluster_signals(records: list[dict[str, Any]], limit: int = 8) -> list[dict[str, Any]]:
@@ -53,7 +53,7 @@ def run_backfill(
     db = PaperDatabase(data_root)
     structured: list[dict[str, Any]] = []
     failures: list[str] = []
-    pillars = pillars_config.load_pillars(data_root / "evergreen_pillars.json")
+    pillars = pillars_config.load_pillars(data_root / "presearch_pillars.json")
 
     for days_back, until_days_back in windows:
         for pillar, spec in pillars.items():
@@ -76,12 +76,12 @@ def run_backfill(
     added = db.upsert_many(structured)
     if not quiet:
         print(
-            f"[evergreen] backfill fetched {len(structured)} papers over "
+            f"[presearch] backfill fetched {len(structured)} papers over "
             f"{windows}, {added} new records"
         )
     if failures and not quiet:
         for failure in failures:
-            print(f"[evergreen] degraded pillar: {failure}")
+            print(f"[presearch] degraded pillar: {failure}")
     return {
         "swept_on": swept_on,
         "fetched": len(structured),
@@ -105,8 +105,8 @@ def run_verification(
     """
     from datetime import UTC, datetime
 
-    from evergreen import fulltext
-    from evergreen.structurer import detect_benchmarks, detect_methods, detect_models
+    from presearch import fulltext
+    from presearch.structurer import detect_benchmarks, detect_methods, detect_models
 
     db = PaperDatabase(data_root)
     candidates = [
@@ -215,8 +215,8 @@ def run_citations(
     candidates = candidates[:top_n]
 
     if source == "openalex":
-        from evergreen import openalex
-        from evergreen.citations import CitationStore
+        from presearch import openalex
+        from presearch.citations import CitationStore
 
         store = CitationStore(data_root)
         known = store.load()
@@ -244,7 +244,7 @@ def run_citations(
         }
         return results
 
-    from evergreen import citations as s2
+    from presearch import citations as s2
 
     store = s2.CitationStore(data_root)
     known = store.load()
@@ -285,7 +285,7 @@ def run_weekly(
     db = PaperDatabase(data_root)
     structured: list[dict[str, Any]] = []
     failures: list[str] = []
-    pillars = pillars_config.load_pillars(data_root / "evergreen_pillars.json")
+    pillars = pillars_config.load_pillars(data_root / "presearch_pillars.json")
 
     for pillar, spec in pillars.items():
         categories = list(spec["categories"])  # type: ignore[arg-type]
@@ -308,12 +308,12 @@ def run_weekly(
     signals = _cluster_signals(structured)
     if not quiet:
         print(
-            f"[evergreen] swept {len(structured)} papers, {added} new records, "
+            f"[presearch] swept {len(structured)} papers, {added} new records, "
             f"{len(signals)} cross-pillar signals"
         )
     if failures and not quiet:
         for failure in failures:
-            print(f"[evergreen] degraded pillar: {failure}")
+            print(f"[presearch] degraded pillar: {failure}")
 
     return {
         "swept_on": swept_on,

@@ -6,7 +6,7 @@ set S2_API_KEY (free) for reliable batch runs. Degrades gracefully: a
 rate-limited fetch is recorded as `status: rate_limited`, not a crash.
 
 Environment override for the cache dir (used by tests):
-    EVERGREEN_S2_CACHE=<path>
+    PRESEARCH_S2_CACHE=<path>
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Any
 
 API_URL = "https://api.semanticscholar.org/graph/v1/paper"
-USER_AGENT = "evergreen-research/0.3 (open-source frontier-AI research; stdlib client)"
+USER_AGENT = "p-research/0.3 (open-source frontier-AI research; stdlib client)"
 REQUEST_GAP_SECONDS = 1.1
 CACHE_TTL_SECONDS = 24 * 3600
 MAX_RETRIES = 4
@@ -33,7 +33,7 @@ FIELDS = "title,citationCount,influentialCitationCount,publicationDate,externalI
 
 
 def _cache_root() -> Path:
-    override = os.environ.get("EVERGREEN_S2_CACHE")
+    override = os.environ.get("PRESEARCH_S2_CACHE")
     if override:
         return Path(override)
     return Path(__file__).resolve().parents[1] / ".cache" / "s2"

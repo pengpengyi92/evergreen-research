@@ -19,14 +19,14 @@ jobs:
           python-version: "3.11"
       - name: Run weekly sweep + audit + snapshot
         run: |
-          python -m evergreen.cli weekly
-          python -m evergreen.cli audit
-          python -m evergreen.cli snapshot
-          python -m evergreen.cli rss
-          python -m evergreen.cli groups || echo "[groups] rate-limited this week; cached data kept"
+          python -m presearch.cli weekly
+          python -m presearch.cli audit
+          python -m presearch.cli snapshot
+          python -m presearch.cli rss
+          python -m presearch.cli groups || echo "[groups] rate-limited this week; cached data kept"
       - name: Commit and push research updates
         run: |
-          git config user.name "evergreen-bot"
+          git config user.name "presearch-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data docs
           if git diff --cached --quiet; then

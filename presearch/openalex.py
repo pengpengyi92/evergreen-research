@@ -6,7 +6,7 @@ default citation source when no S2_API_KEY is configured, and as the
 fallback when S2 is rate-limited.
 
 Environment override for the cache dir (used by tests):
-    EVERGREEN_OPENALEX_CACHE=<path>
+    PRESEARCH_OPENALEX_CACHE=<path>
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ from pathlib import Path
 from typing import Any
 
 API_URL = "https://api.openalex.org/works"
-USER_AGENT = "evergreen-research/0.4 (open-source frontier-AI research; contact: pengpengyi92@gmail.com)"
+USER_AGENT = "p-research/0.4 (open-source frontier-AI research; contact: pengpengyi92@gmail.com)"
 REQUEST_GAP_SECONDS = 1.2
 CACHE_TTL_SECONDS = 7 * 24 * 3600
 MAX_RETRIES = 4
@@ -33,7 +33,7 @@ _last_request_ts = 0.0
 
 
 def _cache_root() -> Path:
-    override = os.environ.get("EVERGREEN_OPENALEX_CACHE")
+    override = os.environ.get("PRESEARCH_OPENALEX_CACHE")
     if override:
         return Path(override)
     return Path(__file__).resolve().parents[1] / ".cache" / "openalex"

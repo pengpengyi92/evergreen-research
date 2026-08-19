@@ -17,7 +17,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
-from evergreen.database import PaperDatabase
+from presearch.database import PaperDatabase
 
 _ID_RE = re.compile(r"evg-[0-9a-f]{12,16}")
 _ARXIV_RE = re.compile(r"arxiv\.org/abs/([0-9]{4}\.[0-9]{4,5})|arXiv:([0-9]{4}\.[0-9]{4,5})", re.IGNORECASE)
@@ -139,7 +139,7 @@ def run_audit(survey_root: Path, data_root: Path, quiet: bool = False) -> dict[s
     lines = [
         "# Survey Draft — Automated Audit Report",
         "",
-        f"> Generated {date.today().isoformat()} by `evergreen audit`.",
+        f"> Generated {date.today().isoformat()} by `presearch audit`.",
         f"> Corpus: {total} papers, {verified} verified. Citations checked: "
         f"{len(cited_ids)} record ids, {len(arxiv_ids)} arXiv ids.",
         "",

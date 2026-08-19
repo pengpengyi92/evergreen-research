@@ -3,9 +3,9 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "evergreen-research"
+name = "p-research"
 version = "0.1.0"
-description = "Evergreen Research: a self-updating, continuously running frontier-AI research intelligence. Weekly arXiv sweeps, a living paper database, cross-pillar signal clustering, and a growing survey."
+description = "P-Research: a self-updating, continuously running frontier-AI research intelligence. Weekly arXiv sweeps, a living paper database, cross-pillar signal clustering, and a growing survey."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -21,7 +21,7 @@ classifiers = [
 dependencies = []
 
 [project.scripts]
-evergreen = "evergreen.cli:main"
+presearch = "presearch.cli:main"
 
 [tool.setuptools]
-packages = ["evergreen"]
+packages = ["presearch"]

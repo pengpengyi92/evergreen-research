@@ -63,13 +63,13 @@ def blend_scores(
     """
     import math
 
-    from evergreen.citations import CitationStore
+    from presearch.citations import CitationStore
 
     store = CitationStore(data_root)
     citations = store.load()
     novelty_path = data_root / "novelty.jsonl"
     if not novelty_path.exists():
-        return {"error": "run `evergreen novelty` first"}
+        return {"error": "run `presearch novelty` first"}
     rows = [
         json.loads(line)
         for line in novelty_path.read_text(encoding="utf-8").splitlines()
@@ -125,7 +125,7 @@ def run_novelty(
     quiet: bool = False,
 ) -> dict[str, Any]:
     """Score all records of a pillar; persist to data/novelty.jsonl."""
-    from evergreen.database import PaperDatabase
+    from presearch.database import PaperDatabase
 
     db = PaperDatabase(data_root)
     records = [record for record in db.load() if record.get("pillar") == pillar]

@@ -1,4 +1,4 @@
-# 🌲 Evergreen Research
+# 🌲 P-Research
 
 A self-updating, continuously running frontier-AI research intelligence.
 Weekly arXiv sweeps · living paper database · growing systematic survey.
@@ -22,6 +22,6 @@ Weekly arXiv sweeps · living paper database · growing systematic survey.
 
 ## Repository
 
-- [Source & methodology](https://github.com/pengpengyi92/evergreen-research)
+- [Source & methodology](https://github.com/pengpengyi92/p-research)
 - [Paper database](../data/papers.jsonl)
 - [Survey outline](../data/survey/outline.md)

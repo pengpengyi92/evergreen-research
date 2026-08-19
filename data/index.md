@@ -1,4 +1,4 @@
-# Evergreen Research Index
+# P-Research Index
 
 - Total papers: **503** · full-text verified: **45**
 - Last sweep: 2026-08-18T07:39:53.690619+00:00

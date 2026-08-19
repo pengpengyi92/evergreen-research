@@ -1,4 +1,4 @@
-# Contributing to Evergreen Research
+# Contributing to P-Research
 
 ## Ways to contribute
 
@@ -7,16 +7,16 @@
    paper by reading its full text. Cite the paper record id from
    `data/papers.jsonl`.
 2. **Improve the structurer**. The keyword tables and regexes live in
-   `evergreen/structurer.py`. Add a method/benchmark/model entry with a test
+   `presearch/structurer.py`. Add a method/benchmark/model entry with a test
    in `tests/`.
-3. **Add a pillar or a query**. Pillars live in `evergreen/pillars.py`.
+3. **Add a pillar or a query**. Pillars live in `presearch/pillars.py`.
 4. **Fix the pipeline**. Everything is deterministic and unit-tested.
 
 ## Development
 
 ```bash
 python3 -m unittest discover -s tests
-python3 -m evergreen.cli weekly --max-per-pillar 3   # small smoke sweep
+python3 -m presearch.cli weekly --max-per-pillar 3   # small smoke sweep
 ```
 
 ## Conventions

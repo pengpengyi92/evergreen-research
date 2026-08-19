@@ -1,7 +1,7 @@
 """Checksummed snapshot archive of the public research data (Zenodo-ready).
 
-`evergreen snapshot` packs data/ (papers.jsonl, citations, novelty, weekly,
-survey) into data/snapshots/evergreen-data-<date>.tar.gz with a
+`presearch snapshot` packs data/ (papers.jsonl, citations, novelty, weekly,
+survey) into data/snapshots/presearch-data-<date>.tar.gz with a
 SHA-256 manifest, fulfilling the §7.5 reproducibility promise.
 """
 
@@ -27,8 +27,8 @@ def snapshot(data_root: Path, quiet: bool = False) -> dict[str, Any]:
     today = date.today().isoformat()
     snapshot_dir = data_root / "snapshots"
     snapshot_dir.mkdir(parents=True, exist_ok=True)
-    archive = snapshot_dir / f"evergreen-data-{today}.tar.gz"
-    manifest_path = snapshot_dir / f"evergreen-data-{today}.sha256"
+    archive = snapshot_dir / f"presearch-data-{today}.tar.gz"
+    manifest_path = snapshot_dir / f"presearch-data-{today}.sha256"
 
     files = sorted(data_root.rglob("*"))
     files = [
