@@ -195,9 +195,7 @@ def main(argv: list[str] | None = None) -> int:
             args.pillar,
             verified_only=not args.include_unverified,
         )
-        summary["blend"] = blend_scores(
-            Path(args.data_root), args.pillar, quiet=True
-        )
+        summary["blend"] = blend_scores(Path(args.data_root), quiet=True)
         return _emit(summary)
     if args.command == "fetch":
         if args.query:

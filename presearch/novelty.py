@@ -36,6 +36,7 @@ def novelty_score(record: dict[str, Any], cohort: list[dict[str, Any]]) -> dict[
     if not similarities:
         return {
             "id": record.get("id"),
+            "arxiv_id": record.get("arxiv_id", ""),
             "novelty": 1.0,
             "cohort_overlap": 0,
             "basis": "no-method-overlap-in-cohort",
@@ -43,6 +44,7 @@ def novelty_score(record: dict[str, Any], cohort: list[dict[str, Any]]) -> dict[
     mean_overlap = sum(similarities) / len(similarities)
     return {
         "id": record.get("id"),
+        "arxiv_id": record.get("arxiv_id", ""),
         "novelty": round(1.0 - mean_overlap, 4),
         "cohort_overlap": len(similarities),
         "mean_jaccard": round(mean_overlap, 4),
@@ -52,14 +54,12 @@ def novelty_score(record: dict[str, Any], cohort: list[dict[str, Any]]) -> dict[
 
 def blend_scores(
     data_root: Path,
-    pillar: str,
     quiet: bool = False,
 ) -> dict[str, Any]:
     """Blend method-overlap novelty with citation data where available (§7.4).
 
-    blend = 0.5 * novelty + 0.5 * citation_component; the citation component
-    is the log-scaled citation count when S2 data exists, otherwise the
-    method-novelty stands alone (citation-lag immune).
+    Processes ALL pillars in novelty.jsonl and rewrites novelty_blend.jsonl
+    completely (each run is a full recomputation, not an append).
     """
     import math
 
@@ -75,14 +75,14 @@ def blend_scores(
         for line in novelty_path.read_text(encoding="utf-8").splitlines()
         if line.strip()
     ]
-    rows = [row for row in rows if row.get("pillar") == pillar]
     # keep the newest score per record id
     newest: dict[str, dict[str, Any]] = {}
     for row in rows:
         newest[row["id"]] = row
     blended: list[dict[str, Any]] = []
     for record_id, row in newest.items():
-        citation = citations.get(f"arXiv:{row.get('arxiv_id', '')}") or citations.get(record_id)
+        base_arxiv = (row.get("arxiv_id") or "").split("/abs/")[-1]
+        citation = citations.get(f"arXiv:{base_arxiv}") or citations.get(record_id)
         if citation and citation.get("citationCount") is not None:
             log_component = math.log1p(citation["citationCount"]) / math.log1p(10000)
             blend = round(0.5 * row["novelty"] + 0.5 * log_component, 4)
@@ -93,7 +93,7 @@ def blend_scores(
         blended.append(
             {
                 "id": record_id,
-                "pillar": pillar,
+                "pillar": row.get("pillar", ""),
                 "novelty": row["novelty"],
                 "citations": citation.get("citationCount") if citation else None,
                 "blend": blend,
@@ -139,14 +139,14 @@ def run_novelty(
     data_root.mkdir(parents=True, exist_ok=True)
     with store.open("a", encoding="utf-8") as handle:
         for item in scored:
-            handle.write(json.dumps({"computed_on": computed_on, "pillar": pillar, **item}, ensure_ascii=False) + "\n")
+            handle.write(json.dumps({"computed_on": computed_on, "pillar": row.get("pillar", ""), **item}, ensure_ascii=False) + "\n")
 
     if not quiet:
         print(f"[novelty] scored {len(scored)} {pillar} records -> {store}")
         for item in scored[:5]:
             print(f"  {item['novelty']:.3f}  {item['id'][:16]}  (overlap {item['cohort_overlap']})")
     return {
-        "pillar": pillar,
+        "pillar": row.get("pillar", ""),
         "scored": len(scored),
         "store": str(store),
         "top": [

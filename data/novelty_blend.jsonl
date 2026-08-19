@@ -1,45 +1,92 @@
-{"id": "evg-f62aeb218cdf6f6e", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-6fdeda90037d251e", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-ca48c0318d7e979a", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-9854679e8158f1e5", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-b05b770e73761f83", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-0b821b3da2538a48", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-74f795f46035a719", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-4e48d42ef4f7ad7e", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.8346, "citations": null, "blend": 0.8346, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-586cf3e60ab32f23", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.8, "citations": null, "blend": 0.8, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-7e45f4f41c1bac9d", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.777, "citations": null, "blend": 0.777, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-3f0284393b57a4b2", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7691, "citations": null, "blend": 0.7691, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-241a8c0c5dadc91c", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7511, "citations": null, "blend": 0.7511, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-628c4ef85f0da047", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7421, "citations": null, "blend": 0.7421, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-7048f58dd53a5424", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7364, "citations": null, "blend": 0.7364, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-45b3b522c1cdc929", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7214, "citations": null, "blend": 0.7214, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-ec8c48021828b0d4", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7214, "citations": null, "blend": 0.7214, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-f469e87d0194dc45", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7083, "citations": null, "blend": 0.7083, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-21de4d6c0101f2d9", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6847, "citations": null, "blend": 0.6847, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-3015d852ff7f6b12", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6833, "citations": null, "blend": 0.6833, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-58ed686e9dc31903", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6823, "citations": null, "blend": 0.6823, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-4b8cbd324faa1a3c", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.68, "citations": null, "blend": 0.68, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-fdad362a152a421d", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.678, "citations": null, "blend": 0.678, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-5fecf5a0e61d79e2", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6745, "citations": null, "blend": 0.6745, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-43faa17667adc3f0", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6742, "citations": null, "blend": 0.6742, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-a1327781cf590ac8", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6738, "citations": null, "blend": 0.6738, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-a5fe3a983bf047c9", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6725, "citations": null, "blend": 0.6725, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-964669cd2625570d", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6696, "citations": null, "blend": 0.6696, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-204795ac0a186819", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6667, "citations": null, "blend": 0.6667, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-f945ded0c59d6837", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6648, "citations": null, "blend": 0.6648, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-c22ea653b0b9f637", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6625, "citations": null, "blend": 0.6625, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-2383d25a926cadbc", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6548, "citations": null, "blend": 0.6548, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-37a3465e623bd6ff", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.65, "citations": null, "blend": 0.65, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-6747a4c3febaaa9e", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6268, "citations": null, "blend": 0.6268, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-bcf423945919fb94", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6255, "citations": null, "blend": 0.6255, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-7c360933aadeb75b", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6255, "citations": null, "blend": 0.6255, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-3f12f30b5bc710da", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6019, "citations": null, "blend": 0.6019, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-e04110c6e72bd0da", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5917, "citations": null, "blend": 0.5917, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-e804bfb18640fc6e", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5727, "citations": null, "blend": 0.5727, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-fde67f845e4d8c5b", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5727, "citations": null, "blend": 0.5727, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-16371c5431c3f0a1", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5727, "citations": null, "blend": 0.5727, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-0094dec4966ed0cd", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5639, "citations": null, "blend": 0.5639, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-d228625df8686e95", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5639, "citations": null, "blend": 0.5639, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-6742b060cb568d54", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.4948, "citations": null, "blend": 0.4948, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-68ddef1dda3c6549", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.4948, "citations": null, "blend": 0.4948, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
-{"id": "evg-35096b505e3d0fc6", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.4948, "citations": null, "blend": 0.4948, "basis": "novelty-only", "computed_on": "2026-08-18T09:15:24Z"}
+{"id": "evg-f62aeb218cdf6f6e", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-6fdeda90037d251e", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-ca48c0318d7e979a", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-b05b770e73761f83", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-b1a83dba40e654c2", "pillar": "Agentic AI / Deep Research Systems", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-8b897512e31f92d6", "pillar": "Agentic AI / Deep Research Systems", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-33eb894710bfa6ef", "pillar": "Agentic AI / Deep Research Systems", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-0a798dc1d3d3f67c", "pillar": "Agentic AI / Deep Research Systems", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-16836495397fa7c7", "pillar": "Agentic AI / Deep Research Systems", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-303ecb58b104f4af", "pillar": "Efficient Training & Inference", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-7f5cacfffd223609", "pillar": "RL / Alignment / Safety", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-b4039c8c8db5da9e", "pillar": "RL / Alignment / Safety", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-58144f90f83cc497", "pillar": "RL / Alignment / Safety", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-56994fb25b3a9448", "pillar": "RL / Alignment / Safety", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-6e4795077e1c553d", "pillar": "Multimodal / World Models", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-d2a5113aba850e9f", "pillar": "Quant × AI", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-bcd3b9ed559fc5db", "pillar": "Quant × AI", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-e327d0acbb64282f", "pillar": "Quant × AI", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-c80f4edaaa2000c2", "pillar": "Quant × AI", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-705c9da3c6b3386b", "pillar": "Quant × AI", "novelty": 1.0, "citations": null, "blend": 1.0, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-3d07432eda2f93e1", "pillar": "Efficient Training & Inference", "novelty": 0.875, "citations": null, "blend": 0.875, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-4e48d42ef4f7ad7e", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.8346, "citations": null, "blend": 0.8346, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-96f1adec4d92c7f3", "pillar": "Efficient Training & Inference", "novelty": 0.8333, "citations": null, "blend": 0.8333, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-586cf3e60ab32f23", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.8, "citations": null, "blend": 0.8, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-07a66cab7aca15b7", "pillar": "Efficient Training & Inference", "novelty": 0.7747, "citations": null, "blend": 0.7747, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-3f0284393b57a4b2", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7691, "citations": null, "blend": 0.7691, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-45b3b522c1cdc929", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7214, "citations": null, "blend": 0.7214, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-13ec214ea33f31a7", "pillar": "RL / Alignment / Safety", "novelty": 0.7083, "citations": null, "blend": 0.7083, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-df533c53fac9f2ad", "pillar": "Multimodal / World Models", "novelty": 0.7028, "citations": null, "blend": 0.7028, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-0bb37271e46e6e20", "pillar": "Multimodal / World Models", "novelty": 0.7028, "citations": null, "blend": 0.7028, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-69a12113e9df8e30", "pillar": "Agentic AI / Deep Research Systems", "novelty": 0.6944, "citations": null, "blend": 0.6944, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-a4f9540813ababf3", "pillar": "Efficient Training & Inference", "novelty": 0.6929, "citations": null, "blend": 0.6929, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-21de4d6c0101f2d9", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6847, "citations": null, "blend": 0.6847, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-3015d852ff7f6b12", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6833, "citations": null, "blend": 0.6833, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-58ed686e9dc31903", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6823, "citations": null, "blend": 0.6823, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-4b8cbd324faa1a3c", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.68, "citations": null, "blend": 0.68, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-43faa17667adc3f0", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6742, "citations": null, "blend": 0.6742, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-a1327781cf590ac8", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6738, "citations": null, "blend": 0.6738, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-a5fe3a983bf047c9", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6725, "citations": null, "blend": 0.6725, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-204795ac0a186819", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6667, "citations": null, "blend": 0.6667, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-55659e47085e1354", "pillar": "RL / Alignment / Safety", "novelty": 0.6667, "citations": null, "blend": 0.6667, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-610d36b0bdf49740", "pillar": "Multimodal / World Models", "novelty": 0.6667, "citations": null, "blend": 0.6667, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-f945ded0c59d6837", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6648, "citations": null, "blend": 0.6648, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-37a3465e623bd6ff", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.65, "citations": null, "blend": 0.65, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-c3648fcc6d45ee81", "pillar": "RL / Alignment / Safety", "novelty": 0.6458, "citations": null, "blend": 0.6458, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-7c360933aadeb75b", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6255, "citations": null, "blend": 0.6255, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-353a4635eade0d7d", "pillar": "RL / Alignment / Safety", "novelty": 0.6111, "citations": null, "blend": 0.6111, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-221754ff9554a89c", "pillar": "RL / Alignment / Safety", "novelty": 0.6111, "citations": null, "blend": 0.6111, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-38e6ed1e860490cc", "pillar": "Quant × AI", "novelty": 0.6111, "citations": null, "blend": 0.6111, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-e9389ecae46e722a", "pillar": "Quant × AI", "novelty": 0.6111, "citations": null, "blend": 0.6111, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-3f12f30b5bc710da", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6019, "citations": null, "blend": 0.6019, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-61fa1dc3e33a4859", "pillar": "Multimodal / World Models", "novelty": 0.5952, "citations": null, "blend": 0.5952, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-a3fd3ab23ad0e341", "pillar": "Agentic AI / Deep Research Systems", "novelty": 0.5833, "citations": null, "blend": 0.5833, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-1fbb342df67c0228", "pillar": "Quant × AI", "novelty": 0.5833, "citations": null, "blend": 0.5833, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-e804bfb18640fc6e", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5727, "citations": null, "blend": 0.5727, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-fde67f845e4d8c5b", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5727, "citations": null, "blend": 0.5727, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-16371c5431c3f0a1", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5727, "citations": null, "blend": 0.5727, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-0094dec4966ed0cd", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5639, "citations": null, "blend": 0.5639, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-e3afd29b7519de95", "pillar": "Efficient Training & Inference", "novelty": 0.52, "citations": null, "blend": 0.52, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-9854679e8158f1e5", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": 0, "blend": 0.5, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-0b821b3da2538a48", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": 0, "blend": 0.5, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-74f795f46035a719", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 1.0, "citations": 0, "blend": 0.5, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-4fc7273824840e92", "pillar": "RL / Alignment / Safety", "novelty": 0.5, "citations": null, "blend": 0.5, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-2a27cb2f754fca2b", "pillar": "Quant × AI", "novelty": 0.5, "citations": null, "blend": 0.5, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-6cf320011b4e05e1", "pillar": "Quant × AI", "novelty": 0.5, "citations": null, "blend": 0.5, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-6742b060cb568d54", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.4948, "citations": null, "blend": 0.4948, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-c22ea653b0b9f637", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6625, "citations": 10, "blend": 0.4614, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-628c4ef85f0da047", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7421, "citations": 4, "blend": 0.4584, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-a5642de1ba7f8289", "pillar": "Efficient Training & Inference", "novelty": 0.41, "citations": null, "blend": 0.41, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-078552f76f82ac6c", "pillar": "Efficient Training & Inference", "novelty": 0.41, "citations": null, "blend": 0.41, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-344abe3337c1b5ca", "pillar": "Efficient Training & Inference", "novelty": 0.41, "citations": null, "blend": 0.41, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-f469e87d0194dc45", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7083, "citations": 1, "blend": 0.3918, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-575de7ca8f179923", "pillar": "Agentic AI / Deep Research Systems", "novelty": 0.3889, "citations": null, "blend": 0.3889, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-0aab611a0398e07c", "pillar": "Agentic AI / Deep Research Systems", "novelty": 0.3889, "citations": null, "blend": 0.3889, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-7e45f4f41c1bac9d", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.777, "citations": 0, "blend": 0.3885, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-241a8c0c5dadc91c", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7511, "citations": 0, "blend": 0.3755, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-7048f58dd53a5424", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7364, "citations": 0, "blend": 0.3682, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-ec8c48021828b0d4", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.7214, "citations": 0, "blend": 0.3607, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-6747a4c3febaaa9e", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6268, "citations": 1, "blend": 0.351, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-68ddef1dda3c6549", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.4948, "citations": 5, "blend": 0.3447, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-fdad362a152a421d", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.678, "citations": 0, "blend": 0.339, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-5fecf5a0e61d79e2", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6745, "citations": 0, "blend": 0.3372, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-964669cd2625570d", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6696, "citations": 0, "blend": 0.3348, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-e04110c6e72bd0da", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5917, "citations": 1, "blend": 0.3335, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-2383d25a926cadbc", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6548, "citations": 0, "blend": 0.3274, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-35096b505e3d0fc6", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.4948, "citations": 3, "blend": 0.3227, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-bcf423945919fb94", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.6255, "citations": 0, "blend": 0.3127, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-66003dd973c5de39", "pillar": "Multimodal / World Models", "novelty": 0.3056, "citations": null, "blend": 0.3056, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-68eeb444586ffb9e", "pillar": "Multimodal / World Models", "novelty": 0.3056, "citations": null, "blend": 0.3056, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-da5f363730510dd3", "pillar": "Multimodal / World Models", "novelty": 0.3056, "citations": null, "blend": 0.3056, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-37c58c1bd9cca90c", "pillar": "Multimodal / World Models", "novelty": 0.3056, "citations": null, "blend": 0.3056, "basis": "novelty-only", "computed_on": "2026-08-19T03:59:12Z"}
+{"id": "evg-d228625df8686e95", "pillar": "LLM Reasoning / Test-time Compute", "novelty": 0.5639, "citations": 0, "blend": 0.2819, "basis": "novelty+citations", "computed_on": "2026-08-19T03:59:12Z"}
