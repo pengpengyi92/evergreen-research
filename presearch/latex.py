@@ -44,6 +44,7 @@ _UNICODE_MAP = {
     "\u2265": r"$\geq$",   # >=
     "\u2264": r"$\leq$",   # <=
     "\u2192": r"$\rightarrow$",  # ->
+    "\u2194": r"$\leftrightarrow$",  # <->
     "\u00d7": r"$\times$",       # x
     "\u00b1": r"$\pm$",
     "\u2248": r"$\approx$",
