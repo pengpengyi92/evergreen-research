@@ -416,7 +416,7 @@ class GroupsTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             data_root = Path(tmp)
             with mock.patch(
-                "evergreen.groups.openalex.works_by_institution", return_value=works
+                "evergreen.openalex.works_by_institution", return_value=works
             ):
                 aggregate = run_groups(data_root, per_group=10, quiet=True)
             hkust = aggregate["groups"].get("hkust", {})
