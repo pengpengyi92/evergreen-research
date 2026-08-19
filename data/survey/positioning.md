@@ -37,7 +37,7 @@ the six pillars be read as points on a single tradeoff curve.
 
 ## GO/NO-GO submission gate
 
-- (a) corpus ≥ 200 papers — **PASSED (503)** — with ≥ 40 lead-pillar papers
+- (a) corpus ≥ 200 papers — **PASSED (574)** — with ≥ 40 lead-pillar papers (now 92 across all pillars)
   full-text verified — **PASSED (45)**
 - (b) citation tracking live for all cited records — **in progress**
 - (c) hostile review: zero fatal findings, every claim traced to a DB record

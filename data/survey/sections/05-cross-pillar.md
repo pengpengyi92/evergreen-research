@@ -1,6 +1,6 @@
 # §5 Cross-Pillar Convergence under a Compute-Allocation Lens
 
-> Draft v0.1. Counts are abstract-level corpus frequencies (503 records);
+> Draft v0.1. Counts are abstract-level corpus frequencies (574 records);
 > pillar assignment = query of origin. Verified subsets are noted where used.
 
 ## 5.1 Method families that refuse to stay in one pillar
@@ -28,7 +28,7 @@ every sweep.*
 ## 5.2 RLVR is the lingua franca
 
 RLVR/GRPO is the strongest convergence signal in the corpus: present in all
-six pillars, 29 + 18 + 9 + 7 + 5 + 2 = 70 records. The recipe — optimize a
+six pillars, 79 records at the abstract level. The recipe — optimize a
 policy against a verifiable reward — no longer belongs to math reasoning.
 Embodied agents (BATON), black-box agent harnesses (ClawGym II), and
 on-chain/finance pipelines all adopt it. Under the compute-allocation lens,

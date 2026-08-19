@@ -27,7 +27,7 @@
 - **Rate limiting & robustness**: ≥3s between requests, retries with backoff,
   time-boxed cache, and salvage of complete `<entry>` blocks from truncated
   responses.
-- **Size**: 503 records (2023–2026) at the time of writing; 45 lead-pillar
+- **Size**: 574 records (2023–2026) at the time of writing; 92 records
   records full-text verified.
 
 ## 2.3 Deterministic structuring

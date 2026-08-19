@@ -127,7 +127,7 @@ def run_audit(survey_root: Path, data_root: Path, quiet: bool = False) -> dict[s
     actual = (bench.get("MATH"), bench.get("DROP"), bench.get("GSM8K"))
     claim_checks.append(("benchmarks-13-12-8", actual == (13, 12, 8), f"§6.2 benchmark counts MATH/DROP/GSM8K: {actual}"))
     rlvr_all = sum(1 for r in records if "RLVR / GRPO" in r.get("methods", []))
-    claim_checks.append(("rlvr-70", rlvr_all == 70, f"§5.2 RLVR all-pillar count: {rlvr_all}"))
+    claim_checks.append(("rlvr-79", rlvr_all == 79, f"§5.2 RLVR all-pillar count: {rlvr_all}"))
     for name, ok, detail in claim_checks:
         if ok:
             findings.append({"level": "PASS", "check": f"claim-{name}", "detail": detail})

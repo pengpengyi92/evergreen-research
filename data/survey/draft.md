@@ -45,7 +45,7 @@ verifiable rewards (RLVR). The frontier has moved from "a bigger model" to
 "a better allocation of compute" — and the allocation question now spans
 training vs. inference, model vs. environment, and representation vs. reward.
 
-The shift is visible even in abstract-level signals. In our corpus of 503
+The shift is visible even in abstract-level signals. In our corpus of 574
 frontier-AI papers (2023–2026, six pillars), RLVR/GRPO appears in 4
 full-text-verified papers from 2024, 18 from 2025, and 6 in the first part
 of 2026 — while classic chain-of-thought language rises more slowly
@@ -89,7 +89,7 @@ corpus evidence.
 
 ## 1.4 Contributions
 
-1. A **living corpus pipeline** (503 papers, 2023–2026; 45 lead-pillar
+1. A **living corpus pipeline** (574 papers, 2023–2026; 92 verified across all pillars
    papers full-text verified at the time of writing) with deterministic
    structuring and an auditable evidence chain.
 2. A **compute-allocation taxonomy** that places test-time compute in the
@@ -142,7 +142,7 @@ corpus evidence.
 - **Rate limiting & robustness**: ≥3s between requests, retries with backoff,
   time-boxed cache, and salvage of complete `<entry>` blocks from truncated
   responses.
-- **Size**: 503 records (2023–2026) at the time of writing; 45 lead-pillar
+- **Size**: 574 records (2023–2026) at the time of writing; 92 records
   records full-text verified.
 
 ## 2.3 Deterministic structuring
@@ -368,7 +368,7 @@ envelope)?** — a question flagged for §7.
 
 # §5 Cross-Pillar Convergence under a Compute-Allocation Lens
 
-> Draft v0.1. Counts are abstract-level corpus frequencies (503 records);
+> Draft v0.1. Counts are abstract-level corpus frequencies (574 records);
 > pillar assignment = query of origin. Verified subsets are noted where used.
 
 ## 5.1 Method families that refuse to stay in one pillar
@@ -396,7 +396,7 @@ every sweep.*
 ## 5.2 RLVR is the lingua franca
 
 RLVR/GRPO is the strongest convergence signal in the corpus: present in all
-six pillars, 29 + 18 + 9 + 7 + 5 + 2 = 70 records. The recipe — optimize a
+six pillars, 79 records at the abstract level. The recipe — optimize a
 policy against a verifiable reward — no longer belongs to math reasoning.
 Embodied agents (BATON), black-box agent harnesses (ClawGym II), and
 on-chain/finance pipelines all adopt it. Under the compute-allocation lens,

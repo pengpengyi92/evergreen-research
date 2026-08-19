@@ -14,7 +14,7 @@ verifiable rewards (RLVR). The frontier has moved from "a bigger model" to
 "a better allocation of compute" — and the allocation question now spans
 training vs. inference, model vs. environment, and representation vs. reward.
 
-The shift is visible even in abstract-level signals. In our corpus of 503
+The shift is visible even in abstract-level signals. In our corpus of 574
 frontier-AI papers (2023–2026, six pillars), RLVR/GRPO appears in 4
 full-text-verified papers from 2024, 18 from 2025, and 6 in the first part
 of 2026 — while classic chain-of-thought language rises more slowly
@@ -58,7 +58,7 @@ corpus evidence.
 
 ## 1.4 Contributions
 
-1. A **living corpus pipeline** (503 papers, 2023–2026; 45 lead-pillar
+1. A **living corpus pipeline** (574 papers, 2023–2026; 92 verified across all pillars
    papers full-text verified at the time of writing) with deterministic
    structuring and an auditable evidence chain.
 2. A **compute-allocation taxonomy** that places test-time compute in the
