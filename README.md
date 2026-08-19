@@ -82,13 +82,38 @@ Every step is deterministic and auditable — no closed-box LLM calls, no
 hidden state. The evidence chain runs from an arXiv entry all the way to the
 survey claim that cites it.
 
+## 🔁 Our industry chain (the loop)
+
+Research has an industry chain, and P-Research sits in its middle:
+
+```
+上游 upstream        中游 midstream (us)          下游 downstream
+papers · journals   →  P-Research terminal +     →  reports · surveys ·
+conference papers      PRDT (structure → verify     papers · journal
+experiments ·          → distill → research        submissions
+research reports        graph → matrix/clusters)
+        ↑_______________________________________________|
+             回流: published papers re-enter the upstream
+             (我们的论文被索引、被引用，成为别人的原料)
+```
+
+- **上游**是 paper——学术期刊、会议论文、实验数据、研究报告。arXiv 是
+  最大的公开矿场：上游不收费，但需要工具才能开采。
+- **中游**是我们——presearch 终端 + 内部 PRDT，研究界的 PDAT→PET。
+- **下游**是我们的产出——周报、survey、系统论文、Quant×AI 论文。
+- **回流**是学术市场独有的闭环：金融世界里你的交易不会变成行情，
+  但研究界里你的论文会变成数据。**发表即入上游。**
+
+一句话：**我们既是数据的消费者，也是数据的生产者。**
+
 ## Honest limitations
 
-- Evidence is **abstract-level**: pillar assignment comes from the query of
-  origin, tags come from keyword/regex matching. Full-text verification is a
-  scheduled next milestone, not a claim made today.
-- Citation tracking, novelty scoring, and reproducibility verification are
-  not yet implemented (roadmap below).
+- Evidence is **abstract-level** for unverified records: pillar assignment
+  follows the query of origin, tags come from keyword/regex matching.
+  92 records (across all six pillars) are full-text verified, with a 99%
+  method-tag match rate on the first 45.
+- Citation data (OpenAlex, keyless) covers older papers; recent papers
+  rely on the citation-lag-immune novelty fallback.
 - Treat all digests as **research signals, not verified facts**.
 
 ## Roadmap
