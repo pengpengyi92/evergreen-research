@@ -18,9 +18,11 @@ PILLARS: dict[str, dict[str, object]] = {
         "categories": ["cs.AI", "cs.MA", "cs.CL"],
         "terms": (
             'all:"agent" OR all:"tool use" OR all:"multi-agent" OR all:"deep research" '
-            'OR all:"computer use" OR all:"web agent" OR all:"function calling"'
+            'OR all:"computer use" OR all:"web agent" OR all:"function calling" '
+            'OR all:"tool learning" OR all:"tool calling" OR all:"toolkit" '
+            'OR all:"model context protocol" OR all:"skill"'
         ),
-        "max": 15,
+        "max": 20,
         "days_back": 21,
     },
     "Efficient Training & Inference": {
