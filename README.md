@@ -135,6 +135,25 @@ research reports        graph → matrix/clusters)
 - Code: MIT (see LICENSE)
 - Data (`data/`): CC BY 4.0 — reuse it, cite us.
 
+## 💬 Discussion zones（欢迎讨论）
+
+九个公开讨论区，对应我们的研究版图——欢迎在任何一区发言、提问、挑战：
+
+| # | 区 | 主题 |
+|---|----|------|
+| #2 | 🛡️ [ai-security](https://github.com/pengpengyi92/p-research/discussions/2) | 三条研究线的暗面：攻击 / 防御 / 评测 |
+| #3 | 🧠 [RAG 区](https://github.com/pengpengyi92/p-research/discussions/3) | 检索记忆（agent 的脊柱） |
+| #4 | 🧬 [Memory 区](https://github.com/pengpengyi92/p-research/discussions/4) | 模型内记忆：attention / KV cache / 长上下文 |
+| #5 | 🔧 [Tool Use 区](https://github.com/pengpengyi92/p-research/discussions/5) | 手：工具 / skill / tool learning |
+| #6 | 🗺️ [Planning 区](https://github.com/pengpengyi92/p-research/discussions/6) | 指挥官：目标 / 边界 / 工作流 / harness |
+| #7 | 📏 [Eval 区](https://github.com/pengpengyi92/p-research/discussions/7) | 裁判：benchmark / 评测工程 |
+| #8 | 🎯 [Research Interests](https://github.com/pengpengyi92/p-research/discussions/8) | 我们的研究兴趣宣言（总纲） |
+| #9 | 🌌 [AGI 区](https://github.com/pengpengyi92/p-research/discussions/9) | 星空层：AGI 与 AI 全链路 |
+| #1 | 📌 [Issue 参与枢纽](https://github.com/pengpengyi92/p-research/issues/1) | 提案 / 勘误 / 新档案 |
+
+> 五个能力区（RAG / Memory / Tool Use / Planning / Eval）= 内部研究框架
+> PAT 五要素的公开课程表；#8 是总纲，#9 是星空。#2 是贯穿全部的影子。
+
 ## Contribute
 
 See CONTRIBUTING.md. The single most valuable contribution is a rigorous
