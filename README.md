@@ -1,24 +1,16 @@
 # 🌲 P-Research
 
-**A self-updating, continuously running frontier-AI research intelligence.**
+**前沿 research AI —— 一个自我更新、可持续生长的学术研究系统。**
 
-Every week, P-Research ingests the latest papers from arXiv, structures
-them into a living database, clusters cross-pillar signals, and publishes:
+每周自动扫描 arXiv 前沿论文，把它们变成可查询、可核验、可预测的研究
+数据：活论文库 · 全文核验 · 引用追踪 · 方向聚类 · 科研组雷达 · 顶会
+录取预测——并从中持续生长出一篇系统 survey。
 
-- a **weekly frontier-AI digest** — `data/weekly/`
-- a **living paper database** — `data/papers.jsonl` (append-only, one line per paper)
-- a **growing systematic survey** — `data/survey/`
+**把论文当数据，把研究当量化，把学术前沿当市场。**
 
-It runs itself: a GitHub Actions cron runs every Monday, commits new research
-back to this repo, and the digest is published to GitHub Pages. You can also
-run it locally in one command.
-
-## Why "Evergreen"
-
-Most research write-ups die the day they are published. P-Research
-stays alive: the corpus grows every week, the survey accumulates evidence
-instead of rotting, and every claim links back to the paper records that
-support it. 常青 — always growing.
+- **常青**：论文库每周增长，survey 的每句断言可追溯到语料记录，永不腐烂
+- **零依赖**：纯 Python 标准库，`python -m presearch.cli` 即跑
+- **公开**：MIT 代码 + CC BY 4.0 数据，GitHub Actions 每周自动更新
 
 ## What it tracks (6 pillars)
 
