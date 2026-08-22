@@ -22,6 +22,10 @@ Weekly arXiv sweeps · living paper database · growing systematic survey.
 
 - [№1 RAG](research/2026-08-19-rag.md) · [№2 Memory](research/2026-08-19-memory.md) · [№3 Tool Use](research/2026-08-19-tool-use.md) · [№4 Planning](research/2026-08-19-planning.md) · [№5 Eval](research/2026-08-19-eval.md)
 
+## Tools
+
+- [Quant×AI evaluation harness](harness/README.md) — the missing risk layer for open trading agents (Paper 3 §6) · [disciplined 4/4](harness/sample-disciplined.md) vs [reckless 0/4](harness/sample-reckless.md) on the bundled public SPX fixture
+
 ## Repository
 
 - [Source & methodology](https://github.com/pengpengyi92/p-research)

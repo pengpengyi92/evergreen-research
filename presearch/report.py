@@ -172,6 +172,12 @@ def write_docs_landing(db: PaperDatabase, docs_root: Path) -> Path:
             " · [№4 Planning](research/2026-08-19-planning.md)"
             " · [№5 Eval](research/2026-08-19-eval.md)",
             "",
+            "## Tools",
+            "",
+            "- [Quant×AI evaluation harness](harness/README.md) — the missing risk layer for open"
+            " trading agents (Paper 3 §6) · [disciplined 4/4](harness/sample-disciplined.md)"
+            " vs [reckless 0/4](harness/sample-reckless.md) on the bundled public SPX fixture",
+            "",
             "## Repository",
             "",
             "- [Source & methodology](https://github.com/pengpengyi92/p-research)",

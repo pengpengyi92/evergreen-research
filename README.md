@@ -152,6 +152,16 @@ on what the frontier is working on, generated from the same pipeline:
   №3 [Tool Use](docs/research/2026-08-19-tool-use.md) · №4 [Planning](docs/research/2026-08-19-planning.md) ·
   №5 [Eval](docs/research/2026-08-19-eval.md)
 
+## 📏 Quant×AI evaluation harness
+
+The missing risk layer for open trading agents — a deterministic,
+zero-dependency harness that measures behavioral risk properties (strategy
+drift, cost sensitivity, drawdown response, tool-failure handling) instead of
+ranking returns. Implementation of Paper 3 §6:
+[docs/harness/README.md](docs/harness/README.md). Reference agents validate it:
+**disciplined 4/4** vs **reckless 0/4** on the bundled public SPX fixture
+([data/market/](data/market/PROVENANCE.md)).
+
 ## 💬 Discussion zones
 
 Nine public zones mapped to our research landscape — join any of them to

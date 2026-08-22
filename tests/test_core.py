@@ -650,4 +650,6 @@ class LandingPageTest(unittest.TestCase):
             self.assertIn("## Deepresearch notes", text)
             self.assertIn("2026-08-19-rag.md", text)
             self.assertIn("2026-08-19-eval.md", text)
+            self.assertIn("## Tools", text)
+            self.assertIn("harness/README.md", text)
             self.assertIn("## Repository", text)
