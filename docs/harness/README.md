@@ -14,8 +14,9 @@ exceptions — not the way a leaderboard ranks returns.
 ## Design (Paper 3, §6.1)
 
 1. **Public data only** — one public OHLCV CSV
-   ([`data/market/spx_daily.csv`](../../data/market/spx_daily.csv), provenance
-   [here](../../data/market/PROVENANCE.md)); every result re-derives from it.
+   ([`data/market/spx_daily.csv`](https://raw.githubusercontent.com/pengpengyi92/p-research/main/data/market/spx_daily.csv),
+   provenance [here](https://github.com/pengpengyi92/p-research/blob/main/data/market/PROVENANCE.md));
+   every result re-derives from it.
 2. **Agent-agnostic interface** — any agent implementing
    `observe(state) -> Decision` can be evaluated; internals are a black box,
    behavior is the test subject.
