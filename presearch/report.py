@@ -130,7 +130,7 @@ def write_docs_landing(db: PaperDatabase, docs_root: Path) -> Path:
     if weekly_dir.exists():
         digests = sorted(weekly_dir.glob("*.md"), reverse=True)[:4]
         weekly_links = "\n".join(
-            f"- [Frontier AI Weekly {digest.stem}](../data/weekly/{digest.name})"
+            f"- [Frontier AI Weekly {digest.stem}](https://github.com/pengpengyi92/p-research/blob/main/data/weekly/{digest.name})"
             for digest in digests
         )
 
@@ -159,11 +159,24 @@ def write_docs_landing(db: PaperDatabase, docs_root: Path) -> Path:
             "",
             weekly_links or "- (first sweep pending)",
             "",
+            "## Publications",
+            "",
+            "- [PRDT: Research as a Quant Problem — system paper (draft)](papers/paper2-prdt-system.md)",
+            "- [Agent-Native Trading Systems — Quant×AI paper (draft)](papers/paper3-quant-ai.md)",
+            "- [Living survey draft](https://github.com/pengpengyi92/p-research/blob/main/data/survey/draft.md) · [PDF](https://raw.githubusercontent.com/pengpengyi92/p-research/main/data/survey/draft.pdf)",
+            "",
+            "## Deepresearch notes",
+            "",
+            "- [№1 RAG](research/2026-08-19-rag.md) · [№2 Memory](research/2026-08-19-memory.md)"
+            " · [№3 Tool Use](research/2026-08-19-tool-use.md)"
+            " · [№4 Planning](research/2026-08-19-planning.md)"
+            " · [№5 Eval](research/2026-08-19-eval.md)",
+            "",
             "## Repository",
             "",
             "- [Source & methodology](https://github.com/pengpengyi92/p-research)",
-            "- [Paper database](../data/papers.jsonl)",
-            "- [Survey outline](../data/survey/outline.md)",
+            "- [Paper database](https://raw.githubusercontent.com/pengpengyi92/p-research/main/data/papers.jsonl)",
+            "- [Survey outline](https://github.com/pengpengyi92/p-research/blob/main/data/survey/outline.md)",
         ]
     )
     path = docs_root / "index.md"

@@ -134,6 +134,24 @@ In one line: **we are both consumers and producers of data.**
 - Code: MIT (see LICENSE)
 - Data (`data/`): CC BY 4.0 — reuse it, cite us.
 
+## 📄 Publications
+
+Living papers assembled from the same evidence layer as the corpus and survey
+(draft v0.1, CC BY 4.0 — markdown is the living source):
+
+- [PRDT: Research as a Quant Problem](docs/papers/paper2-prdt-system.md) — system paper · [PDF](docs/papers/paper2-prdt-system.pdf)
+- [Agent-Native Trading Systems](docs/papers/paper3-quant-ai.md) — Quant×AI paper · [PDF](docs/papers/paper3-quant-ai.pdf)
+- [The living survey](data/survey/draft.md) · [PDF](data/survey/draft.pdf)
+
+## 🔬 Deepresearch notes
+
+The [Frontier Deepresearch Series](docs/research/README.md) — corpus-grounded notes
+on what the frontier is working on, generated from the same pipeline:
+
+- №1 [RAG](docs/research/2026-08-19-rag.md) · №2 [Memory](docs/research/2026-08-19-memory.md) ·
+  №3 [Tool Use](docs/research/2026-08-19-tool-use.md) · №4 [Planning](docs/research/2026-08-19-planning.md) ·
+  №5 [Eval](docs/research/2026-08-19-eval.md)
+
 ## 💬 Discussion zones
 
 Nine public zones mapped to our research landscape — join any of them to

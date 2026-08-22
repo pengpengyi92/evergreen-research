@@ -605,3 +605,49 @@ class PipelineTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LandingPageTest(unittest.TestCase):
+    def test_landing_includes_publications_and_deepresearch(self) -> None:
+        """The Pages landing must carry the papers/deepresearch sections across
+        weekly regeneration (write_docs_landing is the cron's generator)."""
+        from presearch.report import write_docs_landing
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            data_root = root / "data"
+            data_root.mkdir()
+            db = PaperDatabase(data_root)
+            db.upsert_many(
+                [
+                    {
+                        "id": "evg-0123456789abcdef",
+                        "title": "A Frontier Paper",
+                        "arxiv_id": "http://arxiv.org/abs/2501.02497",
+                        "pillar": "LLM Reasoning / Test-time Compute",
+                        "verified": False,
+                        "methods": [],
+                        "benchmarks": [],
+                        "year": 2025,
+                        "published": "2025-01-01T00:00:00Z",
+                        "authors": ["A"],
+                        "url": "http://arxiv.org/abs/2501.02497",
+                        "categories": [],
+                        "key_results": [],
+                        "abstract": "",
+                        "code_available": False,
+                        "confidence": 0.5,
+                        "swept_on": "2026-01-01T00:00:00Z",
+                    }
+                ]
+            )
+            docs_root = root / "docs"
+            landing = write_docs_landing(db, docs_root)
+            text = landing.read_text(encoding="utf-8")
+            self.assertIn("## Publications", text)
+            self.assertIn("paper2-prdt-system.md", text)
+            self.assertIn("paper3-quant-ai.md", text)
+            self.assertIn("## Deepresearch notes", text)
+            self.assertIn("2026-08-19-rag.md", text)
+            self.assertIn("2026-08-19-eval.md", text)
+            self.assertIn("## Repository", text)
